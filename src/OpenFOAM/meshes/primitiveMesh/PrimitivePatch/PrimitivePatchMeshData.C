@@ -24,6 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "PrimitivePatch.H"
+#include "face.H"
 #include "Map.H"
 
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //

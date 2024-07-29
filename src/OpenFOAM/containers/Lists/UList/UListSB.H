@@ -1,46 +1,11 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+// UNTYPED 1-D VECTOR OF OBJECTS. VECTOR SIZE IS KNOWN AND CAN BE USED FOR
+// SUBSCRIPTS BOUND CHECKING, ETC
+//
+// STORAGE IS ALLOCATED BY SUPPLYING AS AN ARGUMENT. THIS TYPE OF LIST IS 
+// USEFUL FOR LISTS THAT REFER TO PARTS OF EXISTING LISTS SUCH AS SUBLISTS
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::UList
-
-Description
-    A 1D vector of objects of type \<T\>, where the size of the vector is
-    known and can be used for subscript bounds checking, etc.
-
-    Storage is not allocated during construction or use but is supplied to
-    the constructor as an argument.  This type of list is particularly useful
-    for lists that refer to parts of existing lists such as SubList.
-
-SourceFiles
-    UList.C
-    UListI.H
-    UListIO.C
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef UList_H
-#define UList_H
+#ifndef UListSB_H
+#define UListSB_H
 
 #include "nullObjectSB.H"
 #include "zeroSB.H"

@@ -38,7 +38,7 @@ Description
 #ifndef boolList_H
 #define boolList_H
 
-#include "bool.H"
+//#include "bool.H"
 #include "List.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

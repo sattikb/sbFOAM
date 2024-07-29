@@ -25,7 +25,7 @@ License
 
 #include "stringSB.H"
 #include "stringOps.H"
-#include "UList.H"
+#include "UListSB.H"
 
 /* * * * * * * * * * * * * * * Static Member Data  * * * * * * * * * * * * * */
 
