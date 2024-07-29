@@ -35,7 +35,7 @@ SourceFiles
 #ifndef regionCoupledLduInterface_H
 #define regionCoupledLduInterface_H
 
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "AMIInterpolation.H"
 #include "polyMesh.H"
 

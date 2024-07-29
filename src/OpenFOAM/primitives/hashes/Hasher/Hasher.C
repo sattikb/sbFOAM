@@ -25,7 +25,7 @@ Description
     Hashing functions, mostly from Bob Jenkins
 \*---------------------------------------------------------------------------*/
 
-#include "Hasher.H"
+#include "HasherSB.H"
 #include "HasherInt.H"
 
 #if defined (__GLIBC__)

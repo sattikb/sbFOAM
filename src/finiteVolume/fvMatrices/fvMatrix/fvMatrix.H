@@ -45,8 +45,8 @@ SourceFiles
 #include "lduMatrix.H"
 #include "tmp.H"
 #include "autoPtr.H"
-#include "dimensionedTypes.H"
-#include "zero.H"
+#include "dimensionedTypesSB.H"
+#include "zeroSB.H"
 #include "className.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

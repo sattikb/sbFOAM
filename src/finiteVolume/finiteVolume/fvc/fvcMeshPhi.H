@@ -38,7 +38,7 @@ SourceFiles
 
 #include "volFieldsFwd.H"
 #include "surfaceFieldsFwd.H"
-#include "dimensionedTypes.H"
+#include "dimensionedTypesSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

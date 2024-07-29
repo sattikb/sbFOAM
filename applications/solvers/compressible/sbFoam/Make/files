@@ -1,0 +1,3 @@
+sbFoam.C
+
+EXE = $(FOAM_APPBIN)/sbFoam

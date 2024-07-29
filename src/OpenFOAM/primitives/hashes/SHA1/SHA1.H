@@ -45,7 +45,7 @@ SourceFiles
 #include <string>
 #include <cstddef>
 
-#include "int.H"
+#include "intSB.H"
 #include "SHA1Digest.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

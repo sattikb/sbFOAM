@@ -38,7 +38,7 @@ Description
 #define geometricOneField_H
 
 #include "oneFieldField.H"
-#include "dimensionSet.H"
+#include "dimensionSetSB.H"
 #include "scalar.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

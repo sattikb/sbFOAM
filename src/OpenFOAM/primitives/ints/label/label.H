@@ -36,7 +36,7 @@ Description
 #ifndef label_H
 #define label_H
 
-#include "int.H"
+#include "intSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -97,8 +97,6 @@ inline label component(const label l, const direction)
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "labelSpecific.H"
 
 #undef INT_ADD_SIZE
@@ -106,5 +104,3 @@ inline label component(const label l, const direction)
 #undef INT_SIZE
 
 #endif
-
-// ************************************************************************* //

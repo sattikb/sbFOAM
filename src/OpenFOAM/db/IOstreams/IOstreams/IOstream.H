@@ -42,7 +42,7 @@ SourceFiles
 #ifndef IOstream_H
 #define IOstream_H
 
-#include "char.H"
+//#include "char.H"
 #include "bool.H"
 #include "label.H"
 #include "uLabel.H"

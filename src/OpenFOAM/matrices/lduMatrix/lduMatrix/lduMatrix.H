@@ -51,7 +51,7 @@ SourceFiles
 #define lduMatrix_H
 
 #include "lduMesh.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "FieldField.H"
 #include "lduInterfaceFieldPtrsList.H"
 #include "typeInfo.H"

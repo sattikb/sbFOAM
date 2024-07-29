@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "clock.H"
-#include "string.H"
+#include "stringSB.H"
 
 #include <sstream>
 #include <iomanip>

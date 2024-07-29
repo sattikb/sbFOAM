@@ -36,7 +36,7 @@ SourceFiles
 #define d2dt2Scheme_H
 
 #include "tmp.H"
-#include "dimensionedType.H"
+#include "dimensionedTypeSB.H"
 #include "volFieldsFwd.H"
 #include "surfaceFieldsFwd.H"
 #include "typeInfo.H"

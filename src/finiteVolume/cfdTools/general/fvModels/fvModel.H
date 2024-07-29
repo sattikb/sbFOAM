@@ -35,10 +35,10 @@ SourceFiles
 #ifndef fvModel_H
 #define fvModel_H
 
-#include "fvMatricesFwd.H"
+#include "fvMatricesFwdSB.H"
 #include "volFieldsFwd.H"
 #include "dictionary.H"
-#include "dimensionSet.H"
+#include "dimensionSetSB.H"
 #include "fvModelM.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

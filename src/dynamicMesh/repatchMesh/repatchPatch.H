@@ -36,7 +36,7 @@ SourceFiles
 #ifndef repatchPatch_H
 #define repatchPatch_H
 
-#include "patchIdentifier.H"
+#include "patchIdentifierSB.H"
 #include "autoPtr.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

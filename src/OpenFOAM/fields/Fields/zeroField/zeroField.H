@@ -36,7 +36,7 @@ Description
 #ifndef zeroField_H
 #define zeroField_H
 
-#include "zero.H"
+#include "zeroSB.H"
 #include "scalar.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -37,7 +37,7 @@ SourceFiles
 
 #include "lduInterface.H"
 #include "transformer.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

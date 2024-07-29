@@ -42,11 +42,8 @@ SourceFiles
 #ifndef UList_H
 #define UList_H
 
-#include "bool.H"
-#include "label.H"
-#include "uLabel.H"
-#include "nullObject.H"
-#include "zero.H"
+#include "nullObjectSB.H"
+#include "zeroSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

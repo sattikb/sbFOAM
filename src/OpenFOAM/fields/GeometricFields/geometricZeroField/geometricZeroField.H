@@ -38,7 +38,7 @@ Description
 #define geometricZeroField_H
 
 #include "zeroFieldField.H"
-#include "dimensionSet.H"
+#include "dimensionSetSB.H"
 #include "scalar.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

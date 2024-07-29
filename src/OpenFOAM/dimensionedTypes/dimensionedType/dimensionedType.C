@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "dimensionedType.H"
+#include "dimensionedTypeSB.H"
 #include "pTraits.H"
 #include "dictionary.H"
 

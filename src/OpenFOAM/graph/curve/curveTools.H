@@ -4,7 +4,7 @@
 #include "scalar.H"
 #include "vector.H"
 #include "curve.H"
-#include "char.H"
+//#include "charSB.H"
 #include "List.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

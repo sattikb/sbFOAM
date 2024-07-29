@@ -41,7 +41,7 @@ SourceFiles
 #include "label.H"
 #include "uLabel.H"
 #include "Field.H"
-#include "zero.H"
+#include "zeroSB.H"
 #include "autoPtr.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

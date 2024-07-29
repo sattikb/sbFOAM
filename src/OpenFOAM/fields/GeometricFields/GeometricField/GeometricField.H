@@ -39,8 +39,6 @@ SourceFiles
 #ifndef GeometricField_H
 #define GeometricField_H
 
-#include "regIOobject.H"
-#include "dimensionedTypes.H"
 #include "DimensionedField.H"
 #include "FieldField.H"
 #include "lduInterfaceFieldPtrsList.H"

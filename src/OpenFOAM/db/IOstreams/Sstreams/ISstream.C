@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "ISstream.H"
-#include "int.H"
+#include "intSB.H"
 #include "token.H"
 #include "DynamicList.H"
 #include <cctype>

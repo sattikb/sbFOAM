@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "codedFunctionObjectTemplate.H"
-#include "fvCFD.H"
+#include "fvCFDSB.H"
 #include "unitConversion.H"
 #include "addToRunTimeSelectionTable.H"
 

@@ -42,17 +42,12 @@ SourceFiles
 
 #include "word.H"
 #include "pTraits.H"
-#include "direction.H"
+#include "directionSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-
-class Istream;
-class Ostream;
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 //- Return a word representation of an int32
 word name(const int32_t);

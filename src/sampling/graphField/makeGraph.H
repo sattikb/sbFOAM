@@ -34,7 +34,7 @@ SourceFiles
 #ifndef makeGraph_H
 #define makeGraph_H
 
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "volFieldsFwd.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -49,7 +49,7 @@ SourceFiles
 
 #include "PackedBoolList.H"
 #include "DynamicList.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "labelPair.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

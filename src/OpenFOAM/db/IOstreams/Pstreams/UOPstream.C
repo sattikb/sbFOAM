@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "UOPstream.H"
-#include "int.H"
+#include "intSB.H"
 #include "token.H"
 
 #include <cctype>

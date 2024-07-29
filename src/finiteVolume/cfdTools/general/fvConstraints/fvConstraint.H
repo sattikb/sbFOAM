@@ -35,7 +35,7 @@ SourceFiles
 #ifndef fvConstraint_H
 #define fvConstraint_H
 
-#include "fvMatricesFwd.H"
+#include "fvMatricesFwdSB.H"
 #include "volFieldsFwd.H"
 #include "dictionary.H"
 #include "fvConstraintM.H"

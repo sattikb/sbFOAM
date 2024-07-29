@@ -42,7 +42,7 @@ SourceFiles
 
 #include "word.H"
 #include "pTraits.H"
-#include "direction.H"
+#include "directionSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

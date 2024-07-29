@@ -37,7 +37,7 @@ SourceFiles
 #define dimensionSets_H
 
 #include "scalarMatrices.H"
-#include "dimensionedScalarFwd.H"
+#include "dimensionedScalarFwdSB.H"
 #include "PtrList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

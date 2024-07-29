@@ -58,7 +58,7 @@ SourceFiles
 #define treeBoundBox_H
 
 #include "boundBox.H"
-#include "direction.H"
+#include "directionSB.H"
 #include "pointField.H"
 #include "faceList.H"
 

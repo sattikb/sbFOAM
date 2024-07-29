@@ -39,8 +39,7 @@ SourceFiles
 #define DimensionedField_H
 
 #include "regIOobject.H"
-#include "Field.H"
-#include "dimensionedType.H"
+#include "dimensionedTypeSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

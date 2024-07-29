@@ -80,7 +80,7 @@ SourceFiles
 #define cylindricalFunctionObject_H
 
 #include "fieldExpression.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

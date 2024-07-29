@@ -38,7 +38,7 @@ SourceFiles
 #define UniformDimensionedField_H
 
 #include "regIOobject.H"
-#include "dimensionedType.H"
+#include "dimensionedTypeSB.H"
 #include "UniformField.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

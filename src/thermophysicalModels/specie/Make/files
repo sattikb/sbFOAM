@@ -1,7 +1,6 @@
 atomicWeights/atomicWeights.C
 specie/specie.C
 reaction/specieCoeffs/specieCoeffs.C
-reaction/reaction/reaction.C
 
 thermophysicalFunctions/integratedNonUniformTable1/integratedNonUniformTable1.C
 thermophysicalFunctions/APIdiffCoef/APIdiffCoef.C

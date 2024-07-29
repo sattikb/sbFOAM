@@ -30,6 +30,7 @@ License
 
 #include "adiabaticPerfectFluid.H"
 #include "rhoConst.H"
+#include "sbRhoEOS.H"
 #include "rPolynomial.H"
 
 #include "eConstThermo.H"
@@ -49,6 +50,7 @@ License
 #define forLiquidEqns(Mu, He, Cp, Macro, Args...)                              \
     forThermo(Mu, He, Cp, adiabaticPerfectFluid, specie, Macro, Args);         \
     forThermo(Mu, He, Cp, rhoConst, specie, Macro, Args);                      \
+    forThermo(Mu, He, Cp, sbRhoEOS, specie, Macro, Args);                      \
     forThermo(Mu, He, Cp, rPolynomial, specie, Macro, Args)
 
 #define forLiquidEnergiesAndThermos(Mu, Macro, Args...)                        \
@@ -57,7 +59,7 @@ License
     forLiquidEqns(Mu, sensibleInternalEnergy, hConstThermo, Macro, Args)
 
 #define forLiquidTransports(Macro, Args...)                                    \
-    forLiquidEnergiesAndThermos(constTransport, Macro, Args);
+    forLiquidEnergiesAndThermos(constTransport, Macro, Args)
 
 #define forLiquids(Macro, Args...)                                             \
     forLiquidTransports(Macro, Args)
@@ -67,6 +69,7 @@ License
 
 #define forCoeffLiquidEqns(Mu, He, Cp, Macro, Args...)                         \
     forThermo(Mu, He, Cp, rhoConst, specie, Macro, Args);                      \
+    forThermo(Mu, He, Cp, sbRhoEOS, specie, Macro, Args);                      \
     forThermo(Mu, He, Cp, rPolynomial, specie, Macro, Args)
 
 #define forCoeffLiquidEnergiesAndThermos(Mu, Macro, Args...)                   \
@@ -75,7 +78,7 @@ License
     forCoeffLiquidEqns(Mu, sensibleInternalEnergy, hConstThermo, Macro, Args)
 
 #define forCoeffLiquidTransports(Macro, Args...)                               \
-    forCoeffLiquidEnergiesAndThermos(constTransport, Macro, Args);
+    forCoeffLiquidEnergiesAndThermos(constTransport, Macro, Args)
 
 #define forCoeffLiquids(Macro, Args...)                                        \
     forCoeffLiquidTransports(Macro, Args)

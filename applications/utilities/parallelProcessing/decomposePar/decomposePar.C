@@ -80,7 +80,7 @@ Usage
 \*---------------------------------------------------------------------------*/
 
 #include "OSspecific.H"
-#include "fvCFD.H"
+#include "fvCFDSB.H"
 #include "IOobjectList.H"
 #include "domainDecomposition.H"
 #include "labelIOField.H"

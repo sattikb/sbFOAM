@@ -55,7 +55,7 @@ SourceFiles
 
 #include "geomDecomp.H"
 #include "FixedList.H"
-#include "direction.H"
+#include "directionSB.H"
 
 namespace Foam
 {

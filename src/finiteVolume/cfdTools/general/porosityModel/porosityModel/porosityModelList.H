@@ -37,7 +37,7 @@ SourceFiles
 
 #include "fvMesh.H"
 #include "dictionary.H"
-#include "fvMatricesFwd.H"
+#include "fvMatricesFwdSB.H"
 #include "porosityModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

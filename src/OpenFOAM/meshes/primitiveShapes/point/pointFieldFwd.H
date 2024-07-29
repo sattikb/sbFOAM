@@ -33,7 +33,7 @@ Description
 #define pointFieldFwd_H
 
 #include "point.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

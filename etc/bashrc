@@ -33,7 +33,7 @@
 
 export WM_PROJECT=OpenFOAM
 export WM_PROJECT_VERSION=9
-
+export WM_NCOMPPROCS=12
 ################################################################################
 # USER EDITABLE PART: Changes made here may be lost with the next upgrade
 #

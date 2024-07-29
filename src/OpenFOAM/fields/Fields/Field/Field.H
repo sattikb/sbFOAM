@@ -41,7 +41,7 @@ SourceFiles
 #define Field_H
 
 #include "tmp.H"
-#include "direction.H"
+#include "directionSB.H"
 #include "VectorSpace.H"
 #include "scalarList.H"
 #include "labelList.H"

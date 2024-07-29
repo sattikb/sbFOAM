@@ -1,48 +1,11 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2020 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::calculatedFvPatchField
-
-Description
-    This boundary condition is not designed to be evaluated; it is assumed
-    that the value is assigned via field assignment, and not via a call to
-    e.g. \c updateCoeffs or \c evaluate.
-
-Usage
-    Example of the boundary condition specification:
-    \verbatim
-    <patchName>
-    {
-        type            calculated;
-        value           uniform (0 0 0);    // Required value entry
-    }
-    \endverbatim
-
-SourceFiles
-    calculatedFvPatchField.C
-
-\*---------------------------------------------------------------------------*/
+// THIS BC WILL NOT USE DATA IN THE 0 FOLDERS. RATHER WILL BE ASSIGNED VIA 
+// FIELD ASSIGNMENT. THUS updateCoeffs OR evaluate WILL NOT UPDATE IT.
+//
+//  <patchName>
+//  {
+//  	type		calculated;
+//  	value		(0 0 0);	
+//  }
 
 #ifndef calculatedFvPatchField_H
 #define calculatedFvPatchField_H

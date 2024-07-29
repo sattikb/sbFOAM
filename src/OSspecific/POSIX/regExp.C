@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "regExp.H"
-#include "string.H"
+#include "stringSB.H"
 #include "List.H"
 
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //

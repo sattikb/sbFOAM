@@ -39,10 +39,8 @@ SourceFiles
 #ifndef polyPatch_H
 #define polyPatch_H
 
-#include "patchIdentifier.H"
+#include "patchIdentifierSB.H"
 #include "primitivePatch.H"
-#include "typeInfo.H"
-#include "runTimeSelectionTables.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

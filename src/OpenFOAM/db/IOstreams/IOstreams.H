@@ -38,9 +38,9 @@ Description
 #include "ISstream.H"
 #include "prefixOSstream.H"
 #include "token.H"
-#include "char.H"
-#include "int.H"
-#include "uint.H"
+//#include "charSB.H"
+//#include "intSB.H"
+#include "uintSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Global predefined streams for standard input, output

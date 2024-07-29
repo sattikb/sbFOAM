@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "doubleScalar.H"
+#include "doubleScalarSB.H"
 #include "IOstreams.H"
 
 #include <sstream>

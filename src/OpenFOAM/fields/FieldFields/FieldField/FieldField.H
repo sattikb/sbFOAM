@@ -38,7 +38,7 @@ SourceFiles
 #include "tmp.H"
 #include "PtrList.H"
 #include "scalar.H"
-#include "direction.H"
+#include "directionSB.H"
 #include "VectorSpace.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

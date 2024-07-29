@@ -42,7 +42,7 @@ SourceFiles
 
 #include "word.H"
 #include "pTraits.H"
-#include "direction.H"
+#include "directionSB.H"
 
 #ifndef UINT64_MIN
 #define UINT64_MIN 0

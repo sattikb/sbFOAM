@@ -38,7 +38,7 @@ SourceFiles
 #ifndef verbatimString_H
 #define verbatimString_H
 
-#include "string.H"
+#include "stringSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

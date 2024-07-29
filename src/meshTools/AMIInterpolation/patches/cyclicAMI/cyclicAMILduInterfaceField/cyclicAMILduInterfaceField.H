@@ -35,7 +35,7 @@ SourceFiles
 #ifndef cyclicAMILduInterfaceField_H
 #define cyclicAMILduInterfaceField_H
 
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "transformer.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

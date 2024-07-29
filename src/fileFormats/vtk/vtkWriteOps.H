@@ -35,7 +35,7 @@ SourceFiles
 #ifndef vtkWriteOps_H
 #define vtkWriteOps_H
 
-#include "floatScalar.H"
+#include "floatScalarSB.H"
 #include "point.H"
 #include "tensor.H"
 #include "labelList.H"

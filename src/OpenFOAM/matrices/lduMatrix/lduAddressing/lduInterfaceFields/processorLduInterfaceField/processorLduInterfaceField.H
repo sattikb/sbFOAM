@@ -35,7 +35,7 @@ SourceFiles
 #ifndef processorLduInterfaceField_H
 #define processorLduInterfaceField_H
 
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "transformer.H"
 #include "typeInfo.H"
 

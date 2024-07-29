@@ -62,7 +62,7 @@ inline void writeEntry(Ostream& os, const bool value)
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #include "pTraits.H"
-#include "direction.H"
+#include "directionSB.H"
 
 namespace Foam
 {
@@ -127,8 +127,4 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

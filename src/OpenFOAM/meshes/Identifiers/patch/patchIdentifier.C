@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "patchIdentifier.H"
+#include "patchIdentifierSB.H"
 #include "dictionary.H"
 #include "ListOps.H"
 

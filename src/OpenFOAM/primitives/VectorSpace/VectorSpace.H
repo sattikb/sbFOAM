@@ -1,48 +1,11 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::VectorSpace
-
-Description
-    Templated vector space.
-
-    Template arguments are the Form the vector space will be used to create,
-    the type of the elements and the number of elements.
-
-SourceFiles
-    VectorSpaceI.H
-    VectorSpace.C
-
-\*---------------------------------------------------------------------------*/
+// TEMPLATE TO CREATE TYPE AND NO OF ELEMENTS. TEMPLATE ARGUMENTS ARE THE "FORM"
+// OF THE CEVTOR SPACE 
 
 #ifndef VectorSpace_H
 #define VectorSpace_H
 
-#include "direction.H"
-#include "scalar.H"
-#include "word.H"
-#include "zero.H"
+#include "zeroSB.H"
+
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -232,8 +195,4 @@ word name(const VectorSpace<Form, Cmpt, Ncmpts>&);
     #include "VectorSpace.C"
 #endif
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

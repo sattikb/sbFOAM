@@ -39,7 +39,7 @@ SourceFiles
 #define interpolateSplineXY_H
 
 #include "scalar.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -42,7 +42,7 @@ SourceFiles
 #include "labelList.H"
 #include "DynamicList.H"
 #include "HashTable.H"
-#include "string.H"
+#include "stringSB.H"
 #include "NamedEnum.H"
 #include "ListOps.H"
 #include "LIFOStack.H"

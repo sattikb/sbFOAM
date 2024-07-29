@@ -48,7 +48,7 @@ SourceFiles
 
 #include "fvModel.H"
 #include "Function1.H"
-#include "dimensionedTypes.H"
+#include "dimensionedTypesSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

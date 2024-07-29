@@ -1,44 +1,12 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Typedef
-    Foam::scalar
-
-Description
-    Single floating point number identical to float or double depending on
-    whether WM_SP, WM_DP or WM_LP is defined.
-
-SourceFiles
-    scalar.C
-
-\*---------------------------------------------------------------------------*/
+// DEPENDING ON WM_SP, WM_DP OR WM_LP IN BASHRC, ONE WILL BE CHOSEN AND 
+// A SIMPLER NAME WILL BE ASSIGNED TO IT
 
 #ifndef scalar_H
 #define scalar_H
 
-#include "floatScalar.H"
-#include "doubleScalar.H"
-#include "longDoubleScalar.H"
+#include "floatScalarSB.H"	// FOR 32 BIT FLOATS ( 4 BYTES)
+#include "doubleScalarSB.H"	// FOR 64 BIT FLOATS ( 8 BYTES)
+#include "longDoubleScalarSB.H"	// FOR 80 BIT FLOATS (10 BYTES)
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -118,8 +86,6 @@ namespace Foam
     static const scalar ROOTVSMALL = rootVSmall;
 }
 
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Additional global and transcendental functions
 
 namespace Foam
@@ -142,9 +108,4 @@ namespace Foam
     scalar incGamma_P(const scalar a, const scalar x);
 }
 
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

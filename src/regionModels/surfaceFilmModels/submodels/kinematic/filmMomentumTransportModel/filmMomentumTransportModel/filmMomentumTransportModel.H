@@ -38,7 +38,7 @@ SourceFiles
 
 #include "filmSubModelBase.H"
 #include "runTimeSelectionTables.H"
-#include "fvMatricesFwd.H"
+#include "fvMatricesFwdSB.H"
 #include "volFieldsFwd.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

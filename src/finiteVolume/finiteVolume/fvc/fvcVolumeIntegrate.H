@@ -40,8 +40,8 @@ SourceFiles
 #define fvcVolumeIntegrate_H
 
 #include "volFieldsFwd.H"
-#include "primitiveFieldsFwd.H"
-#include "dimensionedTypes.H"
+#include "primitiveFieldsFwdSB.H"
+#include "dimensionedTypesSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

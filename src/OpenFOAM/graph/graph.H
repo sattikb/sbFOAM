@@ -35,7 +35,7 @@ SourceFiles
 #ifndef graph_H
 #define graph_H
 
-#include "string.H"
+#include "stringSB.H"
 #include "point.H"
 #include "HashPtrTable.H"
 #include "curve.H"

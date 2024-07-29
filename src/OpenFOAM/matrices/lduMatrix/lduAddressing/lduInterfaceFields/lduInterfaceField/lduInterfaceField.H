@@ -37,7 +37,7 @@ SourceFiles
 #define lduInterfaceField_H
 
 #include "lduInterface.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "Pstream.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

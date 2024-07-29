@@ -37,7 +37,7 @@ SourceFiles
 #define porosityModel_H
 
 #include "fvMesh.H"
-#include "fvMatricesFwd.H"
+#include "fvMatricesFwdSB.H"
 #include "coordinateSystem.H"
 #include "dimensionedVector.H"
 #include "wordRe.H"

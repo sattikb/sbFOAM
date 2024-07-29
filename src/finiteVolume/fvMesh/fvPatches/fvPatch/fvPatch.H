@@ -37,15 +37,15 @@ SourceFiles
 #define fvPatch_H
 
 #include "polyPatch.H"
-#include "labelList.H"
-#include "SubList.H"
-#include "typeInfo.H"
-#include "tmp.H"
-#include "primitiveFields.H"
+//#include "labelList.H"
+//#include "SubList.H"
+//#include "typeInfo.H"
+//#include "tmp.H"
+//#include "primitiveFields.H"
 #include "SubField.H"
 #include "fvPatchFieldsFwd.H"
-#include "autoPtr.H"
-#include "runTimeSelectionTables.H"
+//#include "autoPtr.H"
+//#include "runTimeSelectionTables.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

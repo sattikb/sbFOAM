@@ -40,7 +40,7 @@ SourceFiles
 #define tetrahedron_H
 
 #include "point.H"
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "pointHit.H"
 #include "Random.H"
 #include "FixedList.H"

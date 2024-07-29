@@ -35,7 +35,7 @@ Description
 
 #include "label.H"
 #include "uLabel.H"
-#include "Hasher.H"
+#include "HasherSB.H"
 #include "pTraits.H"
 #include "fileName.H"
 #include "wordRe.H"

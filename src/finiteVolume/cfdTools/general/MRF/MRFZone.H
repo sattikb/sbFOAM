@@ -46,7 +46,7 @@ SourceFiles
 #include "dimensionedVector.H"
 #include "volFieldsFwd.H"
 #include "surfaceFields.H"
-#include "fvMatricesFwd.H"
+#include "fvMatricesFwdSB.H"
 #include "mapPolyMesh.H"
 #include "Function1.H"
 #include "autoPtr.H"

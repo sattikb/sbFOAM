@@ -36,7 +36,7 @@ SourceFiles
 #ifndef kinematicTransportModel_H
 #define kinematicTransportModel_H
 
-#include "primitiveFieldsFwd.H"
+#include "primitiveFieldsFwdSB.H"
 #include "volFieldsFwd.H"
 #include "surfaceFieldsFwd.H"
 
