@@ -1,47 +1,11 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::List
-
-Description
-    A 1D array of objects of type \<T\>, where the size of the vector
-    is known and used for subscript bounds checking, etc.
-
-    Storage is allocated on free-store during construction.
-
-SourceFiles
-    List.C
-    ListI.H
-    ListIO.C
-
-\*---------------------------------------------------------------------------*/
+// 1-D ARRATY OF UNTYPED OBJECTS. VECTOR SIZE IS KNOWN AND USED FOR SUBSCRIPT
+// BOUNDS CHECKING ETC
+// STORAGE IS ALLOCATED ON FREE STORE DURING CONSTRUCTION
 
 #ifndef List_H
 #define List_H
 
 #include "UListSB.H"
-#include "autoPtr.H"
 #include <initializer_list>
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -306,18 +270,10 @@ List<T> readList(Istream&);
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "ListI.H"
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
     #include "List.C"
 #endif
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //
