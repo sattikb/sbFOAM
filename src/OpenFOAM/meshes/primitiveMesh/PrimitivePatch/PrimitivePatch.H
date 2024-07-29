@@ -52,9 +52,7 @@ SourceFiles
 #define PrimitivePatch_H
 
 #include "boolList.H"
-//#include "labelList.H"
 #include "edgeList.H"
-#include "point.H"
 #include "intersection.H"
 #include "HashSet.H"
 #include "objectHit.H"

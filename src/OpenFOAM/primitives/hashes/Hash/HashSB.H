@@ -1,42 +1,12 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+// HASH FUNCTION CLASS FOR PRIMITIVES.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::Hash
-
-Description
-    Hash function class for primitives.  All non-primitives used to hash
-    entries on hash tables likely need a specialised version of this class.
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef Hash_H
-#define Hash_H
+#ifndef HashSB_H
+#define HashSB_H
 
 #include "label.H"
-#include "uLabel.H"
-#include "HasherSB.H"
-#include "pTraits.H"
+//#include "uLabel.H"
+//#include "HasherSB.H"
+//#include "pTraits.H"
 #include "fileName.H"
 #include "wordRe.H"
 
@@ -228,8 +198,4 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

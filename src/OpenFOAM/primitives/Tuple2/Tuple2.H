@@ -36,7 +36,7 @@ See also
 #define Tuple2_H
 
 #include "Istream.H"
-#include "Hash.H"
+#include "HashSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
