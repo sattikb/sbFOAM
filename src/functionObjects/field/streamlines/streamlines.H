@@ -106,7 +106,7 @@ SourceFiles
 #include "fvMeshFunctionObject.H"
 #include "volFieldsFwd.H"
 #include "DynamicList.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "vectorList.H"
 #include "setWriter.H"
 #include "indirectPrimitivePatch.H"

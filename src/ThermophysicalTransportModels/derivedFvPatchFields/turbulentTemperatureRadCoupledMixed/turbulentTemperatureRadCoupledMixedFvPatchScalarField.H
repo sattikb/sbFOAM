@@ -73,7 +73,7 @@ SourceFiles
 
 #include "mixedFvPatchFields.H"
 #include "temperatureCoupledBase.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

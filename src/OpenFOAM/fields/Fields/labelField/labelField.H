@@ -74,12 +74,6 @@ void labelField::replace(const direction, const labelUList& lf);
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "undefFieldFunctionsM.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

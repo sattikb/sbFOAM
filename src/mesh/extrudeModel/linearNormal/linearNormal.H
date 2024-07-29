@@ -34,7 +34,7 @@ Description
 
 #include "point.H"
 #include "extrudeModel.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

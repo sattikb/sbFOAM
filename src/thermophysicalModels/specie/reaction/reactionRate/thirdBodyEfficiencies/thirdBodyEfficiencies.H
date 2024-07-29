@@ -35,7 +35,7 @@ SourceFiles
 #ifndef thirdBodyEfficiencies_H
 #define thirdBodyEfficiencies_H
 
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "speciesTable.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

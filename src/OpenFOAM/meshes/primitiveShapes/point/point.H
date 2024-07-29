@@ -5,8 +5,6 @@
 
 #include "vector.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 namespace Foam
 {
     typedef vector point;

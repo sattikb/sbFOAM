@@ -41,7 +41,7 @@ SourceFiles
 #include "fvMesh.H"
 #include "HashTable.H"
 #include "fvPatchMapper.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "className.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

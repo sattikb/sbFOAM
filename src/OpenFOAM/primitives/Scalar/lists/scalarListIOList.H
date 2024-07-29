@@ -32,7 +32,7 @@ Description
 #ifndef scalarListIOList_H
 #define scalarListIOList_H
 
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "CompactIOList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

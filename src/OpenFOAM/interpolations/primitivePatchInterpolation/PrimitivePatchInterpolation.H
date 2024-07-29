@@ -36,7 +36,7 @@ SourceFiles
 #ifndef PrimitivePatchInterpolation_H
 #define PrimitivePatchInterpolation_H
 
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "Field.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

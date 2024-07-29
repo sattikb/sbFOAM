@@ -38,7 +38,7 @@ SourceFiles
 #define volPointInterpolation_H
 
 #include "MeshObject.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "volFields.H"
 #include "pointFields.H"
 

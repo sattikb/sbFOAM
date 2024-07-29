@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "SVD.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "scalarMatrices.H"
 #include "ListOps.H"
 

@@ -36,14 +36,15 @@ SourceFiles
     FieldFunctionsM.C
 
 \*---------------------------------------------------------------------------*/
+// GENERIC TEMPLATE FOR FIELD. WILL BE DEFINED LATER WITH SCALAR, VECTOR ETC.
 
 #ifndef Field_H
 #define Field_H
 
-#include "tmp.H"
-#include "directionSB.H"
+//#include "tmp.H"
+//#include "directionSB.H"
 #include "VectorSpaceSB.H"
-#include "scalarList.H"
+#include "scalarListSB.H"
 #include "labelList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
