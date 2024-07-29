@@ -37,7 +37,7 @@ SourceFiles
 #ifndef SphericalTensor2D_H
 #define SphericalTensor2D_H
 
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

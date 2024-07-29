@@ -41,7 +41,7 @@ SourceFiles
 
 #include "SubList.H"
 #include "Field.H"
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

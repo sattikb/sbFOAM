@@ -53,7 +53,7 @@ SourceFiles
 #include "word.H"
 #include "scalar.H"
 #include "Ostream.H"
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 #include <type_traits>
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

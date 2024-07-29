@@ -6,7 +6,7 @@
 #include "word.H"
 #include "directionSB.H"
 #include "dimensionSetSB.H"
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

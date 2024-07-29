@@ -37,7 +37,7 @@ SourceFiles
 #ifndef Roots_H
 #define Roots_H
 
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

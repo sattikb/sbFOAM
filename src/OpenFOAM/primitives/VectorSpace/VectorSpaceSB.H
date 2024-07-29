@@ -1,11 +1,10 @@
 // TEMPLATE TO CREATE TYPE AND NO OF ELEMENTS. TEMPLATE ARGUMENTS ARE THE "FORM"
-// OF THE CEVTOR SPACE 
+// OF THE VECTOR SPACE. MULTIPLE MEMBER FUNCTIONS ARE PRESENT HERE. 
 
-#ifndef VectorSpace_H
-#define VectorSpace_H
+#ifndef VectorSpaceSB_H
+#define VectorSpaceSB_H
 
 #include "zeroSB.H"
-
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -1,47 +1,15 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+//  Templated 3D Vector derived from VectorSpace adding construction from
+//  3 components, element access using x(), y() and z() member functions and
+//  the inner-product (dot-product) and cross product operators.
+//
+//  A centre() member function which returns the Vector for which it is called
+//  is defined so that point which is a typedef to Vector\<scalar\> behaves as
+//  other shapes in the shape hierarchy.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+#ifndef VectorSB_H
+#define VectorSB_H
 
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::Vector
-
-Description
-    Templated 3D Vector derived from VectorSpace adding construction from
-    3 components, element access using x(), y() and z() member functions and
-    the inner-product (dot-product) and cross product operators.
-
-    A centre() member function which returns the Vector for which it is called
-    is defined so that point which is a typedef to Vector\<scalar\> behaves as
-    other shapes in the shape hierarchy.
-
-SourceFiles
-    VectorI.H
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef Vector_H
-#define Vector_H
-
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -137,12 +105,6 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "VectorI.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

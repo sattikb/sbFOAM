@@ -42,7 +42,7 @@ SourceFiles
 
 #include "tmp.H"
 #include "directionSB.H"
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 #include "scalarList.H"
 #include "labelList.H"
 

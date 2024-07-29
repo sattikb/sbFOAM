@@ -40,7 +40,7 @@ SourceFiles
 
 #include "Barycentric2D.H"
 #include "Tensor2D.H"
-#include "Vector.H"
+#include "VectorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

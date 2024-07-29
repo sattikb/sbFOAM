@@ -39,7 +39,7 @@ SourceFiles
 #include "PtrList.H"
 #include "scalar.H"
 #include "directionSB.H"
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

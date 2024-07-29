@@ -62,7 +62,7 @@ SourceFiles
 #define rPolynomial_H
 
 #include "autoPtr.H"
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -36,7 +36,7 @@ SourceFiles
 #ifndef Barycentric_H
 #define Barycentric_H
 
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

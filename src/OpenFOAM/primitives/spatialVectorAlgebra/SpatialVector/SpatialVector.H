@@ -48,7 +48,7 @@ See also
 #ifndef SpatialVector_H
 #define SpatialVector_H
 
-#include "Vector.H"
+#include "VectorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

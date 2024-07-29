@@ -38,7 +38,7 @@ SourceFiles
 #ifndef SymmTensor_H
 #define SymmTensor_H
 
-#include "VectorSpace.H"
+#include "VectorSpaceSB.H"
 #include "SphericalTensor.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

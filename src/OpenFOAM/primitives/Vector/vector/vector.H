@@ -35,9 +35,7 @@ SourceFiles
 #ifndef vector_H
 #define vector_H
 
-#include "scalar.H"
-#include "Vector.H"
-#include "contiguous.H"
+#include "VectorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -74,8 +72,4 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //
