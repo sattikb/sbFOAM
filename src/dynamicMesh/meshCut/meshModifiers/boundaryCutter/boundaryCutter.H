@@ -44,7 +44,7 @@ SourceFiles
 
 #include "Map.H"
 #include "labelList.H"
-#include "edge.H"
+#include "edgeSB.H"
 #include "typeInfo.H"
 #include "labelPair.H"
 

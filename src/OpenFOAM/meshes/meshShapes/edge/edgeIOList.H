@@ -32,7 +32,7 @@ Description
 #ifndef edgeIOList_H
 #define edgeIOList_H
 
-#include "edge.H"
+#include "edgeSB.H"
 #include "CompactIOList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

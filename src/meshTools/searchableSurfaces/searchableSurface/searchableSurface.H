@@ -46,7 +46,7 @@ SourceFiles
 #include "typeInfo.H"
 #include "runTimeSelectionTables.H"
 #include "pointIndexHit.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 #include "objectRegistry.H"
 #include "volumeType.H"
 

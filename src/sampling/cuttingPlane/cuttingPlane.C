@@ -25,7 +25,7 @@ License
 
 #include "cuttingPlane.H"
 #include "primitiveMesh.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 #include "meshTools.H"
 #include "polygonTriangulate.H"
 

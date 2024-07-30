@@ -42,7 +42,7 @@ SourceFiles
 #include "Random.H"
 #include "FixedList.H"
 #include "UListSB.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 #include "barycentric2D.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

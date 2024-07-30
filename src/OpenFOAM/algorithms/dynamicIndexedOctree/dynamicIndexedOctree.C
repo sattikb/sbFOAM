@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "dynamicIndexedOctree.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 #include "OFstream.H"
 #include "ListOps.H"
 

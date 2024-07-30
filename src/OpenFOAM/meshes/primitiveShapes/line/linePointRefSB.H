@@ -1,7 +1,7 @@
 // Line using referred points.
 
-#ifndef linePointRef_H
-#define linePointRef_H
+#ifndef linePointRefSB_H
+#define linePointRefSB_H
 
 #include "lineSB.H"
 

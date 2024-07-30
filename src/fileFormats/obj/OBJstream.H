@@ -37,10 +37,10 @@ SourceFiles
 
 #include "OFstream.H"
 #include "point.H"
-#include "edge.H"
+#include "edgeSB.H"
 #include "face.H"
 #include "triPointRef.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

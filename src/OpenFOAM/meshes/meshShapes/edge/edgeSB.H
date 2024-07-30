@@ -1,12 +1,11 @@
 // AN EDGE IS A LIST OF 2-POINT LABELS. THIS SUPPORTS THE DISCRETIZATION 
 // ON A 2-D FLAT MESH. CONTAINS VARIOUS MEMBER FUNCTIONS
 
-#ifndef edge_H
-#define edge_H
+#ifndef edgeSB_H
+#define edgeSB_H
 
-//#include "FixedList.H"
 #include "pointField.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

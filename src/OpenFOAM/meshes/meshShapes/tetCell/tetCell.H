@@ -41,7 +41,7 @@ SourceFiles
 
 #include "FixedList.H"
 #include "triFace.H"
-#include "edge.H"
+#include "edgeSB.H"
 #include "pointField.H"
 #include "tetPointRef.H"
 

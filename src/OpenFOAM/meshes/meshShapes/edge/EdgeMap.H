@@ -33,7 +33,7 @@ Description
 #define EdgeMap_H
 
 #include "HashTable.H"
-#include "edge.H"
+#include "edgeSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -42,7 +42,7 @@ SourceFiles
 
 #include "pointField.H"
 #include "treeBoundBox.H"
-#include "linePointRef.H"
+#include "linePointRefSB.H"
 #include "volumeType.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
