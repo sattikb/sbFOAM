@@ -4,7 +4,7 @@
 #define sphericalTensorField_H
 
 #include "scalarField.H"
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 
 #define TEMPLATE
 #include "FieldFunctionsMSB.H"

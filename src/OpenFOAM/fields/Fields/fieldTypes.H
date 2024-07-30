@@ -6,7 +6,7 @@
 #include "label.H"
 #include "scalar.H"
 #include "vector.H"
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 #include "symmTensor.H"
 #include "tensor.H"
 #include "triad.H"

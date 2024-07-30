@@ -1,11 +1,9 @@
 // THE SPHERICALTENSOR TEMPLATE IS USED FOR SCALARS.
 
-#ifndef sphericalTensor_H
-#define sphericalTensor_H
+#ifndef sphericalTensorSB_H
+#define sphericalTensorSB_H
 
-//#include "SphericalTensorSB.H"
 #include "IdentitySB.H"
-#include "contiguous.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

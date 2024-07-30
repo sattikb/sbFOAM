@@ -37,7 +37,7 @@ SourceFiles
 
 #include "scalarField.H"
 #include "vectorFieldSB.H"
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 #include "symmTensor.H"
 #include "tensor.H"
 

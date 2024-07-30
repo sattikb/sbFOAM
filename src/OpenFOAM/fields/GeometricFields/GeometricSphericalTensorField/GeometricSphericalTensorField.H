@@ -36,7 +36,7 @@ SourceFiles
 #define GeometricSphericalTensorField_H
 
 #include "GeometricField.H"
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 
 #define TEMPLATE template<template<class> class PatchField, class GeoMesh>
 #include "GeometricFieldFunctionsM.H"

@@ -36,7 +36,7 @@ SourceFiles
 #define dimensionedSphericalTensor_H
 
 #include "dimensionedTypeSB.H"
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

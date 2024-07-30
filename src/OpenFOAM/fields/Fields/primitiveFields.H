@@ -4,7 +4,7 @@
 #define primitiveFields_H
 
 #include "labelFieldSB.H"
-#include "vectorFieldSB.H"    // THIS ALSO CONTAINS scalarField.H
+//#include "vectorFieldSB.H"    // THIS ALSO CONTAINS scalarField.H
 #include "tensorField.H"	// THIS CONTAINS vectorField.H, which contains scalarField.H
 #include "sphericalTensorField.H"
 

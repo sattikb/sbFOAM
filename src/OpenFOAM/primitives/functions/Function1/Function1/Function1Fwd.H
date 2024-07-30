@@ -29,7 +29,7 @@ License
 #include "Function1.H"
 #include "vector.H"
 #include "symmTensor.H"
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 #include "tensor.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

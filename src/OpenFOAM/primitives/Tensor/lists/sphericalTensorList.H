@@ -38,7 +38,7 @@ Description
 #ifndef sphericalTensorList_H
 #define sphericalTensorList_H
 
-#include "sphericalTensor.H"
+#include "sphericalTensorSB.H"
 #include "List.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
