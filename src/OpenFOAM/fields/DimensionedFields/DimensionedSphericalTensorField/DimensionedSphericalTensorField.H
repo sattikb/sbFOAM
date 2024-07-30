@@ -35,7 +35,7 @@ SourceFiles
 #ifndef DimensionedSphericalTensorField_H
 #define DimensionedSphericalTensorField_H
 
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "sphericalTensorSB.H"
 
 #define TEMPLATE template<class GeoMesh>

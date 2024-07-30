@@ -82,7 +82,7 @@ SourceFiles
 #ifndef timeVaryingMappedFvPatchField_H
 #define timeVaryingMappedFvPatchField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 #include "FixedList.H"
 #include "instantList.H"
 #include "pointToPointPlanarInterpolation.H"

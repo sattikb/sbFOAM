@@ -47,7 +47,7 @@ SourceFiles
 #ifndef emptyFvPatchField_H
 #define emptyFvPatchField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 #include "emptyFvPatch.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

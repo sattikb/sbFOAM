@@ -35,7 +35,7 @@ SourceFiles
 #ifndef surfPointFields_H
 #define surfPointFields_H
 
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "surfPointGeoMesh.H"
 #include "surfPointFieldsFwd.H"
 

@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "IOstreams.H"
 
 

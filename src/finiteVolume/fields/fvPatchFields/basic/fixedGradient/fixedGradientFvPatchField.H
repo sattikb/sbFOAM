@@ -63,7 +63,7 @@ SourceFiles
 #ifndef fixedGradientFvPatchField_H
 #define fixedGradientFvPatchField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

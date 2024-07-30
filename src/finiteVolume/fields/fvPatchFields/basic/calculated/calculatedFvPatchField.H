@@ -10,7 +10,7 @@
 #ifndef calculatedFvPatchField_H
 #define calculatedFvPatchField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

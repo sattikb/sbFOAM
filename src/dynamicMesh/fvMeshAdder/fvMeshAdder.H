@@ -39,10 +39,10 @@ SourceFiles
 
 #include "polyMeshAdder.H"
 #include "volFieldsFwd.H"
-#include "fvPatchFieldsFwd.H"
+#include "fvPatchFieldsFwdSB.H"
 #include "fvsPatchFieldsFwd.H"
 #include "fvPatchFieldMapper.H"
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "pointFieldsFwd.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -45,7 +45,7 @@ SourceFiles
 #ifndef internalFvPatchField_H
 #define internalFvPatchField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 #include "internalFvPatch.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -35,7 +35,7 @@ SourceFiles
 #ifndef DimensionedScalarField_H
 #define DimensionedScalarField_H
 
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "scalar.H"
 
 #define TEMPLATE template<class GeoMesh>

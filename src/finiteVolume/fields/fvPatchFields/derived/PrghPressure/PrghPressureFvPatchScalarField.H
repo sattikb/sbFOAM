@@ -50,7 +50,7 @@ SourceFiles
 #ifndef PrghPressureFvPatchScalarField_H
 #define PrghPressureFvPatchScalarField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

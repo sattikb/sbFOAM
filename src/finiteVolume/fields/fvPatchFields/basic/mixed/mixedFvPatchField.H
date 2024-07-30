@@ -68,7 +68,7 @@ SourceFiles
 #ifndef mixedFvPatchField_H
 #define mixedFvPatchField_H
 
-#include "fvPatchField.H"
+#include "fvPatchFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -39,7 +39,7 @@ SourceFiles
 #ifndef GeometricField_H
 #define GeometricField_H
 
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "FieldField.H"
 #include "lduInterfaceFieldPtrsList.H"
 #include "LduInterfaceFieldPtrsList.H"

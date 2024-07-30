@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "DimensionedField.H"
+#include "DimensionedFieldSB.H"
 #include "dimensionedTypeSB.H"
 #include "Time.H"
 

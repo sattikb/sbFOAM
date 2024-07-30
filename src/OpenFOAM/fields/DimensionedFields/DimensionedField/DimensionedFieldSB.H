@@ -1,42 +1,8 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2020 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+//  Field with dimensions and associated with geometry type GeoMesh which is
+//  used to size the field and a reference to it is maintained.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::DimensionedField
-
-Description
-    Field with dimensions and associated with geometry type GeoMesh which is
-    used to size the field and a reference to it is maintained.
-
-SourceFiles
-    DimensionedFieldI.H
-    DimensionedField.C
-    DimensionedFieldIO.C
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef DimensionedField_H
-#define DimensionedField_H
+#ifndef DimensionedFieldSB_H
+#define DimensionedFieldSB_H
 
 #include "regIOobject.H"
 #include "dimensionedTypeSB.H"

@@ -1,52 +1,18 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+//  Abstract base class with a fat-interface to all derived classes
+//  covering all possible ways in which they might be used.
+//
+//  The first level of derivation is to basic patchFields which cover
+//  zero-gradient, fixed-gradient, fixed-value and mixed conditions.
+//
+//  The next level of derivation covers all the specialised types with
+//  specific evaluation procedures, particularly with respect to specific
+//  fields.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::fvPatchField
-
-Description
-    Abstract base class with a fat-interface to all derived classes
-    covering all possible ways in which they might be used.
-
-    The first level of derivation is to basic patchFields which cover
-    zero-gradient, fixed-gradient, fixed-value and mixed conditions.
-
-    The next level of derivation covers all the specialised types with
-    specific evaluation procedures, particularly with respect to specific
-    fields.
-
-SourceFiles
-    fvPatchField.C
-    fvPatchFieldNew.C
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef fvPatchField_H
-#define fvPatchField_H
+#ifndef fvPatchFieldSB_H
+#define fvPatchFieldSB_H
 
 #include "fvPatch.H"
-#include "DimensionedField.H"
-//#include "fieldTypes.H"
+#include "DimensionedFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
