@@ -42,7 +42,7 @@ SourceFiles
 #define directions_H
 
 #include "List.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "NamedEnum.H"
 #include "point.H"
 

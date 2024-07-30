@@ -46,7 +46,7 @@ SourceFiles
 #include "pointField.H"
 #include "labelList.H"
 #include "edgeList.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "faceListFwd.H"
 #include "intersection.H"
 #include "pointHit.H"

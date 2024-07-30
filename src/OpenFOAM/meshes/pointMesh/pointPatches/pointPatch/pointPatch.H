@@ -36,7 +36,7 @@ SourceFiles
 #define pointPatch_H
 
 #include "labelList.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "pointField.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -36,7 +36,7 @@ SourceFiles
 #define symmTensorField_H
 
 #include "scalarField.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "sphericalTensor.H"
 #include "symmTensor.H"
 #include "tensor.H"

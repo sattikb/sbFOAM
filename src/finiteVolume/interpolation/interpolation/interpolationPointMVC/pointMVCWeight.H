@@ -44,7 +44,7 @@ SourceFiles
 #define pointMVCWeight_H
 
 #include "scalarField.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "Map.H"
 #include "DynamicList.H"
 #include "point.H"

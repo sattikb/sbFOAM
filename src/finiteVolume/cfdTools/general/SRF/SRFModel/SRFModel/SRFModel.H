@@ -47,7 +47,7 @@ SourceFiles
 #include "runTimeSelectionTables.H"
 #include "fvMesh.H"
 #include "volFields.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

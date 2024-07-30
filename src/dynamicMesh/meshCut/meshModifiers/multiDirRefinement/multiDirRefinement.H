@@ -54,7 +54,7 @@ SourceFiles
 #define multiDirRefinement_H
 
 #include "refinementIterator.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "Map.H"
 #include "className.H"
 

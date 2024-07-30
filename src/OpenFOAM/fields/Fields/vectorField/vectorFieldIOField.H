@@ -32,7 +32,7 @@ Description
 #ifndef vectorFieldIOField_H
 #define vectorFieldIOField_H
 
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "CompactIOField.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

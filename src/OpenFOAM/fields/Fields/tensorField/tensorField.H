@@ -36,7 +36,7 @@ SourceFiles
 #define tensorField_H
 
 #include "scalarField.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "sphericalTensorField.H"
 #include "symmTensorField.H"
 #include "tensor.H"

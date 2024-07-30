@@ -38,7 +38,7 @@ SourceFiles
 #include "transform.H"
 #include "quaternion.H"
 #include "septernion.H"
-#include "vectorField.H"
+#include "vectorFieldSB.H"
 #include "tensorField.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
