@@ -39,7 +39,7 @@ SourceFiles
 #include "point.H"
 #include "scalarListSB.H"
 #include "dictionary.H"
-#include "line.H"
+#include "lineSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

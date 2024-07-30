@@ -25,7 +25,7 @@ License
 
 #include "slidingInterface.H"
 #include "polyMesh.H"
-#include "line.H"
+#include "lineSB.H"
 #include "polyTopoChanger.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //

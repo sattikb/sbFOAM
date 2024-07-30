@@ -32,7 +32,7 @@ Description
 #define linePoint2DRef_H
 
 #include "point2D.H"
-#include "line.H"
+#include "lineSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
