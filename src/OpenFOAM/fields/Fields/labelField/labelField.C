@@ -26,7 +26,7 @@ Description
 
 \*---------------------------------------------------------------------------*/
 
-#include "labelField.H"
+#include "labelFieldSB.H"
 
 #define TEMPLATE
 #include "FieldFunctionsM.C"

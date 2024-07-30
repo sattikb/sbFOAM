@@ -42,7 +42,7 @@ SourceFiles
 
 #include "GAMGProcAgglomeration.H"
 #include "DynamicList.H"
-#include "labelField.H"
+#include "labelFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

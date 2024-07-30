@@ -55,7 +55,7 @@ SourceFiles
 
 #include "GAMGAgglomeration.H"
 #include "lduMatrix.H"
-#include "labelField.H"
+#include "labelFieldSB.H"
 #include "primitiveFields.H"
 #include "LUscalarMatrix.H"
 

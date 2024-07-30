@@ -28,13 +28,14 @@ Description
     Specialisations of Field\<T\> for scalar, vector and tensor.
 
 \*---------------------------------------------------------------------------*/
+// CONTAINS ALL THE FIELD TEMPLATES FOR SCALAR VECTOR, ETC
 
 #ifndef primitiveFields_H
 #define primitiveFields_H
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include "labelField.H"
+#include "labelFieldSB.H"
 #include "scalarField.H"
 #include "vectorField.H"
 #include "tensorField.H"

@@ -32,7 +32,7 @@ Description
 #ifndef labelFieldIOField_H
 #define labelFieldIOField_H
 
-#include "labelField.H"
+#include "labelFieldSB.H"
 #include "IOField.H"
 #include "CompactIOField.H"
 

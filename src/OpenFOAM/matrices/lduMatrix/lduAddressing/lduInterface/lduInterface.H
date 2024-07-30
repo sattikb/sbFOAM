@@ -36,7 +36,7 @@ SourceFiles
 #ifndef lduInterface_H
 #define lduInterface_H
 
-#include "labelField.H"
+#include "labelFieldSB.H"
 #include "typeInfo.H"
 #include "Pstream.H"
 
