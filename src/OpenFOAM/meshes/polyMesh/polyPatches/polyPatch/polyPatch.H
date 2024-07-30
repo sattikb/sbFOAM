@@ -40,7 +40,7 @@ SourceFiles
 #define polyPatch_H
 
 #include "patchIdentifierSB.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

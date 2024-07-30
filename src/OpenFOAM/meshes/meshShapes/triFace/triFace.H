@@ -43,7 +43,7 @@ SourceFiles
 #include "FixedList.H"
 #include "edgeListSB.H"
 #include "pointHit.H"
-#include "intersection.H"
+#include "intersectionSB.H"
 #include "pointField.H"
 #include "triPointRef.H"
 #include "ListListOps.H"

@@ -53,7 +53,7 @@ SourceFiles
 #include "searchableSurface.H"
 #include "treeBoundBoxList.H"
 #include "boolList.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 #include "faceAreaIntersect.H"
 #include "globalIndex.H"
 #include "ops.H"

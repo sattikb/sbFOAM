@@ -56,7 +56,7 @@ SourceFiles
 #include "primitiveFacePatch.H"
 #include "polyPatchID.H"
 #include "ZoneIDs.H"
-#include "intersection.H"
+#include "intersectionSB.H"
 #include "Pair.H"
 #include "objectHit.H"
 

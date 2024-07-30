@@ -27,7 +27,7 @@ License
 #include "clock.H"
 #include "IStringStream.H"
 #include "tensor.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 

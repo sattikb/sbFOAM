@@ -44,7 +44,7 @@ SourceFiles
 #include "pointField.H"
 #include "FieldFields.H"
 #include "faceList.H"
-#include "intersection.H"
+#include "intersectionSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -32,7 +32,7 @@ License
 #include "polyBoundaryMesh.H"
 #include "polyMesh.H"
 #include "surfMesh.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 #include "polygonTriangulate.H"
 #include "addToRunTimeSelectionTable.H"
 

@@ -11,7 +11,7 @@
 
 #include "boolList.H"
 #include "edgeListSB.H"
-#include "intersection.H"
+#include "intersectionSB.H"
 #include "HashSet.H"
 #include "objectHit.H"
 

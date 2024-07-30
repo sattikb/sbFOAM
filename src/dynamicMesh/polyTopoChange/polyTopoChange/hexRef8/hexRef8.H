@@ -39,7 +39,7 @@ SourceFiles
 #include "face.H"
 #include "HashSet.H"
 #include "DynamicList.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 #include "removeFaces.H"
 #include "refinementHistory.H"
 #include "PackedBoolList.H"

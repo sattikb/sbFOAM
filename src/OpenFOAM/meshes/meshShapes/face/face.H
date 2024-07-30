@@ -48,7 +48,7 @@ SourceFiles
 #include "edgeListSB.H"
 #include "vectorFieldSB.H"
 #include "faceListFwd.H"
-#include "intersection.H"
+#include "intersectionSB.H"
 #include "pointHit.H"
 #include "ListListOps.H"
 

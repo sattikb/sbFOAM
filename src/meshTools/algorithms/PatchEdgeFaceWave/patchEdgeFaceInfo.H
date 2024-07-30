@@ -40,7 +40,7 @@ SourceFiles
 #include "scalar.H"
 #include "tensor.H"
 #include "pTraits.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

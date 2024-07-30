@@ -41,7 +41,7 @@ SourceFiles
 #include "indexedOctree.H"
 #include "treeDataPrimitivePatch.H"
 #include "treeBoundBoxList.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 #include "runTimeSelectionTables.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

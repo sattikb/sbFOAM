@@ -35,7 +35,7 @@ SourceFiles
 #ifndef triangle_H
 #define triangle_H
 
-#include "intersection.H"
+#include "intersectionSB.H"
 #include "vector.H"
 #include "tensor.H"
 #include "pointHit.H"

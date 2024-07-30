@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "OBJstream.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
 

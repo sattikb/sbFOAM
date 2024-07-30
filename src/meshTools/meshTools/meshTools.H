@@ -42,7 +42,7 @@ SourceFiles
 #include "pointField.H"
 #include "faceList.H"
 #include "cellList.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

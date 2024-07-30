@@ -42,7 +42,7 @@ SourceFiles
 #include "wordReList.H"
 #include "scalarField.H"
 #include "point.H"
-#include "primitivePatch.H"
+#include "primitivePatchSB.H"
 #include "className.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
