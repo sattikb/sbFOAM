@@ -3,7 +3,6 @@
 #ifndef labelList_H
 #define labelList_H
 
-//#include "label.H"
 #include "List.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

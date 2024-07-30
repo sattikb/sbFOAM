@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #define TEMPLATE template<class Type>
-#include "FieldFunctionsM.H"
+#include "FieldFunctionsMSB.H"
 #include "UPstream.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
