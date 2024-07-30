@@ -5,6 +5,5 @@
 
 #include "labelFieldSB.H"
 #include "tensorField.H"	// THIS CONTAINS vectorField.H, which contains scalarField.H
-//#include "sphericalTensorField.H"
 
 #endif

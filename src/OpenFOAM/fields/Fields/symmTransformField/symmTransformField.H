@@ -36,7 +36,7 @@ SourceFiles
 #define symmTransformField_H
 
 #include "symmTransform.H"
-#include "symmTensorField.H"
+#include "symmTensorFieldSB.H"
 #include "sphericalTensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

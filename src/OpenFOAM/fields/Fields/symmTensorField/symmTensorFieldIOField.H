@@ -32,7 +32,7 @@ Description
 #ifndef symmTensorFieldIOField_H
 #define symmTensorFieldIOField_H
 
-#include "symmTensorField.H"
+#include "symmTensorFieldSB.H"
 #include "CompactIOField.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

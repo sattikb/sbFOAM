@@ -1,12 +1,9 @@
-// THE TEMPLATED FIELD IS NOW TYPEDEFFED HERE FOOR TENSORS
+// THE TEMPLATED FIELD IS NOW TYPEDEFFED HERE FOR TENSORS
 
 #ifndef tensorField_H
 #define tensorField_H
 
-#include "vectorFieldSB.H"
-#include "sphericalTensorFieldSB.H"
-#include "symmTensorField.H"
-#include "tensor.H"
+#include "symmTensorFieldSB.H"
 
 #define TEMPLATE
 #include "FieldFunctionsMSB.H"

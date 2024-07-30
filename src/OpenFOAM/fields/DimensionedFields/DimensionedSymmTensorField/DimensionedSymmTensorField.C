@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "DimensionedSymmTensorField.H"
-#include "symmTensorField.H"
+#include "symmTensorFieldSB.H"
 
 #define TEMPLATE template<class GeoMesh>
 #include "DimensionedFieldFunctionsM.C"

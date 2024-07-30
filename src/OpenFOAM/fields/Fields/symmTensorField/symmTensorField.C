@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "symmTensorField.H"
+#include "symmTensorFieldSB.H"
 #include "transformField.H"
 
 #define TEMPLATE
