@@ -40,7 +40,7 @@ SourceFiles
 #include "pointEdgeCollapse.H"
 #include "DynamicList.H"
 #include "Field.H"
-#include "pointFieldFwd.H"
+#include "pointFieldFwdSB.H"
 #include "Map.H"
 #include "labelPair.H"
 #include "HashSet.H"

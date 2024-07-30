@@ -5,6 +5,6 @@
 
 #include "point.H"
 #include "primitiveFields.H"
-#include "pointFieldFwd.H"
+#include "pointFieldFwdSB.H"
 
 #endif

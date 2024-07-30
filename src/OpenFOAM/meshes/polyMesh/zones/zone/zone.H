@@ -39,7 +39,7 @@ SourceFiles
 #include "typeInfo.H"
 #include "dictionary.H"
 #include "Map.H"
-#include "pointFieldFwd.H"
+#include "pointFieldFwdSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

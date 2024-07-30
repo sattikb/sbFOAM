@@ -42,7 +42,7 @@ SourceFiles
 #define IOOutputFilter_H
 
 #include "IOdictionary.H"
-#include "pointFieldFwd.H"
+#include "pointFieldFwdSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
