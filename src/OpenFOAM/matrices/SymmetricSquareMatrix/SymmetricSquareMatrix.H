@@ -38,7 +38,7 @@ SourceFiles
 #define SymmetricSquareMatrix_H
 
 #include "SquareMatrix.H"
-#include "Identity.H"
+#include "IdentitySB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

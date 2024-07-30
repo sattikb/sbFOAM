@@ -38,7 +38,7 @@ SourceFiles
 #define SquareMatrix_H
 
 #include "Matrix.H"
-#include "Identity.H"
+#include "IdentitySB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

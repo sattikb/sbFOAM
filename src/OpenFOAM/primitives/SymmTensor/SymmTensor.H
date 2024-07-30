@@ -39,7 +39,7 @@ SourceFiles
 #define SymmTensor_H
 
 #include "VectorSpaceSB.H"
-#include "SphericalTensor.H"
+#include "SphericalTensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
