@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "VectorSB.H"
-#include "Tensor.H"
+#include "TensorSB.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 

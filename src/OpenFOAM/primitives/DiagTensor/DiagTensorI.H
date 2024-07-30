@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "SphericalTensorSB.H"
-#include "SymmTensor.H"
+#include "SymmTensorSB.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 

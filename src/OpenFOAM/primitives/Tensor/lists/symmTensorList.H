@@ -38,7 +38,7 @@ Description
 #ifndef symmTensorList_H
 #define symmTensorList_H
 
-#include "symmTensor.H"
+#include "symmTensorSB.H"
 #include "List.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

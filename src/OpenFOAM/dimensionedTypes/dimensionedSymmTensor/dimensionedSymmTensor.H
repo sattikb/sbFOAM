@@ -36,7 +36,7 @@ SourceFiles
 #define dimensionedSymmTensor_H
 
 #include "dimensionedVector.H"
-#include "symmTensor.H"
+#include "symmTensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

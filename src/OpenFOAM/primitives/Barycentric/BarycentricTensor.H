@@ -39,7 +39,7 @@ SourceFiles
 #define BarycentricTensor_H
 
 #include "Barycentric.H"
-#include "Tensor.H"
+#include "TensorSB.H"
 #include "VectorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

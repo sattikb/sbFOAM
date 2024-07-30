@@ -35,7 +35,7 @@ SourceFiles
 #ifndef floatTensor_H
 #define floatTensor_H
 
-#include "Tensor.H"
+#include "TensorSB.H"
 #include "contiguous.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

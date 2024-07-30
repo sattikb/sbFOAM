@@ -39,7 +39,7 @@ SourceFiles
 #ifndef DiagTensor_H
 #define DiagTensor_H
 
-#include "Tensor.H"
+#include "TensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

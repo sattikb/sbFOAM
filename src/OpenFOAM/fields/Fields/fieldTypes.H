@@ -7,7 +7,7 @@
 #include "scalar.H"
 #include "vector.H"
 #include "sphericalTensorSB.H"
-#include "symmTensor.H"
+#include "symmTensorSB.H"
 #include "tensor.H"
 #include "triad.H"
 #include "macros.H"

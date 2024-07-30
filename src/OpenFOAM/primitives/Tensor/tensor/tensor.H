@@ -35,11 +35,9 @@ SourceFiles
 #ifndef tensor_H
 #define tensor_H
 
-#include "Tensor.H"
 #include "vector.H"
 #include "sphericalTensorSB.H"
-#include "symmTensor.H"
-#include "contiguous.H"
+#include "symmTensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

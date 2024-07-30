@@ -1,44 +1,11 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+//  Templated 3D symmetric tensor derived from VectorSpace adding construction
+//  from 6 components, element access using xx(), xy() etc. member functions
+//  and the inner-product (dot-product) and outer-product of two Vectors
+//  (tensor-product) operators.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+#ifndef SymmTensorSB_H
+#define SymmTensorSB_H
 
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::SymmTensor
-
-Description
-    Templated 3D symmetric tensor derived from VectorSpace adding construction
-    from 6 components, element access using xx(), xy() etc. member functions
-    and the inner-product (dot-product) and outer-product of two Vectors
-    (tensor-product) operators.
-
-SourceFiles
-    SymmTensorI.H
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef SymmTensor_H
-#define SymmTensor_H
-
-#include "VectorSpaceSB.H"
 #include "SphericalTensorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

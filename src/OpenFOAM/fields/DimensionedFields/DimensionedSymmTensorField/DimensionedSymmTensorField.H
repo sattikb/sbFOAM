@@ -36,7 +36,7 @@ SourceFiles
 #define DimensionedSymmTensorField_H
 
 #include "DimensionedField.H"
-#include "symmTensor.H"
+#include "symmTensorSB.H"
 
 #define TEMPLATE template<class GeoMesh>
 #include "DimensionedFieldFunctionsM.H"
