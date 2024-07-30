@@ -3,9 +3,8 @@
 #ifndef tensorField_H
 #define tensorField_H
 
-//#include "scalarField.H"
 #include "vectorFieldSB.H"
-#include "sphericalTensorField.H"
+#include "sphericalTensorFieldSB.H"
 #include "symmTensorField.H"
 #include "tensor.H"
 

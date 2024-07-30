@@ -36,7 +36,7 @@ SourceFiles
 #ifndef RowVector_H
 #define RowVector_H
 
-#include "MatrixSpace.H"
+#include "MatrixSpaceSB.H"
 #include "VectorSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

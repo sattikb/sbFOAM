@@ -42,7 +42,7 @@ See also
 #ifndef Tensor_H
 #define Tensor_H
 
-#include "MatrixSpace.H"
+#include "MatrixSpaceSB.H"
 #include "VectorSB.H"
 #include "SphericalTensorSB.H"
 

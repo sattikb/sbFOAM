@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "sphericalTensorField.H"
+#include "sphericalTensorFieldSB.H"
 #include "transformField.H"
 
 #define TEMPLATE

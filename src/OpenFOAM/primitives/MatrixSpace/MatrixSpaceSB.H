@@ -1,45 +1,9 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2016-2021 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
+// TEMPLATE OF MATRIX SPACE WHOSE ARGUMENTS ARE THE Form OF THE MATRIX 
+// SPACE, WHICH WILL FURTHER BE USED TO CREATE THE TUPE OF ELEMENTS, AND NO 
+// OF ROWS AND COLUMNS
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::MatrixSpace
-
-Description
-    Templated matrix space.
-
-    Template arguments are the Form the matrix space will be used to create,
-    the type of the elements and the number of rows and columns of the matrix.
-
-SourceFiles
-    MatrixSpaceI.H
-
-See also
-    Foam::VectorSpace
-
-\*---------------------------------------------------------------------------*/
-
-#ifndef MatrixSpace_H
-#define MatrixSpace_H
+#ifndef MatrixSpaceSB_H
+#define MatrixSpaceSB_H
 
 #include "VectorSpaceSB.H"
 
@@ -317,12 +281,6 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "MatrixSpaceI.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

@@ -1,7 +1,7 @@
 // THE FIELD TEMPLATE IS NOW SPECIALIZED FOR SPHERICAL TENSORS.
 
-#ifndef sphericalTensorField_H
-#define sphericalTensorField_H
+#ifndef sphericalTensorFieldSB_H
+#define sphericalTensorFieldSB_H
 
 #include "scalarField.H"
 #include "sphericalTensorSB.H"

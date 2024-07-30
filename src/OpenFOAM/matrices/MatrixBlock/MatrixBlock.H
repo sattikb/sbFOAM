@@ -44,7 +44,7 @@ SourceFiles
 #define MatrixBlock_H
 
 #include "Matrix.H"
-#include "MatrixSpace.H"
+#include "MatrixSpaceSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
