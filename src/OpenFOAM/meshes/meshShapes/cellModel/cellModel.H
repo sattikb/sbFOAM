@@ -40,7 +40,7 @@ SourceFiles
 #define cellModel_H
 
 #include "pointField.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "faceList.H"
 #include "InfoProxy.H"
 #include "autoPtr.H"

@@ -48,7 +48,7 @@ SourceFiles
 
 #include "coupledPolyPatch.H"
 #include "cyclicTransform.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "polyBoundaryMesh.H"
 #include "diagTensorField.H"
 #include "coupleGroupIdentifier.H"

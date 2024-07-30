@@ -53,7 +53,7 @@ SourceFiles
 #ifndef edgeSurface_H
 #define edgeSurface_H
 
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "labelList.H"
 #include "pointField.H"
 #include "typeInfo.H"

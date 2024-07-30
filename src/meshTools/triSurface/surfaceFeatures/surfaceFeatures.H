@@ -49,7 +49,7 @@ SourceFiles
 #include "Map.H"
 #include "HashSet.H"
 #include "pointIndexHit.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "typeInfo.H"
 #include "boundBox.H"
 #include "plane.H"

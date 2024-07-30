@@ -1,58 +1,16 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2020 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::PrimitivePatch
-
-Description
-    A list of faces which address into the list of points.
-
-    The class is templated on the face type (e.g. triangle, polygon etc.)
-    and on the list type of faces and points so that it can refer to
-    existing lists using UList and const pointField& or hold the storage
-    using List and pointField.
-
-SourceFiles
-    PrimitivePatchAddressing.C
-    PrimitivePatchBdryPoints.C
-    PrimitivePatch.C
-    PrimitivePatchCheck.C
-    PrimitivePatchClear.C
-    PrimitivePatchEdgeLoops.C
-    PrimitivePatchLocalPointOrder.C
-    PrimitivePatchMeshData.C
-    PrimitivePatchMeshEdges.C
-    PrimitivePatchName.C
-    PrimitivePatchPointAddressing.C
-    PrimitivePatchProjectPoints.C
-
-\*---------------------------------------------------------------------------*/
+// DOES MOST OF THE PATCH CALCULATION LIKE AREA, LENGTH ETC. 
+//  A list of faces which address into the list of points.
+//
+//  The class is templated on the face type (e.g. triangle, polygon etc.)
+//  and on the list type of faces and points so that it can refer to
+//  existing lists using UList and const pointField& or hold the storage
+//  using List and pointField.
 
 #ifndef PrimitivePatch_H
 #define PrimitivePatch_H
 
 #include "boolList.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "intersection.H"
 #include "HashSet.H"
 #include "objectHit.H"
@@ -537,14 +495,8 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #ifdef NoRepository
     #include "PrimitivePatch.C"
 #endif
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

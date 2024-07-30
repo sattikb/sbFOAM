@@ -61,7 +61,7 @@ SourceFiles
 #include "pointIndexHit.H"
 #include "PackedBoolList.H"
 #include "MeshedSurface.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "NamedEnum.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

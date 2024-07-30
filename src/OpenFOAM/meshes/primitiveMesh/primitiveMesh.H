@@ -51,7 +51,7 @@ SourceFiles
 #define primitiveMesh_H
 
 #include "DynamicList.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "pointField.H"
 #include "faceList.H"
 #include "cellList.H"

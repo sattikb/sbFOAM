@@ -27,7 +27,7 @@ License
 #include "pointBoundaryMesh.H"
 #include "addToRunTimeSelectionTable.H"
 #include "pointMesh.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

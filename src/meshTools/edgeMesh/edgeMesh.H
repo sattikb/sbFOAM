@@ -42,7 +42,7 @@ SourceFiles
 #define edgeMesh_H
 
 #include "pointField.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "edgeMeshFormatsCore.H"
 #include "runTimeSelectionTables.H"
 #include "memberFunctionSelectionTables.H"

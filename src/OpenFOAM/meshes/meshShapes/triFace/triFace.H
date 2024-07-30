@@ -41,7 +41,7 @@ SourceFiles
 #define triFace_H
 
 #include "FixedList.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 #include "pointHit.H"
 #include "intersection.H"
 #include "pointField.H"

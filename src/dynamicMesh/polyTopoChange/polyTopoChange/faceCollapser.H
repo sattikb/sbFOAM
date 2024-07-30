@@ -57,7 +57,7 @@ SourceFiles
 #include "Map.H"
 #include "HashSet.H"
 #include "typeInfo.H"
-#include "edgeList.H"
+#include "edgeListSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
