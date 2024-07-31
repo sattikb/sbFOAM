@@ -7,8 +7,8 @@
 //  	value		(0 0 0);	
 //  }
 
-#ifndef calculatedFvPatchField_H
-#define calculatedFvPatchField_H
+#ifndef calculatedFvPatchFieldSB_H
+#define calculatedFvPatchFieldSB_H
 
 #include "fvPatchFieldSB.H"
 

@@ -25,7 +25,7 @@ License
 
 #include "volFields.H"
 #include "surfaceFields.H"
-#include "calculatedFvPatchFields.H"
+#include "calculatedFvPatchFieldsSB.H"
 #include "extrapolatedCalculatedFvPatchFields.H"
 #include "coupledFvPatchFields.H"
 #include "UIndirectList.H"

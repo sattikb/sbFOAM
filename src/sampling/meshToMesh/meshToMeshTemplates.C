@@ -26,7 +26,7 @@ License
 #include "fvMesh.H"
 #include "volFields.H"
 #include "directFvPatchFieldMapper.H"
-#include "calculatedFvPatchField.H"
+#include "calculatedFvPatchFieldSB.H"
 #include "distributedWeightedFvPatchFieldMapper.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //

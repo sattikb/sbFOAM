@@ -527,7 +527,7 @@ public:
 
 #ifdef NoRepository
     #include "fvPatchField.C"
-    #include "calculatedFvPatchField.H"
+    #include "calculatedFvPatchFieldSB.H"
 #endif
 
 

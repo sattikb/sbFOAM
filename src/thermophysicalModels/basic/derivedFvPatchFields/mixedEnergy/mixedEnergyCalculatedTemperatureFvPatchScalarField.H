@@ -36,7 +36,7 @@ SourceFiles
 #ifndef mixedEnergyCalculatedTemperatureFvPatchScalarField_H
 #define mixedEnergyCalculatedTemperatureFvPatchScalarField_H
 
-#include "calculatedFvPatchFields.H"
+#include "calculatedFvPatchFieldsSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

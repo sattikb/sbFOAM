@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "calculatedFvPatchFields.H"
+#include "calculatedFvPatchFieldsSB.H"
 #include "fvPatchFields.H"
 #include "volMesh.H"
 #include "addToRunTimeSelectionTable.H"

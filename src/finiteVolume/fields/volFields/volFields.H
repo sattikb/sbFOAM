@@ -35,7 +35,7 @@ SourceFiles
 #define volFields_H
 
 #include "GeometricFieldsSB.H"
-#include "calculatedFvPatchFields.H"
+#include "calculatedFvPatchFieldsSB.H"
 #include "volMesh.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

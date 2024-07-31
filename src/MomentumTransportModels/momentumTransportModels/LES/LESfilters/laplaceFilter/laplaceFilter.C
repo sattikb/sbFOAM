@@ -25,7 +25,7 @@ License
 
 #include "laplaceFilter.H"
 #include "addToRunTimeSelectionTable.H"
-#include "calculatedFvPatchFields.H"
+#include "calculatedFvPatchFieldsSB.H"
 #include "fvm.H"
 #include "fvc.H"
 
