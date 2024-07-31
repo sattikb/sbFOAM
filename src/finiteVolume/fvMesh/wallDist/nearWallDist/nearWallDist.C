@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "nearWallDist.H"
+#include "nearWallDistSB.H"
 #include "fvMesh.H"
 #include "cellDistFuncs.H"
 #include "wallFvPatch.H"
