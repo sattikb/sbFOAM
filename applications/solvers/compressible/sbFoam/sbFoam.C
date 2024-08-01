@@ -27,12 +27,14 @@ int main(int argc, char *argv[])
     #include "createRhoUfIfPresent.H"
 
     turbulence->validate();
+	Info<<"SATTIK HERE"<<endl;
 
     if (!LTS)
     {
         #include "compressibleCourantNo.H"
         #include "setInitialDeltaT.H"
     }
+	Info<<"SATTIK HERE"<<endl;
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

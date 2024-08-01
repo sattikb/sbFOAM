@@ -31,6 +31,7 @@ License
 #include "adiabaticPerfectFluid.H"
 #include "rhoConst.H"
 #include "sbRhoEOS.H"
+#include "ifgRhoEOS.H"
 #include "rPolynomial.H"
 
 #include "eConstThermo.H"
@@ -51,6 +52,7 @@ License
     forThermo(Mu, He, Cp, adiabaticPerfectFluid, specie, Macro, Args);         \
     forThermo(Mu, He, Cp, rhoConst, specie, Macro, Args);                      \
     forThermo(Mu, He, Cp, sbRhoEOS, specie, Macro, Args);                      \
+    forThermo(Mu, He, Cp, ifgRhoEOS, specie, Macro, Args);                      \
     forThermo(Mu, He, Cp, rPolynomial, specie, Macro, Args)
 
 #define forLiquidEnergiesAndThermos(Mu, Macro, Args...)                        \
@@ -70,6 +72,7 @@ License
 #define forCoeffLiquidEqns(Mu, He, Cp, Macro, Args...)                         \
     forThermo(Mu, He, Cp, rhoConst, specie, Macro, Args);                      \
     forThermo(Mu, He, Cp, sbRhoEOS, specie, Macro, Args);                      \
+    forThermo(Mu, He, Cp, ifgRhoEOS, specie, Macro, Args);                      \
     forThermo(Mu, He, Cp, rPolynomial, specie, Macro, Args)
 
 #define forCoeffLiquidEnergiesAndThermos(Mu, Macro, Args...)                   \

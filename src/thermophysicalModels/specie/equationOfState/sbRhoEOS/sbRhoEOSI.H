@@ -53,7 +53,7 @@ inline Foam::scalar Foam::sbRhoEOS<Specie>::rho(scalar p, scalar T) const
     // Duncan et al - Pressure driven flow of Lignocellulosic Biomass
     // A compressible Bingham fluid (2018)
     const scalar powSB = scalar(1.0) - pow( (p/pRef_), (scalar(1.0)-xi_) );
-    return 100;//rhoRef_*pow( (rhoMax_/rhoRef_), powSB );
+    return rhoRef_*pow( (rhoMax_/rhoRef_), powSB );
 }
 
 

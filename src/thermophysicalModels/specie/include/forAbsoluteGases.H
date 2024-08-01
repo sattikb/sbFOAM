@@ -29,7 +29,6 @@ License
 #include "specie.H"
 
 #include "perfectGas.H"
-//#include "sbRhoEOS.H"
 
 #include "eConstThermo.H"
 #include "hConstThermo.H"
@@ -48,7 +47,6 @@ License
 
 #define forAbsoluteGasEqns(Mu, He, Cp, Macro, Args...)				\
     forThermo(Mu, He, Cp, perfectGas, specie, Macro, Args)//,			\
-//    forThermo(Mu, He, Cp, sbRhoEOS, specie, Macro, Args)
 
 #define forAbsoluteGasEnergiesAndThermos(Mu, Macro, Args...)                   \
     forAbsoluteGasEqns(Mu, absoluteEnthalpy, hConstThermo, Macro, Args);       \
