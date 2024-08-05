@@ -37,7 +37,7 @@ Description
 #ifndef geometricOneField_H
 #define geometricOneField_H
 
-#include "oneFieldField.H"
+#include "oneFieldFieldSB.H"
 #include "dimensionSetSB.H"
 //#include "scalar.H"
 
@@ -132,12 +132,6 @@ inline const geometricOneField::Internal& operator/
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "geometricOneFieldI.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //
