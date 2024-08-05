@@ -23,8 +23,8 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "CompressibleMomentumTransportModel.H"
-#include "dynamicTransportModel.H"
+#include "CompressibleMomentumTransportModelSB.H"
+#include "dynamicTransportModelSB.H"
 #include "addToRunTimeSelectionTable.H"
 #include "makeMomentumTransportModel.H"
 

@@ -4,11 +4,11 @@
 #ifndef dynamicMomentumTransportModel_H
 #define dynamicMomentumTransportModel_H
 
-#include "CompressibleMomentumTransportModel.H"
+#include "CompressibleMomentumTransportModelSB.H"
 #include "laminarModel.H"
 #include "RASModel.H"
 #include "LESModel.H"
-#include "dynamicTransportModel.H"
+#include "dynamicTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

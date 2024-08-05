@@ -3,13 +3,11 @@
 #ifndef fieldTypes_H
 #define fieldTypes_H
 
-#include "label.H"
 #include "scalar.H"
 #include "vector.H"
 #include "sphericalTensorSB.H"
 #include "symmTensorSB.H"
 #include "tensor.H"
-#include "triad.H"
 #include "macros.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

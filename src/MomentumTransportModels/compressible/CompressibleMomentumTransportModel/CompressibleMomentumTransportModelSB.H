@@ -1,11 +1,11 @@
 //TEMPLATE ABSTRACT BASE CLASS FOR SINGLE-PHASE COMPRESSIBLE
 //TURBULENCE MODELS
 
-#ifndef CompressibleMomentumTransportModel_H
-#define CompressibleMomentumTransportModel_H
+#ifndef CompressibleMomentumTransportModelSB_H
+#define CompressibleMomentumTransportModelSB_H
 
 #include "MomentumTransportModelSB.H"
-#include "compressibleMomentumTransportModel.H"
+#include "compressibleMomentumTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

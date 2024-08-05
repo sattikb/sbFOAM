@@ -40,7 +40,7 @@ SourceFiles
 
 #include "basicThermo.H"
 #include "kinematicTransportModel.H"
-#include "dynamicTransportModel.H"
+#include "dynamicTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

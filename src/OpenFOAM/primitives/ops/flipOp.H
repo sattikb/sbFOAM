@@ -38,6 +38,8 @@ SourceFiles
 #define flipOp_H
 
 #include "fieldTypes.H"
+#include "triad.H"		// ANOTHER TYPE OF FIELD LIKE SCALAR, VECTOR,
+				// BUT NOT INCLUDED IN THE fieldType.H FILE.
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

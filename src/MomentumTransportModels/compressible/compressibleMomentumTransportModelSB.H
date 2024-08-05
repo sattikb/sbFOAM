@@ -1,7 +1,7 @@
 // TEMPLATED ABSTRACT BASE CLASS FOR TURBULENCE MODELS
 
-#ifndef compressibleMomentumTransportModel_H
-#define compressibleMomentumTransportModel_H
+#ifndef compressibleMomentumTransportModelSB_H
+#define compressibleMomentumTransportModelSB_H
 
 #include "momentumTransportModel.H"
 

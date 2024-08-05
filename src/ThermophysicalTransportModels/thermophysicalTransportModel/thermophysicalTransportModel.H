@@ -36,7 +36,7 @@ SourceFiles
 #ifndef thermophysicalTransportModel_H
 #define thermophysicalTransportModel_H
 
-#include "compressibleMomentumTransportModel.H"
+#include "compressibleMomentumTransportModelSB.H"
 #include "fluidThermo.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
