@@ -25,7 +25,7 @@ License
 
 #include "matchedFlowRateOutletVelocityFvPatchVectorField.H"
 #include "volFields.H"
-#include "one.H"
+#include "oneSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //

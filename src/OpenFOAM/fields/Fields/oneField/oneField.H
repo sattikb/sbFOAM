@@ -33,10 +33,10 @@ Description
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef oneField_H
-#define oneField_H
+#ifndef oneFieldSB_H
+#define oneFieldSB_H
 
-#include "one.H"
+#include "oneSB.H"
 #include "scalar.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -84,12 +84,6 @@ inline const oneField& operator/(const oneField&, const oneField&);
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "oneFieldI.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

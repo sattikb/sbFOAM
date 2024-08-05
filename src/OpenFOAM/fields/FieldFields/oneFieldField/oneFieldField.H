@@ -37,16 +37,12 @@ Description
 #ifndef oneFieldField_H
 #define oneFieldField_H
 
-#include "oneField.H"
+#include "oneFieldSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-
-/*---------------------------------------------------------------------------*\
-                          Class oneField Declaration
-\*---------------------------------------------------------------------------*/
 
 class oneFieldField
 :
@@ -72,12 +68,6 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
     #include "oneFieldFieldI.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

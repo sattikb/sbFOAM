@@ -2,19 +2,13 @@
 // UNNECESSARY ALGEBRAIC MANIPULATIONS FOR OBJECTS KNOWN TO BE EQUAL TO 1 
 // DURING COMPILATION.
 
-#ifndef one_H
-#define one_H
+#ifndef oneSB_H
+#define oneSB_H
 
 #include "label.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 namespace Foam
 {
-
-/*---------------------------------------------------------------------------*\
-                             Class one Declaration
-\*---------------------------------------------------------------------------*/
 
 class one
 {
