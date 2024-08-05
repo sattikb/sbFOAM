@@ -3,7 +3,7 @@
 #ifndef laminarModel_H
 #define laminarModel_H
 
-#include "MomentumTransportModel.H"
+#include "MomentumTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

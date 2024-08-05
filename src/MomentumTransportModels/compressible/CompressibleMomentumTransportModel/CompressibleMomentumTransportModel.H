@@ -4,7 +4,7 @@
 #ifndef CompressibleMomentumTransportModel_H
 #define CompressibleMomentumTransportModel_H
 
-#include "MomentumTransportModel.H"
+#include "MomentumTransportModelSB.H"
 #include "compressibleMomentumTransportModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

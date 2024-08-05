@@ -41,7 +41,7 @@ SourceFiles
 #ifndef LESModel_H
 #define LESModel_H
 
-#include "MomentumTransportModel.H"
+#include "MomentumTransportModelSB.H"
 #include "LESdelta.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

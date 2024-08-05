@@ -1,7 +1,7 @@
 // TEMPLATED ABSTRACT BASE CLASS FOR TURBULENCE MODELS
 
-#ifndef MomentumTransportModel_H
-#define MomentumTransportModel_H
+#ifndef MomentumTransportModelSB_H
+#define MomentumTransportModelSB_H
 
 #include "momentumTransportModel.H"
 
@@ -123,8 +123,6 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 } // End namespace Foam
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #ifdef NoRepository
     #include "MomentumTransportModel.C"
