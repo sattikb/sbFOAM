@@ -111,5 +111,3 @@ void Stokes<BasicMomentumTransportModel>::correct()
 
 } // End namespace laminarModels
 } // End namespace Foam
-
-// ************************************************************************* //

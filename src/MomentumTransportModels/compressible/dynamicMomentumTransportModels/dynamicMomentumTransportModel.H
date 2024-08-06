@@ -5,9 +5,9 @@
 #define dynamicMomentumTransportModel_H
 
 #include "CompressibleMomentumTransportModelSB.H"
-#include "laminarModel.H"
+#include "laminarModelSB.H"
 #include "RASModel.H"
-#include "LESModel.H"
+#include "LESModelSB.H"
 #include "dynamicTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

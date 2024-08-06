@@ -35,7 +35,7 @@ SourceFiles
 #ifndef Stokes_H
 #define Stokes_H
 
-#include "laminarModel.H"
+#include "laminarModelSB.H"
 #include "linearViscousStress.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

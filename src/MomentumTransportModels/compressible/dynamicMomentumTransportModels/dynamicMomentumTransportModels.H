@@ -25,19 +25,18 @@ License
 
 #include "CompressibleMomentumTransportModelSB.H"
 #include "dynamicTransportModelSB.H"
-#include "addToRunTimeSelectionTable.H"
 #include "makeMomentumTransportModel.H"
 
-#include "laminarModel.H"
+#include "laminarModelSB.H"
 #include "RASModel.H"
-#include "LESModel.H"
+#include "LESModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 makeMomentumTransportModelTypes
 (
-    geometricOneField,
-    volScalarField,
+    geometricOneField,			// ALPHA (VOL FRACTION)
+    volScalarField,			// RHO
     compressibleMomentumTransportModel,
     CompressibleMomentumTransportModel,
     dynamicTransportModel

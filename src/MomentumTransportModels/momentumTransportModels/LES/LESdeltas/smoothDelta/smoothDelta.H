@@ -37,7 +37,7 @@ SourceFiles
 #ifndef smoothDelta_H
 #define smoothDelta_H
 
-#include "LESdelta.H"
+#include "LESdeltaSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

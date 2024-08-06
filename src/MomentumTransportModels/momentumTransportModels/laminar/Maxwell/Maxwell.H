@@ -60,7 +60,7 @@ SourceFiles
 #ifndef Maxwell_H
 #define Maxwell_H
 
-#include "laminarModel.H"
+#include "laminarModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -62,7 +62,7 @@ SourceFiles
 #ifndef DeardorffDiffStress_H
 #define DeardorffDiffStress_H
 
-#include "LESModel.H"
+#include "LESModelSB.H"
 #include "ReynoldsStress.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

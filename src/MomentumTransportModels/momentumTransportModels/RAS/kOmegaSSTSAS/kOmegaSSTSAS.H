@@ -79,7 +79,7 @@ SourceFiles
 #define kOmegaSSTSAS_H
 
 #include "kOmegaSST.H"
-#include "LESdelta.H"
+#include "LESdeltaSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

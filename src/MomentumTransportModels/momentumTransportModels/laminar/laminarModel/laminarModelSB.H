@@ -1,9 +1,7 @@
 // TEMPLATE BASE CLASS FOR LAMINAR TRANSPORT MODELS
 
-#ifndef laminarModel_H
-#define laminarModel_H
-
-#include "MomentumTransportModelSB.H"
+#ifndef laminarModelSB_H
+#define laminarModelSB_H
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -155,12 +153,8 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #ifdef NoRepository
     #include "laminarModel.C"
 #endif
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #endif

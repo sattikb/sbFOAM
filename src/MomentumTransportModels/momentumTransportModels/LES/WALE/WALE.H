@@ -56,7 +56,7 @@ SourceFiles
 #ifndef WALE_H
 #define WALE_H
 
-#include "LESModel.H"
+#include "LESModelSB.H"
 #include "LESeddyViscosity.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
