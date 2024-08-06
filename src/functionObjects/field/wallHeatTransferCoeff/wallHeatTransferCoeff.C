@@ -25,7 +25,7 @@ License
 
 #include "wallHeatTransferCoeff.H"
 #include "kinematicMomentumTransportModel.H"
-#include "dynamicMomentumTransportModel.H"
+#include "dynamicMomentumTransportModelSB.H"
 #include "basicThermo.H"
 #include "wallPolyPatch.H"
 #include "addToRunTimeSelectionTable.H"

@@ -27,7 +27,7 @@ License
 #include "fvcGrad.H"
 #include "porosityModel.H"
 #include "kinematicMomentumTransportModel.H"
-#include "dynamicMomentumTransportModel.H"
+#include "dynamicMomentumTransportModelSB.H"
 #include "phaseKinematicMomentumTransportModel.H"
 #include "phaseDynamicMomentumTransportModel.H"
 #include "fluidThermo.H"

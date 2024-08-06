@@ -25,7 +25,7 @@ License
 
 #include "ReynoldsAnalogy.H"
 #include "kinematicMomentumTransportModel.H"
-#include "dynamicMomentumTransportModel.H"
+#include "dynamicMomentumTransportModelSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //

@@ -1,8 +1,8 @@
 // CREATES THE TYPEDEFS FOR TURBULENCE, RAS & LES MODELS 
 // FOR COMPRESSIBLE FLOWS USING STANDARD LAMINAR FLOW MODELS
 
-#ifndef dynamicMomentumTransportModel_H
-#define dynamicMomentumTransportModel_H
+#ifndef dynamicMomentumTransportModelSB_H
+#define dynamicMomentumTransportModelSB_H
 
 #include "CompressibleMomentumTransportModelSB.H"
 #include "laminarModelSB.H"

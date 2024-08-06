@@ -2,7 +2,7 @@
 //
 #include "fvCFDSB.H"
 #include "dynamicFvMesh.H"
-#include "dynamicMomentumTransportModel.H"
+#include "dynamicMomentumTransportModelSB.H"
 #include "fluidThermophysicalTransportModel.H"
 #include "pimpleControl.H"
 #include "CorrectPhi.H"
@@ -27,14 +27,12 @@ int main(int argc, char *argv[])
     #include "createRhoUfIfPresent.H"
 
     turbulence->validate();
-	Info<<"SATTIK HERE"<<endl;
 
     if (!LTS)
     {
         #include "compressibleCourantNo.H"
         #include "setInitialDeltaT.H"
     }
-	Info<<"SATTIK HERE"<<endl;
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
