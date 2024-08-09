@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "externalCoupledTemperatureMixedFvPatchScalarField.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "OFstream.H"
 #include "addToRunTimeSelectionTable.H"
 

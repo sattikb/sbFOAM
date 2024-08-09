@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "alphatFilmWallFunctionFvPatchScalarField.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "surfaceFilmRegionModel.H"
 #include "fvPatchFieldMapper.H"
 #include "volFields.H"

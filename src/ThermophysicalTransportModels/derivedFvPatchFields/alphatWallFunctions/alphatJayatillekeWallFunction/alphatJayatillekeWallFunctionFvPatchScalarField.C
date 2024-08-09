@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "alphatJayatillekeWallFunctionFvPatchScalarField.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

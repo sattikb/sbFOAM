@@ -5,11 +5,11 @@
 //  Foam::compressible::RASThermophysicalTransportModel
 //  Foam::compressible::LESThermophysicalTransportModel
 
-#ifndef fluidThermophysicalTransportModel_H
-#define fluidThermophysicalTransportModel_H
+#ifndef fluidThermophysicalTransportModelSB_H
+#define fluidThermophysicalTransportModelSB_H
 
 //#include "fluidThermo.H"
-#include "laminarThermophysicalTransportModel.H"
+#include "laminarThermophysicalTransportModelSB.H"
 #include "RASThermophysicalTransportModel.H"
 #include "LESThermophysicalTransportModel.H"
 #include "dynamicMomentumTransportModelSB.H"

@@ -38,7 +38,7 @@ SourceFiles
 #ifndef fluidReactionThermo_H
 #define fluidReactionThermo_H
 
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "basicSpecieMixture.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

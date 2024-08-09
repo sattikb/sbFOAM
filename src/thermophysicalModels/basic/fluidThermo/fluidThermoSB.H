@@ -2,8 +2,8 @@
 // CLASS
 // Foam::fluidThermo
 
-#ifndef fluidThermo_H
-#define fluidThermo_H
+#ifndef fluidThermoSB_H
+#define fluidThermoSB_H
 
 #include "basicThermo.H"
 #include "kinematicTransportModelSB.H"	//FOR INCOMPRESSIBLE TRANSPORT MODELS

@@ -40,7 +40,7 @@ SourceFiles
 #ifndef Fourier_H
 #define Fourier_H
 
-#include "laminarThermophysicalTransportModel.H"
+#include "laminarThermophysicalTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

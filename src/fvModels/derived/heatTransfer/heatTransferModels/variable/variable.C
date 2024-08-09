@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "variable.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "zeroGradientFvPatchFields.H"
 #include "addToRunTimeSelectionTable.H"
 

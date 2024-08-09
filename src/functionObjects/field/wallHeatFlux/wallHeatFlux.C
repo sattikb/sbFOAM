@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "wallHeatFlux.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "solidThermo.H"
 #include "surfaceInterpolate.H"
 #include "fvcGrad.H"

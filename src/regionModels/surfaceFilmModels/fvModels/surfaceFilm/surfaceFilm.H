@@ -45,7 +45,7 @@ SourceFiles
 #define surfaceFilm_H
 
 #include "fvModel.H"
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "uniformDimensionedFields.H"
 #include "surfaceFilmModel.H"
 

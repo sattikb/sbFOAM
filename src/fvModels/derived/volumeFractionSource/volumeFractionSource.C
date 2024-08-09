@@ -28,7 +28,7 @@ License
 #include "fvmLaplacian.H"
 #include "fvcDiv.H"
 #include "surfaceInterpolate.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //

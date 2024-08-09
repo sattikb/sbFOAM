@@ -25,7 +25,7 @@ License
 
 #include "hydrostaticInitialisation.H"
 
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "fvmLaplacian.H"
 #include "fvcDiv.H"
 #include "fvcSnGrad.H"

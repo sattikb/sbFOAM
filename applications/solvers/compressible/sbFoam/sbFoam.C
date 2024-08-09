@@ -3,7 +3,7 @@
 #include "fvCFDSB.H"
 #include "dynamicFvMesh.H"
 #include "dynamicMomentumTransportModelSB.H"
-#include "fluidThermophysicalTransportModel.H"
+#include "fluidThermophysicalTransportModelSB.H"
 #include "pimpleControl.H"
 #include "CorrectPhi.H"
 #include "fvModels.H"

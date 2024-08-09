@@ -38,7 +38,7 @@ SourceFiles
 #ifndef rhoThermo_H
 #define rhoThermo_H
 
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "runTimeSelectionTables.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

@@ -25,7 +25,7 @@ License
 
 #include "speciePhaseChange.H"
 #include "thermoSingleLayer.H"
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "basicSpecieMixture.H"
 #include "liquidThermo.H"
 #include "addToRunTimeSelectionTable.H"

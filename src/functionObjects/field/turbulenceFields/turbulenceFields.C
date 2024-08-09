@@ -25,7 +25,7 @@ License
 
 #include "turbulenceFields.H"
 #include "kinematicMomentumTransportModel.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //

@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "fluidThermophysicalTransportModel.H"
+#include "fluidThermophysicalTransportModelSB.H"
 #include "dynamicMomentumTransportModelsSB.H"
 #include "makeThermophysicalTransportModel.H"
 #include "addToRunTimeSelectionTable.H"

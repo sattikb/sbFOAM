@@ -1,10 +1,10 @@
 // ABC FOR THERMOPHYSICAL TRANSPORT MODELS (LAMINAR, RAS, LES)
 
-#ifndef thermophysicalTransportModel_H
-#define thermophysicalTransportModel_H
+#ifndef thermophysicalTransportModelSB_H
+#define thermophysicalTransportModelSB_H
 
 #include "compressibleMomentumTransportModelSB.H"
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

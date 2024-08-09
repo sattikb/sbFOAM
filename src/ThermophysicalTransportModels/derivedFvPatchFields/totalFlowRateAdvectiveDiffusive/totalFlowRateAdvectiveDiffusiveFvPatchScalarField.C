@@ -25,7 +25,7 @@ License
 
 #include "totalFlowRateAdvectiveDiffusiveFvPatchScalarField.H"
 #include "surfaceFields.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //

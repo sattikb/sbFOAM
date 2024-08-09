@@ -36,7 +36,7 @@ SourceFiles
 #ifndef unityLewisFourier_H
 #define unityLewisFourier_H
 
-#include "laminarThermophysicalTransportModel.H"
+#include "laminarThermophysicalTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

@@ -24,7 +24,7 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "MachNo.H"
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //

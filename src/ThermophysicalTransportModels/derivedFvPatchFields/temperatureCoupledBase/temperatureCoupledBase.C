@@ -24,9 +24,9 @@ License
 \*---------------------------------------------------------------------------*/
 
 #include "temperatureCoupledBase.H"
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "solidThermo.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 

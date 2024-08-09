@@ -32,7 +32,7 @@ Description
 #ifndef makeThermo_H
 #define makeThermo_H
 
-#include "fluidThermo.H"
+#include "fluidThermoSB.H"
 #include "addToRunTimeSelectionTable.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

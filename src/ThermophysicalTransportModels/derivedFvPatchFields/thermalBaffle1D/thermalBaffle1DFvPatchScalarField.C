@@ -25,7 +25,7 @@ License
 
 #include "volFields.H"
 #include "surfaceFields.H"
-#include "thermophysicalTransportModel.H"
+#include "thermophysicalTransportModelSB.H"
 #include "mapDistribute.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
