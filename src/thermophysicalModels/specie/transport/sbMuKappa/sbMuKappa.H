@@ -1,8 +1,8 @@
 // TRANSPORT OF MU AND KAPPA FOR IFG
 //    transport
 //    {
-//        mu              1.82e-05;
-//        Pr              0.71;
+//        mu		1.82e-05;
+//        kappa		0.71;
 //    }
 
 #ifndef sbMuKappa_H
@@ -53,8 +53,8 @@ class sbMuKappa
         //- Constant dynamic viscosity [Pa.s]
         scalar mu_;
 
-        //- Reciprocal Prandtl Number []
-        scalar rPr_;
+        //- Constant thermal conductivity [W/mK]
+        scalar kappa_;
 
 
     // Private Member Functions
@@ -64,7 +64,7 @@ class sbMuKappa
         (
             const Thermo& t,
             const scalar mu,
-            const scalar Pr
+            const scalar kappa
         );
 
 
@@ -90,7 +90,7 @@ public:
         //- Return the instantiated type name
         static word typeName()
         {
-            return "const<" + Thermo::typeName() + '>';
+            return "sbMuKappa<" + Thermo::typeName() + '>';
         }
 
         //- Dynamic viscosity [kg/m/s]
@@ -138,16 +138,10 @@ public:
 
 } // End namespace Foam
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #include "sbMuKappaI.H"
 
 #ifdef NoRepository
     #include "sbMuKappa.C"
 #endif
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #endif
-
-// ************************************************************************* //

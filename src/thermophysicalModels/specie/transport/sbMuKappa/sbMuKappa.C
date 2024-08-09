@@ -3,17 +3,17 @@
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 template<class Thermo>
-Foam::constTransport<Thermo>::constTransport(const dictionary& dict)
+Foam::sbMuKappa<Thermo>::sbMuKappa(const dictionary& dict)
 :
     Thermo(dict),
     mu_(dict.subDict("transport").lookup<scalar>("mu")),
-    rPr_(1.0/dict.subDict("transport").lookup<scalar>("Pr"))
+    kappa_(dict.subDict("transport").lookup<scalar>("kappa"))
 {}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 template<class Thermo>
-void Foam::constTransport<Thermo>::constTransport::write(Ostream& os) const
+void Foam::sbMuKappa<Thermo>::sbMuKappa::write(Ostream& os) const
 {
     os  << this->name() << endl;
     os  << token::BEGIN_BLOCK  << incrIndent << nl;
@@ -22,7 +22,7 @@ void Foam::constTransport<Thermo>::constTransport::write(Ostream& os) const
 
     dictionary dict("transport");
     dict.add("mu", mu_);
-    dict.add("Pr", 1.0/rPr_);
+    dict.add("kappa", kappa_);
     os  << indent << dict.dictName() << dict;
 
     os  << decrIndent << token::END_BLOCK << nl;
@@ -31,7 +31,7 @@ void Foam::constTransport<Thermo>::constTransport::write(Ostream& os) const
 
 // * * * * * * * * * * * * * * * IOstream Operators  * * * * * * * * * * * * //
 template<class Thermo>
-Foam::Ostream& Foam::operator<<(Ostream& os, const constTransport<Thermo>& sbmk)
+Foam::Ostream& Foam::operator<<(Ostream& os, const sbMuKappa<Thermo>& sbmk)
 {
     sbmk.write(os);
     return os;

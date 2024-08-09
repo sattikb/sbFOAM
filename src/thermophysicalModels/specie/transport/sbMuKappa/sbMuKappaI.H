@@ -5,12 +5,12 @@ inline Foam::sbMuKappa<Thermo>::sbMuKappa
 (
     const Thermo& t,
     const scalar mu,
-    const scalar Pr
+    const scalar kappa
 )
 :
     Thermo(t),
     mu_(mu),
-    rPr_(1.0/Pr)
+    kappa_(kappa)
 {}
 
 
@@ -23,7 +23,7 @@ inline Foam::sbMuKappa<Thermo>::sbMuKappa
 :
     Thermo(name, sbmk),
     mu_(sbmk.mu_),
-    rPr_(sbmk.rPr_)
+    kappa_(sbmk.kappa_)
 {}
 
 
@@ -72,7 +72,8 @@ inline Foam::scalar Foam::sbMuKappa<Thermo>::kappa
     const scalar T
 ) const
 {
-    return this->Cp(p, T)*mu(p, T)*rPr_;
+    //return this->Cp(p, T)*mu(p, T)*rPr_;
+    return kappa_;
 }
 
 
@@ -94,7 +95,7 @@ inline void Foam::sbMuKappa<Thermo>::operator+=
         scalar Y2 = st.Y()/this->Y();
 
         mu_ = Y1*mu_ + Y2*st.mu_;
-        rPr_ = 1.0/(Y1/rPr_ + Y2/st.rPr_);
+        kappa_ = Y1*kappa_ + Y2*st.kappa_;
     }
 }
 
@@ -129,7 +130,7 @@ inline Foam::sbMuKappa<Thermo> Foam::operator+
         (
             t,
             0,
-            sbmk1.rPr_
+            0
         );
     }
     else
@@ -141,7 +142,7 @@ inline Foam::sbMuKappa<Thermo> Foam::operator+
         (
             t,
             Y1*sbmk1.mu_ + Y2*sbmk2.mu_,
-            1.0/(Y1/sbmk1.rPr_ + Y2/sbmk2.rPr_)
+            Y1*sbmk1.kappa_ + Y2*sbmk2.kappa_
         );
     }
 }
@@ -158,6 +159,6 @@ inline Foam::sbMuKappa<Thermo> Foam::operator*
     (
         s*static_cast<const Thermo&>(sbmk),
         sbmk.mu_,
-        1.0/sbmk.rPr_
+        sbmk.kappa_
     );
 }
