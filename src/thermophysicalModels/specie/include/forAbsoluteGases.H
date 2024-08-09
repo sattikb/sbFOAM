@@ -37,6 +37,7 @@ License
 #include "absoluteEnthalpy.H"
 
 #include "constTransport.H"
+#include "sbMuKappa.H"
 #include "sutherlandTransport.H"
 
 #include "thermo.H"
@@ -54,6 +55,7 @@ License
 
 #define forAbsoluteGasTransports(Macro, Args...)                               \
     forAbsoluteGasEnergiesAndThermos(constTransport, Macro, Args);             \
+    forAbsoluteGasEnergiesAndThermos(sbMuKappa, Macro, Args);             \
     forAbsoluteGasEnergiesAndThermos(sutherlandTransport, Macro, Args)
 
 #define forAbsoluteGases(Macro, Args...)                                       \

@@ -41,6 +41,7 @@ License
 #include "sensibleInternalEnergy.H"
 
 #include "constTransport.H"
+#include "sbMuKappa.H"
 
 #include "thermo.H"
 
@@ -61,7 +62,8 @@ License
     forLiquidEqns(Mu, sensibleInternalEnergy, hConstThermo, Macro, Args)
 
 #define forLiquidTransports(Macro, Args...)                                    \
-    forLiquidEnergiesAndThermos(constTransport, Macro, Args)
+    forLiquidEnergiesAndThermos(constTransport, Macro, Args);			\
+    forLiquidEnergiesAndThermos(sbMuKappa, Macro, Args)
 
 #define forLiquids(Macro, Args...)                                             \
     forLiquidTransports(Macro, Args)
@@ -81,7 +83,8 @@ License
     forCoeffLiquidEqns(Mu, sensibleInternalEnergy, hConstThermo, Macro, Args)
 
 #define forCoeffLiquidTransports(Macro, Args...)                               \
-    forCoeffLiquidEnergiesAndThermos(constTransport, Macro, Args)
+    forCoeffLiquidEnergiesAndThermos(constTransport, Macro, Args);		\
+    forCoeffLiquidEnergiesAndThermos(sbMuKappa, Macro, Args)
 
 #define forCoeffLiquids(Macro, Args...)                                        \
     forCoeffLiquidTransports(Macro, Args)
@@ -89,5 +92,3 @@ License
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #endif
-
-// ************************************************************************* //

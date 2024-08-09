@@ -39,6 +39,7 @@ License
 #include "sensibleInternalEnergy.H"
 
 #include "constTransport.H"
+#include "sbMuKappa.H"
 #include "sutherlandTransport.H"
 
 #include "thermo.H"
@@ -60,6 +61,7 @@ License
 
 #define forGasTransports(Macro, Args...)                                       \
     forGasEnergiesAndThermos(constTransport, Macro, Args);                     \
+    forGasEnergiesAndThermos(sbMuKappa, Macro, Args);                     \
     forGasEnergiesAndThermos(sutherlandTransport, Macro, Args)
 
 #define forGases(Macro, Args...)                                               \
@@ -80,6 +82,7 @@ License
 
 #define forCoeffGasTransports(Macro, Args...)                                 \
     forCoeffGasEnergiesAndThermos(constTransport, Macro, Args);               \
+    forCoeffGasEnergiesAndThermos(sbMuKappa, Macro, Args);               \
     forCoeffGasEnergiesAndThermos(sutherlandTransport, Macro, Args)
 
 #define forCoeffGases(Macro, Args...)                                         \
