@@ -36,7 +36,7 @@ SourceFiles
 #define ThermophysicalTransportModel_H
 
 #include "thermophysicalTransportModel.H"
-#include "runTimeSelectionTables.H"
+//#include "runTimeSelectionTables.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

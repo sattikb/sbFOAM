@@ -4,12 +4,8 @@
 #include "GeometricFieldsSB.H"
 #include "calculatedFvPatchFieldsSB.H"
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 namespace Foam
 {
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 template<>
 tmp<GeometricField<scalar, fvPatchField, volMesh>>
@@ -24,8 +20,6 @@ void GeometricField<scalar, fvPatchField, volMesh>::replace
     const direction,
     const GeometricField<scalar, fvPatchField, volMesh>& sf
 );
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 } // End namespace Foam
 

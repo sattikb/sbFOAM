@@ -38,10 +38,10 @@ SourceFiles
 #ifndef singlePhaseTransportModel_H
 #define singlePhaseTransportModel_H
 
-#include "kinematicTransportModel.H"
+#include "kinematicTransportModelSB.H"
 #include "IOdictionary.H"
 #include "autoPtr.H"
-
+#include "surfaceFieldsFwd.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
