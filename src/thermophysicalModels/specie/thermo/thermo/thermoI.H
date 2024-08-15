@@ -364,10 +364,12 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::THE
     const scalar T0
 ) const
 {
+    // RETURNS .THE() BASED ON THE TYPE OF themo (thernophysicalProperties)
+    // USED LIKE HCONST, ECONST ETC
     return Type<thermo<Thermo, Type>>::THE(*this, he, p, T0);
 }
 
-
+//THs USED FOR sensibleEnthalpy
 template<class Thermo, template<class> class Type>
 inline Foam::scalar Foam::species::thermo<Thermo, Type>::THs
 (
@@ -382,9 +384,9 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::THs
         hs,
         p,
         T0,
-        &thermo<Thermo, Type>::Hs,
-        &thermo<Thermo, Type>::Cp,
-        &thermo<Thermo, Type>::limit
+        &thermo<Thermo, Type>::Hs,	//FUNCTION THAT CALCULATES ENTHALPY
+        &thermo<Thermo, Type>::Cp,	//FUNCTION TO CALCULATE dH/dT
+        &thermo<Thermo, Type>::limit	//FUNCTION TO APPLY LIMITS ON T
     );
 }
 
@@ -409,7 +411,7 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::THa
     );
 }
 
-
+//TEs used for sensibleInternalEnergy
 template<class Thermo, template<class> class Type>
 inline Foam::scalar Foam::species::thermo<Thermo, Type>::TEs
 (

@@ -114,6 +114,12 @@ int main(int argc, char *argv[])
 
             fvModels.correct();
 
+	    //SATTIK VELOCITY DEPENDENT VISCOSITY
+	    muOF = thermo.mu();
+	    srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
+	    volScalarField srN0SB = max(srSB,nonZeroSmall);
+	    muSB = muOF + muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
+
             #include "UEqn.H"
             #include "EEqn.H"
 

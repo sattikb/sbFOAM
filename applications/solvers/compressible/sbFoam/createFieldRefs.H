@@ -9,7 +9,7 @@ volScalarField muOF
         "muOF",
         runTime.timeName(),
         mesh,
-        IOobject::READ_IF_PRESENT,
+        IOobject::NO_READ,
         IOobject::AUTO_WRITE
     ),
     thermo.mu()
@@ -36,10 +36,39 @@ volScalarField muSB
         "muSB",
         runTime.timeName(),
         mesh,
-        IOobject::READ_IF_PRESENT,
+        IOobject::NO_READ,
         IOobject::AUTO_WRITE
     ),
     thermo.mu()
+);
+
+
+volScalarField theSB
+(
+    IOobject
+    (
+        "enthalpy",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    thermo.T()
+);
+
+
+volScalarField sattikViscDiss
+(
+    IOobject
+    (
+        "RandomChecks",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("sattikDim", dimensionSet(1,-1,-3,0,0), 0)
 );
 
 IOdictionary thermoprops

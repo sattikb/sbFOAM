@@ -28,7 +28,7 @@ License
 
 #include "specie.H"
 #include "thermo.H"
-#include "sensibleEnthalpy.H"
+#include "sensibleEnthalpySB.H"
 #include "sensibleInternalEnergy.H"
 
 #include "rhoTabulated.H"

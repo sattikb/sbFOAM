@@ -1,27 +1,5 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2020 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-\*---------------------------------------------------------------------------*/
+// THE THERMO LOOP HAPPENS HERE. THIS IS WHERE WHEN thermo.correct() WITH
+// heRhoThermo IS CALLED IN THE EEqn FILE
 
 #include "heRhoThermo.H"
 
@@ -49,6 +27,7 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
         const typename MixtureType::transportMixtureType& transportMixture =
             this->cellTransportMixture(celli, thermoMixture);
 
+	// .THE() IS DEFINED IN thermoI.H
         TCells[celli] = thermoMixture.THE
         (
             hCells[celli],
@@ -184,6 +163,7 @@ Foam::heRhoThermo<BasicRhoThermo, MixtureType>::~heRhoThermo()
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
+// THIS IS USUALLY CALLED IN EEqn.H FILE VIA thermo.correct()
 template<class BasicRhoThermo, class MixtureType>
 void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::correct()
 {
@@ -192,13 +172,10 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::correct()
         InfoInFunction << endl;
     }
 
-    calculate();
+    calculate();	//CALCULATE IS DEFINED ABOVE
 
     if (debug)
     {
         Info<< "    Finished" << endl;
     }
 }
-
-
-// ************************************************************************* //

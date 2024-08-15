@@ -35,7 +35,7 @@ License
 #include "hConstThermo.H"
 #include "janafThermo.H"
 
-#include "sensibleEnthalpy.H"
+#include "sensibleEnthalpySB.H"
 #include "sensibleInternalEnergy.H"
 
 #include "constTransport.H"

@@ -74,7 +74,9 @@ volScalarField dpdt
     (
         "dpdt",
         runTime.timeName(),
-        mesh
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
     ),
     mesh,
     dimensionedScalar(p.dimensions()/dimTime, 0)

@@ -1,6 +1,10 @@
 {
     volScalarField& he = thermo.he();
 
+//    heSB = thermo.he();
+    theSB = thermo.T();
+    volScalarField sattikViscDiss = fvc::div(muSB * (dev2(T(fvc::grad(U))) & U));
+
     fvScalarMatrix EEqn
     (
         fvm::ddt(rho, he) + fvm::div(phi, he)
@@ -11,6 +15,7 @@
           : -dpdt
         )
       + thermophysicalTransport->divq(he)
+      - sattikViscDiss 
      ==
         fvModels.source(rho, he)
     );
@@ -23,5 +28,7 @@
 
     fvConstraints.constrain(he);
 
+    // CALCULATES THE THERMO/TRANSPORT PROPERTIES USING THE he SOLUTION
+    // CAN BE SEEN IN THE heRhoThermo FILE
     thermo.correct();
 }

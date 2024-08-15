@@ -644,7 +644,10 @@ Foam::heThermo<BasicThermo, MixtureType>::Cpv() const
     }
 }
 
-
+// HERE THE CALCULATES THE TEMPERATURE T WITH THE ARGUMENTS h, p, T0
+// USING volScalarFieldProperty FUNCTION DEFINED IN THE BEGINNING OF 
+// THIS HEADER FILE.  FURTHER DESCRIPTION IS IN THE FILE 
+// SENSIBLEENTHALPY/INTERNALENERGY FILES.
 template<class BasicThermo, class MixtureType>
 Foam::tmp<Foam::volScalarField> Foam::heThermo<BasicThermo, MixtureType>::THE
 (
@@ -655,13 +658,13 @@ Foam::tmp<Foam::volScalarField> Foam::heThermo<BasicThermo, MixtureType>::THE
 {
     return volScalarFieldProperty
     (
-        "T",
-        dimTemperature,
+        "T",					//CREATING THE SCALAR FIELD T
+        dimTemperature,				//ASSIGN THE DIMENSIONSET
         &MixtureType::cellThermoMixture,
         &MixtureType::patchFaceThermoMixture,
-        &MixtureType::thermoMixtureType::THE,
-        h,
-        p,
+        &MixtureType::thermoMixtureType::THE,	//FUNCTION USED TO CALCULATE T.
+        h,					//ARGUMENTS THAT ARE NEEDED FOR
+        p,					//FUNCTION THE
         T0
     );
 }

@@ -28,7 +28,7 @@ License
 #include "pureMixture.H"
 #include "thermo.H"
 #include "sensibleInternalEnergy.H"
-#include "sensibleEnthalpy.H"
+#include "sensibleEnthalpySB.H"
 #include "thermophysicalPropertiesSelector.H"
 #include "liquidProperties.H"
 

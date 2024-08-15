@@ -213,6 +213,3 @@ Foam::tmp<Foam::scalarField> Foam::rhoThermo::implementation::mu
 {
     return mu_.boundaryField()[patchi];
 }
-
-
-// ************************************************************************* //
