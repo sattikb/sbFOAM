@@ -1,20 +1,6 @@
 const volScalarField& psi = thermo.psi();
 
-
 //
-volScalarField muOF
-(
-    IOobject
-    (
-        "muOF",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    thermo.mu()
-);
-
 volScalarField srSB
 (
     IOobject
@@ -43,32 +29,18 @@ volScalarField muSB
 );
 
 
-volScalarField theSB
+volScalarField SBVD
 (
     IOobject
     (
-        "enthalpy",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    thermo.T()
-);
-
-
-volScalarField sattikViscDiss
-(
-    IOobject
-    (
-        "RandomChecks",
+        "VISC_DISS",
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
         IOobject::AUTO_WRITE
     ),
     mesh,
-    dimensionedScalar("sattikDim", dimensionSet(1,-1,-3,0,0), 0)
+    dimensionedScalar("VISC DISS",dimensionSet(1,-1,-3,0,0,0,0),1e-20)
 );
 
 IOdictionary thermoprops

@@ -325,6 +325,9 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::T
         Tnew =
             (thermo.*limit)
             (Test - ((thermo.*F)(p, Test) - f)/(thermo.*dFdT)(p, Test));
+	//limit() DEFINED IN ~hConst
+	//F (Hs) DEFINED IN ~hCosnt
+	//dFdt (Cp) DEFINED IN ~hConst
 
         if (diagnostics)
         {
@@ -351,6 +354,8 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::T
         }
 
     } while (mag(Tnew - Test) > Ttol);
+//    Info<<"SATTIK RETURNING Hs and hs: "<<(thermo.*F)(p, Test)<<", "<<f;
+//    Info<<"SATTIK RETURNING Cp and t: "<<(thermo.*dFdT)(p, Test)<<", "<<Tnew<<endl;
 
     return Tnew;
 }
@@ -364,8 +369,8 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::THE
     const scalar T0
 ) const
 {
-    // RETURNS .THE() BASED ON THE TYPE OF themo (thernophysicalProperties)
-    // USED LIKE HCONST, ECONST ETC
+    // RETURNS scalar THE() BASED ON TYPE OF energy 
+    // USED LIKE sensibleEnthalpy OR sensibleInternalEnergy
     return Type<thermo<Thermo, Type>>::THE(*this, he, p, T0);
 }
 

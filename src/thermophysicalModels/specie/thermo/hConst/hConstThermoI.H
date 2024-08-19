@@ -112,6 +112,7 @@ inline Foam::scalar Foam::hConstThermo<EquationOfState>::Hs
     const scalar T
 ) const
 {
+    //Tref_=298.15 (DEFAULT 25 DEGREES CELCIUS)
     return Cp_*(T - Tref_) + Hsref_ + EquationOfState::H(p, T);
 }
 

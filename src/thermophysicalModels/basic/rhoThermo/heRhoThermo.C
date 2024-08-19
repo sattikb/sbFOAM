@@ -1,4 +1,4 @@
-// THE THERMO LOOP HAPPENS HERE. THIS IS WHERE WHEN thermo.correct() WITH
+// THERMO LOOP HAPPENS HERE. THIS IS WHERE WHEN thermo.correct() WITH
 // heRhoThermo IS CALLED IN THE EEqn FILE
 
 #include "heRhoThermo.H"
@@ -27,12 +27,13 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
         const typename MixtureType::transportMixtureType& transportMixture =
             this->cellTransportMixture(celli, thermoMixture);
 
-	// .THE() IS DEFINED IN thermoI.H
+	// .THE() IS DEFINED IN thermoI.H	
+	// CALCULATES T FOR NEW TIME-STEP
         TCells[celli] = thermoMixture.THE
         (
-            hCells[celli],
-            pCells[celli],
-            TCells[celli]
+            hCells[celli],	//he SOLUTION FROM SOLVER
+            pCells[celli],	// P SOLUTION FROM SOLVER
+            TCells[celli]	// T FROM PEVIOUS TIME STEP
         );
 
         CpCells[celli] = thermoMixture.Cp(pCells[celli], TCells[celli]);

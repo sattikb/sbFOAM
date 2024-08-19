@@ -1,9 +1,12 @@
 {
     volScalarField& he = thermo.he();
+	srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
+	volScalarField srN0SB = max(srSB,nonZeroSmall);
+	muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
 
-//    heSB = thermo.he();
-    theSB = thermo.T();
-    volScalarField sattikViscDiss = fvc::div(muSB * (dev2(T(fvc::grad(U))) & U));
+    volTensorField TauSB = muSB * dev2(T(fvc::grad(U)));
+    SBVD = TauSB && fvc::grad(U);
+//    volScalarField sattikViscDiss = fvc::div(muSB * (TauSB & U));
 
     fvScalarMatrix EEqn
     (
@@ -14,8 +17,8 @@
           ? fvc::div(fvc::absolute(phi, rho, U), p/rho)
           : -dpdt
         )
-      + thermophysicalTransport->divq(he)
-      - sattikViscDiss 
+      + thermophysicalTransport->divq(he)	//PRESENT IN heSolidThermo.C
+      - SBVD 
      ==
         fvModels.source(rho, he)
     );

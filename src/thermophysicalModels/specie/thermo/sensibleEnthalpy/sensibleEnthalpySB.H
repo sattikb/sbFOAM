@@ -19,7 +19,6 @@ public:
         sensibleEnthalpy()
         {}
 
-
     // Member Functions
 
         //- Return the instantiated type name
@@ -48,6 +47,7 @@ public:
                 const scalar T
             ) const
             {
+		// NOT CALLED FOR hConst AS cP IS CONSTANT THERE.
                 return thermo.Cp(p, T);
             }
 
@@ -59,6 +59,7 @@ public:
                 const scalar T
             ) const
             {
+		//Hs IS FUNCTION IN thermo (~hConst OR eConst ETC) 
                 return thermo.Hs(p, T);
             }
 
