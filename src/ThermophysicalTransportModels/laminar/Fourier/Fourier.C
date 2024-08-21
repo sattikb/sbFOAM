@@ -129,6 +129,7 @@ Fourier<BasicThermophysicalTransportModel>::divq(volScalarField& he) const
 
     // Return heat flux source as an implicit energy correction
     // to the temperature gradient flux
+    Info<<"SATTIK AT FOURIER";
     return
         -correction(fvm::laplacian(this->alpha()*thermo.alpha(), he))
         -fvc::laplacian(this->alpha()*thermo.kappa(), thermo.T());

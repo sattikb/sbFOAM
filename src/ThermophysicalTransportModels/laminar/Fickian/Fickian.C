@@ -360,6 +360,7 @@ tmp<fvScalarMatrix> Fickian<BasicThermophysicalTransportModel>::divq
 
     tmpDivq.ref() += fvc::div(sumJh*he.mesh().magSf());
 
+    Info<<"SATTIK AT FICKIAN";
     return tmpDivq;
 }
 

@@ -71,13 +71,13 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::rho(scalar p, scalar T) const
 
     const scalar mcFact = scalar(1.0) - MC_;
 
-    if (p<scalar(68949.57))
+    if (p<scalar(-32375.43))			//68949.57
     {
-	const scalar pp = 68949.57;
+	const scalar pp = -32375.43;
 	const scalar rhoSum = a * pow(pp,3) + b * pow(pp,2) + c * pp + d;
     	return rhoSum / mcFact;
     }
-    else if (p>scalar(68947.57) && p<scalar(101350.))
+    else if (p>scalar(-32375.43) && p<scalar(25.0))	//68949.57, 101350
     {
 	const scalar rhoSum = a * pow(p,3) + b * pow(p,2) + c * p + d;
     	return rhoSum / mcFact;
@@ -95,7 +95,6 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::rho(scalar p, scalar T) const
 template<class Specie>
 inline Foam::scalar Foam::ifgRhoEOS<Specie>::H(scalar p, scalar T) const
 {
-    //I modified this as well
     return 0;
 }
 
@@ -103,7 +102,7 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::H(scalar p, scalar T) const
 template<class Specie>
 inline Foam::scalar Foam::ifgRhoEOS<Specie>::Cp(scalar p, scalar T) const
 {
-    return 0;
+    return 0;	//WILL BE TAKEN FROM ~hConst
 }
 
 
@@ -117,7 +116,7 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::E(scalar p, scalar T) const
 template<class Specie>
 inline Foam::scalar Foam::ifgRhoEOS<Specie>::Cv(scalar p, scalar T) const
 {
-    return 0;
+    return 0;	//WILL BE TAKEN FROM ~eConst
 }
 
 
@@ -151,13 +150,13 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::psi(scalar p, scalar T) const
 
     const scalar mcFact = scalar(1.0) - MC_;
 
-    if (p<scalar(68949.57))
+    if (p<scalar(-32375.43))			//68949.57
     {
-	const scalar pp = 68949.57;
+	const scalar pp = -32375.43;		//68949.57
 	const scalar drdpSum = 3*a*pow(pp,2) + 2*b*pp + c;
     	return drdpSum / mcFact;
     }
-    else if (p>scalar(68947.57) && p<scalar(101350.))
+    else if (p>scalar(-32375.43) && p<scalar(25.0))	//68949.57, 101350
     {
 	const scalar drdpSum = 3*a*pow(p,2) + 2*b*p + c;
     	return drdpSum / mcFact;
@@ -187,14 +186,14 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::Z(scalar p, scalar T) const
 
     const scalar mcFact = scalar(1.0) - MC_;
 
-    if (p<scalar(68949.57))
+    if (p<scalar(-32375.43))			//68949.57
     {
-	const scalar pp = 68949.57;
+	const scalar pp = -32375.43;		//68949.57
 	const scalar rhoSum = a * pow(pp,3) + b * pow(pp,2) + c * pp + d;
     	const scalar thisrho = rhoSum / mcFact;
 	return p/(thisrho*this->R()*T);
     }
-    else if (p>scalar(68947.57) && p<scalar(101350.))
+    else if (p>scalar(-32375.43) && p<scalar(25.0))	//68949.57, 101350
     {
 	const scalar rhoSum = a * pow(p,3) + b * pow(p,2) + c * p + d;
     	const scalar thisrho = rhoSum / mcFact;

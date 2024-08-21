@@ -370,6 +370,7 @@ Foam::heSolidThermo<BasicSolidThermo, MixtureType>::divq
     volScalarField& e
 ) const
 {
+    Info<<"SATTIK AT HESOLIDTHERMO";
     return
       - (
             isotropic()

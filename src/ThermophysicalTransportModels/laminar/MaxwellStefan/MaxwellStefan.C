@@ -361,6 +361,7 @@ tmp<fvScalarMatrix> MaxwellStefan<BasicThermophysicalTransportModel>::divq
 
     tmpDivq.ref() += fvc::div(sumJh*he.mesh().magSf());
 
+    Info<<"SATTIK AT MAXWELLSTEFAN";
     return tmpDivq;
 }
 

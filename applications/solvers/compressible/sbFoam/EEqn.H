@@ -1,11 +1,16 @@
 {
     volScalarField& he = thermo.he();
+
+    volScalarField kappa = thermo.kappa();
+    volScalarField Cp = thermo.Cp();
 	srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
 	volScalarField srN0SB = max(srSB,nonZeroSmall);
 	muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
 
     volTensorField TauSB = muSB * dev2(T(fvc::grad(U)));
     SBVD = TauSB && fvc::grad(U);
+//    SBVD = fvc::div(TauSB & U);
+
 //    volScalarField sattikViscDiss = fvc::div(muSB * (TauSB & U));
 
     fvScalarMatrix EEqn
@@ -17,7 +22,7 @@
           ? fvc::div(fvc::absolute(phi, rho, U), p/rho)
           : -dpdt
         )
-      + thermophysicalTransport->divq(he)	//PRESENT IN heSolidThermo.C
+      -fvm::laplacian(kappa/Cp, he)		//heat conduction term (implicit)
       - SBVD 
      ==
         fvModels.source(rho, he)

@@ -109,6 +109,7 @@ tmp<fvScalarMatrix>
 unityLewisFourier<BasicThermophysicalTransportModel>::
 divq(volScalarField& he) const
 {
+    Info<<"SATTIK AT UNITYLEWISFOURIER"<<endl;
     return -fvm::laplacian(this->alpha()*this->thermo().alpha(), he);
 }
 
