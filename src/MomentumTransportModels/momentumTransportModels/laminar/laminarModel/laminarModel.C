@@ -1,3 +1,11 @@
+//IN MOMENTUMTRANPORTMODEL, HAVE SIMULATIONTYPE LAMINAR
+// laminar
+// {
+// laminarModel		Stokes; (default)
+// }
+// OTHER MODEL TYPES ARE GIESEKUS, MAXWELL, PTT, GENERALIZEDNEWTONIAN,
+// LAMBDATHIXOTROPIC
+
 #include "laminarModelSB.H"
 #include "Stokes.H"
 

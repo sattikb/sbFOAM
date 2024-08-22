@@ -60,3 +60,17 @@ dimensionedScalar muInf(thermoprops.lookup("muInf"));
 dimensionedScalar kSB  (thermoprops.lookup("kSB")  );
 dimensionedScalar nSB  (thermoprops.lookup("nSB")  );
 dimensionedScalar nonZeroSmall  ("nonZeroSmall",dimensionSet(0,0,-1,0,0,0,0),1.0e-20);
+
+volTensorField ISB
+(
+    IOobject
+    (
+        "ISB",
+        mesh.time().timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh,
+    tensor::I
+);

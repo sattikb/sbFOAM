@@ -354,8 +354,6 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::T
         }
 
     } while (mag(Tnew - Test) > Ttol);
-//    Info<<"SATTIK RETURNING Hs and hs: "<<(thermo.*F)(p, Test)<<", "<<f;
-//    Info<<"SATTIK RETURNING Cp and t: "<<(thermo.*dFdT)(p, Test)<<", "<<Tnew<<endl;
 
     return Tnew;
 }
@@ -383,6 +381,7 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::THs
     const scalar T0
 ) const
 {
+	if (T0<200){Info<<"DATA SATTIK T0: "<<T0;}
     return T
     (
         *this,

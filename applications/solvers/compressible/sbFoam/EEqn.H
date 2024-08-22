@@ -8,8 +8,12 @@
 	muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
 
     volTensorField TauSB = muSB * dev2(T(fvc::grad(U)));
-    SBVD = TauSB && fvc::grad(U);
+
+	volTensorField sigmaSB = -p*ISB + muSB*symm(fvc::grad(U) );
+
+//    SBVD = TauSB && fvc::grad(U);
 //    SBVD = fvc::div(TauSB & U);
+    SBVD = fvc::div(sigmaSB & U);
 
 //    volScalarField sattikViscDiss = fvc::div(muSB * (TauSB & U));
 
@@ -20,9 +24,9 @@
       + (
             he.name() == "e"
           ? fvc::div(fvc::absolute(phi, rho, U), p/rho)
-          : -dpdt
+          : -dpdt - fvc::div(phi,p/rho)
         )
-      -fvm::laplacian(kappa/Cp, he)		//heat conduction term (implicit)
+      - fvm::laplacian(kappa/Cp, he)	//heat conduction term (implicit)
       - SBVD 
      ==
         fvModels.source(rho, he)
