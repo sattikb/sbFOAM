@@ -3,19 +3,23 @@
 
     volScalarField kappa = thermo.kappa();
     volScalarField Cp = thermo.Cp();
-	srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
-	volScalarField srN0SB = max(srSB,nonZeroSmall);
-	muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
+    
+    srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
+    volScalarField srN0SB = max(srSB,nonZeroSmall);
+    muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
 
-    volTensorField TauSB = muSB * dev2(T(fvc::grad(U)));
+    volTensorField StrainRateSB = 0.5*( fvc::grad(U) + T(fvc::grad(U)) );
+    volTensorField RotRateSB    = 0.5*( fvc::grad(U) - T(fvc::grad(U)) );
 
-	volTensorField sigmaSB = -p*ISB + muSB*symm(fvc::grad(U) );
+    volTensorField sigma1 = -p*ISB;
+    volTensorField sigma2 = -2./3. * fvc::div(U) * ISB;
+    volTensorField sigma3 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
 
-//    SBVD = TauSB && fvc::grad(U);
-//    SBVD = fvc::div(TauSB & U);
-    SBVD = fvc::div(sigmaSB & U);
+    volScalarField SBVD1 = fvc::div(sigma1 & U);
+    volScalarField SBVD2 = fvc::div(sigma2 & U);
+    volScalarField SBVD3 = fvc::div(sigma3 & U);
 
-//    volScalarField sattikViscDiss = fvc::div(muSB * (TauSB & U));
+    SBVD  = SBVD1 + SBVD2 + SBVD3;
 
     fvScalarMatrix EEqn
     (
@@ -27,7 +31,7 @@
           : -dpdt - fvc::div(phi,p/rho)
         )
       - fvm::laplacian(kappa/Cp, he)	//heat conduction term (implicit)
-      - SBVD 
+      - ( SBVD1 + SBVD2 + SBVD3 )
      ==
         fvModels.source(rho, he)
     );
