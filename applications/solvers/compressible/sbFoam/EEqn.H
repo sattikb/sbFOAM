@@ -3,16 +3,12 @@
 
     volScalarField kappa = thermo.kappa();
     volScalarField Cp = thermo.Cp();
-    
-    srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
-    volScalarField srN0SB = max(srSB,nonZeroSmall);
-    muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
 
     volTensorField StrainRateSB = 0.5*( fvc::grad(U) + T(fvc::grad(U)) );
     volTensorField RotRateSB    = 0.5*( fvc::grad(U) - T(fvc::grad(U)) );
 
     volTensorField sigma1 = -p*ISB;
-    volTensorField sigma2 = -2./3. * fvc::div(U) * ISB;
+    volTensorField sigma2 = -2./3. * muSB * fvc::div(U) * ISB;
     volTensorField sigma3 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
 
     volScalarField SBVD1 = fvc::div(sigma1 & U);
