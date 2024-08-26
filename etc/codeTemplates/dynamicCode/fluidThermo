@@ -17,12 +17,14 @@ type
 (
     hePsiThermo
     heRhoThermo
+    sbThermo
 );
 
 typeBase
 (
     hePsiThermo psiThermo
     heRhoThermo rhoThermo
+    sbThermo    sbRhoThermo
 );
 
 energy
@@ -47,6 +49,7 @@ transport
     sutherland
     tabulated
     WLF
+    sbMuKappa
 );
 
 thermo

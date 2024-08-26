@@ -17,20 +17,48 @@ int main(int argc, char *argv[])
 {
     #include "postProcess.H"
 
+    Info<<"SATTIK ENTERING setRootCaseLists.H"<<endl;
     #include "setRootCaseLists.H"
-    #include "createTime.H"
-    #include "createDynamicFvMesh.H"
-    #include "createDyMControls.H"
-    #include "initContinuityErrs.H"
-    #include "createFields.H"
-    #include "createFieldRefs.H"
-    #include "createRhoUfIfPresent.H"
+    Info<<"SATTIK EXITED setRootCaseLists.H"<<endl;
 
+    Info<<"SATTIK ENTERING createTime.H"<<endl;
+    #include "createTime.H"
+    Info<<"SATTIK EXITED createTime.H"<<endl;
+    
+    Info<<"SATTIK ENTERING createDynamicFvMesh.H"<<endl;
+    #include "createDynamicFvMesh.H"
+    Info<<"SATTIK EXITED createDynamicFvMesh.H"<<endl;
+    
+    Info<<"SATTIK ENTERING createDymControls.H"<<endl;
+    #include "createDyMControls.H"
+    Info<<"SATTIK EXITED createDymControls.H"<<endl;
+    
+    Info<<"SATTIK ENTERING initContinuityErrors.H"<<endl;
+    #include "initContinuityErrs.H"
+    Info<<"SATTIK EXITED initContinuityErrors.H"<<endl;
+    
+    Info<<"SATTIK ENTERING createFields.H"<<endl;
+    #include "createFields.H"
+    Info<<"SATTIK EXITED createFields.H"<<endl;
+    
+    Info<<"SATTIK ENTERING createFieldRefs.H"<<endl;
+    #include "createFieldRefs.H"
+    Info<<"SATTIK EXITED createFieldRefs.H"<<endl;
+    
+    Info<<"SATTIK ENTERING createRhoUfIfPresent.H"<<endl;
+    #include "createRhoUfIfPresent.H"
+    Info<<"SATTIK EXITED createRhoUfIfPresent.H"<<endl;
+
+    Info<<"SATTIK VALIDATING TURBULENCE."<<endl;
     turbulence->validate();
 
+    Info<<"SATTIK CHECKING LOCAL TIME STEPPING."<<endl;
     if (!LTS)
     {
+    	Info<<"SATTIK HAS LOCAL TIME STEPPING."<<endl;
+    	Info<<"SATTIK ENTERING compressibleCourantNo.H"<<endl;
         #include "compressibleCourantNo.H"
+    	Info<<"SATTIK EXITED compressibleCourantNo.H"<<endl;
         #include "setInitialDeltaT.H"
     }
 

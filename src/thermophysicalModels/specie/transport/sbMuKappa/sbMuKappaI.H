@@ -72,7 +72,6 @@ inline Foam::scalar Foam::sbMuKappa<Thermo>::kappa
     const scalar T
 ) const
 {
-    //return this->Cp(p, T)*mu(p, T)*rPr_;
     return kappa_;
 }
 

@@ -4,9 +4,6 @@
     volScalarField kappa = thermo.kappa();
     volScalarField Cp = thermo.Cp();
 
-    volTensorField StrainRateSB = 0.5*( fvc::grad(U) + T(fvc::grad(U)) );
-    volTensorField RotRateSB    = 0.5*( fvc::grad(U) - T(fvc::grad(U)) );
-
     volTensorField sigma1 = -p*ISB;
     volTensorField sigma2 = -2./3. * muSB * fvc::div(U) * ISB;
     volTensorField sigma3 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );

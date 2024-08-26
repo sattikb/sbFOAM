@@ -16,12 +16,14 @@ fvVectorMatrix& UEqn = tUEqn.ref();
 
 UEqn.relax();
 
+Info<<"SATTIK GOING FOR U FVCONSTRAINTS IN UEqn.H"<<endl;
 fvConstraints.constrain(UEqn);
 
 if (pimple.momentumPredictor())
 {
     solve(UEqn == -fvc::grad(p));
 
+    Info<<"SATTIK GOING FOR U FVCONSTRAINTS IN MOMENTUM PREDICTOR LOOP"<<endl;
     fvConstraints.constrain(U);
     K = 0.5*magSqr(U);
 }

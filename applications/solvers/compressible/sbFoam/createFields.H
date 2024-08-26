@@ -37,8 +37,11 @@ volVectorField U
     ),
     mesh
 );
+    Info<<"SATTIK CHECKING"<<U;//fvc::surfaceSum(mag(phi))().primitiveField();
 
-#include "compressibleCreatePhi.H"
+Info<<"SATTIK ENTERING compressibleCreatePhiSB.H"<<endl;
+#include "compressibleCreatePhiSB.H"
+Info<<"SATTIK EXITED compressibleCreatePhiSB.H"<<endl;
 
 pressureReference pressureReference
 (
