@@ -381,7 +381,6 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::THs
     const scalar T0
 ) const
 {
-	if (T0<200){Info<<"DATA SATTIK T0: "<<T0;}
     return T
     (
         *this,

@@ -17,14 +17,12 @@ type
 (
     hePsiThermo
     heRhoThermo
-    sbThermo
 );
 
 typeBase
 (
     hePsiThermo psiThermo
     heRhoThermo rhoThermo
-    sbThermo    sbRhoThermo
 );
 
 energy

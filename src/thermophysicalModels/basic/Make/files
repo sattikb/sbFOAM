@@ -10,10 +10,6 @@ rhoThermo/rhoThermo.C
 rhoThermo/rhoThermos.C
 rhoThermo/liquidThermo.C
 
-sbThermo/sbRhoThermo.C
-sbThermo/sbRhoThermos.C
-sbThermo/sbLiqThermo.C
-
 derivedFvPatchFields/fixedEnergy/fixedEnergyFvPatchScalarField.C
 derivedFvPatchFields/gradientEnergy/gradientEnergyFvPatchScalarField.C
 derivedFvPatchFields/gradientEnergy/gradientEnergyCalculatedTemperatureFvPatchScalarField.C

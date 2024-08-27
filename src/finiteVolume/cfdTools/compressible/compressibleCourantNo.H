@@ -1,12 +1,8 @@
 // CALCULATES AND OUTPUTS THE MEAN AND MAX Co Nos
-
 scalar CoNum = 0.0;
 scalar meanCoNum = 0.0;
 
 {
-    Info<<"SATTIK VALUES: "<<runTime.deltaTValue()<<endl;
-    Info<<"MOREVALS: "<< fvc::surfaceSum(mag(phi))().primitiveField();///rho.primitiveField();
-
     scalarField sumPhi
     (
         fvc::surfaceSum(mag(phi))().primitiveField()/rho.primitiveField()
