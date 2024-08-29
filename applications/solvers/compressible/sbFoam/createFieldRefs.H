@@ -33,7 +33,7 @@ volScalarField SBVD
 (
     IOobject
     (
-        "VISC_DISS",
+        "ViscDissipation",
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
@@ -41,6 +41,19 @@ volScalarField SBVD
     ),
     mesh,
     dimensionedScalar("VISC DISS",dimensionSet(1,-1,-3,0,0,0,0),1e-20)
+);
+
+volScalarField he
+(
+    IOobject
+    (
+        "ViscDissipation",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    thermo.he()
 );
 
 IOdictionary thermoprops
