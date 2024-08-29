@@ -4,17 +4,15 @@
     volScalarField kappa = thermo.kappa();
     volScalarField Cp = thermo.Cp();
 
-    // FROM reactingFoam Yang //////////////////////
-    volTensorField sigma1 = -2./3. * muSB * fvc::div(U) * ISB;
-    volTensorField sigma2 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
+    // FROM KENNETH KUO ///////////////////////
+    volTensorField tau1 = -2./3. * muSB * fvc::div(U) * ISB;
+    volTensorField tau2 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
 
-    volScalarField SBVD1 = sigma1 && fvc::grad(U);
-    volScalarField SBVD2 = sigma2 && fvc::grad(U);
-
-    volScalarField UdotgradP = U & fvc::grad(p);
+    volScalarField SBVD1 = fvc::div(tau1 & U);
+    volScalarField SBVD2 = fvc::div(tau2 & U);
     ////////////////////////////////////////////
 
-    SBVD  = SBVD2 + SBVD2;
+    SBVD  = SBVD1 + SBVD2;
 
     fvScalarMatrix EEqn
     (
@@ -23,11 +21,11 @@
       + (
             he.name() == "e"
           ? fvc::div(fvc::absolute(phi, rho, U), p/rho)
-          : -dpdt - UdotgradP
+          : -dpdt
         )
      ==
-        fvm::laplacian(kappa/Cp, he)	//heat conduction term (implicit)
-      + SBVD
+        fvm::laplacian(kappa/Cp, he)	//implicit heat conduction term
+      - SBVD
     );
 
     EEqn.relax();

@@ -5,16 +5,14 @@
     volScalarField Cp = thermo.Cp();
 
     // FROM KENNETH KUO ///////////////////////
-    volTensorField sigma1 = -p*ISB;
-    volTensorField sigma2 = -2./3. * muSB * fvc::div(U) * ISB;
-    volTensorField sigma3 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
+    volTensorField tau1 = -2./3. * muSB * fvc::div(U) * ISB;
+    volTensorField tau2 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
 
-    volScalarField SBVD1 = fvc::div(sigma1 & U);
-    volScalarField SBVD2 = fvc::div(sigma2 & U);
-    volScalarField SBVD3 = fvc::div(sigma3 & U);
+    volScalarField SBVD1 = fvc::div(tau1 & U);
+    volScalarField SBVD2 = fvc::div(tau2 & U);
     ////////////////////////////////////////////
 
-    SBVD  = SBVD1 + SBVD2 + SBVD3;
+    SBVD  = SBVD1 + SBVD2;
 
     fvScalarMatrix EEqn
     (
@@ -23,12 +21,11 @@
       + (
             he.name() == "e"
           ? fvc::div(fvc::absolute(phi, rho, U), p/rho)
-          : -dpdt - fvc::div(phi,p/rho)
+          : -dpdt
         )
-      - fvm::laplacian(kappa/Cp, he)	//heat conduction term (implicit)
-      - ( SBVD1 + SBVD2 + SBVD3 )
      ==
-        fvModels.source(rho, he)
+        fvm::laplacian(kappa/Cp, he)	//implicit heat conduction term
+      - SBVD
     );
 
     EEqn.relax();

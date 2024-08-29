@@ -120,7 +120,6 @@ int main(int argc, char *argv[])
 		muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
 
             #include "UEqn.H"
-            #include "EEqn.H"
 
             // --- Pressure corrector loop
             while (pimple.correct())
@@ -133,6 +132,8 @@ int main(int argc, char *argv[])
                 turbulence->correct();
                 thermophysicalTransport->correct();
             }
+
+            #include "EEqn.H"
         }
 
         if (!mesh.steady())
