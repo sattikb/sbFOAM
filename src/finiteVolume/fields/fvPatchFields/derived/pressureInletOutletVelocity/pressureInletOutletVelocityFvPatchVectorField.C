@@ -122,6 +122,7 @@ void Foam::pressureInletOutletVelocityFvPatchVectorField::updateCoeffs()
 
     valueFraction() = neg(phip)*(I - sqr(patch().nf()));
 
+    Info<<"SATTIK AT P-U INLET-OUTLET"<<endl;
     directionMixedFvPatchVectorField::updateCoeffs();
     directionMixedFvPatchVectorField::evaluate();
 }

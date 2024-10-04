@@ -125,6 +125,3 @@ void Foam::fixedValueFvPatchField<Type>::write(Ostream& os) const
     fvPatchField<Type>::write(os);
     writeEntry(os, "value", *this);
 }
-
-
-// ************************************************************************* //

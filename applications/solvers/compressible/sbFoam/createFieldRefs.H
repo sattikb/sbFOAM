@@ -43,11 +43,11 @@ volScalarField SBVD
     dimensionedScalar("VISC DISS",dimensionSet(1,-1,-3,0,0,0,0),1e-20)
 );
 
-volScalarField he
+volScalarField heSol
 (
     IOobject
     (
-        "ViscDissipation",
+        "enthalpy",
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,

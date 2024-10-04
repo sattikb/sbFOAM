@@ -157,6 +157,7 @@ void Foam::dynamicPressureFvPatchScalarField::updateCoeffs
             const fvPatchField<scalar>& rho =
                 patch().lookupPatchField<volScalarField, scalar>(rhoName_);
 
+		    Info<<"SATTIK at LSCOMP"<<endl;
             operator==(p0p - rho*Kp);
         }
         else
@@ -174,6 +175,7 @@ void Foam::dynamicPressureFvPatchScalarField::updateCoeffs
             }
             else
             {
+		    Info<<"SATTIK at HSCOMP"<<endl;
                 operator==(p0p/(scalar(1) + psip*Kp));
             }
         }

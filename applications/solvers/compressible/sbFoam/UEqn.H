@@ -2,21 +2,23 @@
 
 MRF.correctBoundaryVelocity(U);
 
+// FROM KENNETH KUO ///////////////////////
+volTensorField tau1 = -2./3. * muSB * fvc::div(U) * ISB;
+volTensorField tau2 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
 
 tmp<fvVectorMatrix> tUEqn
 (
     fvm::ddt(rho, U) + fvm::div(phi, U)
   + MRF.DDt(rho, U)
-  - fvm::laplacian(muSB , U)
-  - fvc::div(muSB * dev2(T(fvc::grad(U))))
  ==
-    fvModels.source(rho, U)
+    fvm::laplacian(muSB , U)	//same as div(mu*grad(U))
+  + fvc::div(muSB * T(fvc::grad(U)))
+  + fvc::div(tau1) 
 );
 fvVectorMatrix& UEqn = tUEqn.ref();
 
 UEqn.relax();
 
-Info<<"SATTIK GOING FOR U FVCONSTRAINTS IN UEqn.H"<<endl;
 fvConstraints.constrain(UEqn);
 
 if (pimple.momentumPredictor())

@@ -149,6 +149,7 @@ void Foam::directionMixedFvPatchField<Type>::evaluate(const Pstream::commsTypes)
         this->updateCoeffs();
     }
 
+    Info<<"SATTIK in Mixed BCs"<<endl;
     tmp<Field<Type>> normalValue = transform(valueFraction_, refValue_);
 
     tmp<Field<Type>> gradValue =
@@ -198,6 +199,3 @@ void Foam::directionMixedFvPatchField<Type>::write(Ostream& os) const
     writeEntry(os, "valueFraction", valueFraction_);
     writeEntry(os, "value", *this);
 }
-
-
-// ************************************************************************* //

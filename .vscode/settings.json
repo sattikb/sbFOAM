@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "sbFoam.C": "cpp"
+        "sbFoam.C": "cpp",
+        "*.tcc": "cpp",
+        "fixedJumpFvPatchField.C": "cpp",
+        "dimensionedSymmTensor.C": "cpp",
+        "dimensionedTensor.C": "cpp"
     }
 }

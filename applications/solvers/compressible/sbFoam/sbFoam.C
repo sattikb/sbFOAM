@@ -114,11 +114,13 @@ int main(int argc, char *argv[])
 
             fvModels.correct();
 
-		//SATTIK VELOCITY DEPENDENT VISCOSITY
-		srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
-		volScalarField srN0SB = max(srSB,nonZeroSmall);
-		muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
-
+	    //SATTIK VELOCITY DEPENDENT VISCOSITY
+	    //srSB = Foam::sqrt(2.0)*mag(symm(fvc::grad(U)));
+	    volTensorField srTensor = (fvc::grad(U) + T(fvc::grad(U)));
+	    //srSB = Foam::sqrt(srTensor && srTensor);
+	    srSB = Foam::sqrt(srTensor && fvc::grad(U));
+	    volScalarField srN0SB = max(srSB,nonZeroSmall);
+	    muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
             #include "UEqn.H"
 
             // --- Pressure corrector loop
@@ -129,11 +131,13 @@ int main(int argc, char *argv[])
 
             if (pimple.turbCorr())
             {
+		Info<<"SATTIK IN TURBCORRECTOR LOOP."<<endl;
                 turbulence->correct();
                 thermophysicalTransport->correct();
             }
-
+	    
             #include "EEqn.H"
+
         }
 
         if (!mesh.steady())
