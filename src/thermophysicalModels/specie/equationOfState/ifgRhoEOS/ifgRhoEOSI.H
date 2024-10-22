@@ -71,13 +71,13 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::rho(scalar p, scalar T) const
 
     const scalar mcFact = scalar(1.0) - MC_;
 
-    if (p<scalar(-32377.43))			//68949.57
+    if (p<scalar(68949.57))	
     {
-	const scalar pp = -32377.43;
+	const scalar pp = 68949.57;
 	const scalar rhoSum = a * pow(pp,3) + b * pow(pp,2) + c * pp + d;
     	return rhoSum / mcFact;
     }
-    else if (p>scalar(-32377.43) && p<scalar(25.0))	//68949.57, 101350
+    else if (p>scalar(68949.57) && p<scalar(101350.0))
     {
 	const scalar rhoSum = a * pow(p,3) + b * pow(p,2) + c * p + d;
     	return rhoSum / mcFact;
@@ -150,13 +150,13 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::psi(scalar p, scalar T) const
 
     const scalar mcFact = scalar(1.0) - MC_;
 
-    if (p<scalar(-32377.43))			//68949.57
+    if (p<scalar(68949.57))
     {
-	const scalar pp = -32377.43;		//68949.57
+	const scalar pp = 68949.57;
 	const scalar drdpSum = 3*a*pow(pp,2) + 2*b*pp + c;
     	return drdpSum / mcFact;
     }
-    else if (p>scalar(-32377.43) && p<scalar(25.0))	//68949.57, 101350
+    else if (p>scalar(68949.57) && p<scalar(101350.0))
     {
 	const scalar drdpSum = 3*a*pow(p,2) + 2*b*p + c;
     	return drdpSum / mcFact;
@@ -186,14 +186,14 @@ inline Foam::scalar Foam::ifgRhoEOS<Specie>::Z(scalar p, scalar T) const
 
     const scalar mcFact = scalar(1.0) - MC_;
 
-    if (p<scalar(-32377.43))			//68949.57
+    if (p<scalar(68949.57))
     {
-	const scalar pp = -32377.43;		//68949.57
+	const scalar pp = 68949.57;	
 	const scalar rhoSum = a * pow(pp,3) + b * pow(pp,2) + c * pp + d;
     	const scalar thisrho = rhoSum / mcFact;
 	return p/(thisrho*this->R()*T);
     }
-    else if (p>scalar(-32377.43) && p<scalar(25.0))	//68949.57, 101350
+    else if (p>scalar(68949.57) && p<scalar(101350.0))
     {
 	const scalar rhoSum = a * pow(p,3) + b * pow(p,2) + c * p + d;
     	const scalar thisrho = rhoSum / mcFact;

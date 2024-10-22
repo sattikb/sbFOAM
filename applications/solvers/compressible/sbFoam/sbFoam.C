@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
             }
 	    
             #include "EEqn.H"
+           // #include "TEqn.H"
 
         }
 

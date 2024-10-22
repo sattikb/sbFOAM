@@ -5,8 +5,6 @@
     volScalarField kappa = thermo.kappa();
     volScalarField Cp = thermo.Cp();
 
-    ////	SEE FINAL ENERGY EQUATION	////
-    
     ////	SHEAR STRESS TAU
     volTensorField tau1 = -2./3. * muSB * fvc::div(U) * ISB;
     volTensorField tau2 = muSB*( fvc::grad(U) + T(fvc::grad(U)) );
@@ -16,7 +14,8 @@
     volScalarField SBVD2 = fvc::div(tau2 & U);
 
     SBVD  = SBVD1 + SBVD2;
-//    SBVD = fvc::div(tauTot & U);
+    ////
+
     fvScalarMatrix EEqn
     (
         fvm::ddt(rho, he) + fvm::div(phi, he)
@@ -42,4 +41,13 @@
     // CALCULATES THE THERMO/TRANSPORT PROPERTIES USING THE he SOLUTION
     // CAN BE SEEN IN THE heRhoThermo FILE
     thermo.correct();
+
+//    fvScalarMatrix TSBEqn
+//    (
+//        Cp*fvm::ddt(rho, TSB) + Cp*fvm::div(phi, TSB)
+//     ==
+//        fvm::laplacian(kappa, TSB) + SBVD
+//    );
+
+//    TSBEqn.solve();
 }
