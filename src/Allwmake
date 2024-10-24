@@ -38,20 +38,22 @@ thermophysicalModels/Allwmake $targetType $*
 MomentumTransportModels/Allwmake $targetType $*
 ThermophysicalTransportModels/Allwmake $targetType $*
 
-mesh/Allwmake $targetType $*
+lagrangian/Allwmake $targetType $*
+dummyThirdParty/Allwmake $targetType $*
+parallel/Allwmake $targetType $*
+
+wmake $targetType mesh/extrudeModel
 wmake $targetType dynamicMesh
+mesh/Allwmake $targetType $*
 wmake $targetType dynamicFvMesh
 
 wmake $targetType topoChangerFvMesh
 
 wmake $targetType conversion
-lagrangian/Allwmake $targetType $*
 wmake $targetType sampling
 
 wmake $targetType fvModels
 wmake $targetType fvConstraints
 
-dummyThirdParty/Allwmake $targetType $*
 regionModels/Allwmake $targetType $*
-parallel/Allwmake $targetType $*
 wmake $targetType  genericPatchFields
