@@ -40,10 +40,10 @@ ThermophysicalTransportModels/Allwmake $targetType $*
 
 lagrangian/Allwmake $targetType $*
 dummyThirdParty/Allwmake $targetType $*
-parallel/Allwmake $targetType $*
 
 wmake $targetType mesh/extrudeModel
 wmake $targetType dynamicMesh
+parallel/Allwmake $targetType $*
 mesh/Allwmake $targetType $*
 wmake $targetType dynamicFvMesh
 
