@@ -1,0 +1,176 @@
+#include "tauRTFvPatchVectorField.H"
+#include "addToRunTimeSelectionTable.H"
+#include "volFields.H"
+#include "surfaceFields.H"
+#include "fvcGrad.H"
+
+// * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
+Foam::tauRTFvPatchVectorField::
+tauRTFvPatchVectorField
+(
+    const fvPatch& p,
+    const DimensionedField<vector, volMesh>& iF
+)
+:
+    fixedValueFvPatchField<vector>(p, iF),
+    tauRT_(),
+    mu_()
+{}
+
+
+Foam::tauRTFvPatchVectorField::
+tauRTFvPatchVectorField
+(
+    const fvPatch& p,
+    const DimensionedField<vector, volMesh>& iF,
+    const dictionary& dict
+)
+:
+    fixedValueFvPatchField<vector>(p, iF, dict, false),
+    tauRT_(dict.lookupOrDefault<scalar>("tauRT", 0.0)),
+    mu_(dict.lookupOrDefault<scalar>("mu",0.0))
+{
+    if (dict.found("value"))
+    {
+        fvPatchField<vector>::operator=
+        (
+            vectorField("value", dict, p.size())
+        );
+    }
+    else
+    {
+        // Evaluate the wall velocity
+        //updateCoeffs();
+    }
+}
+
+
+Foam::tauRTFvPatchVectorField::
+tauRTFvPatchVectorField
+(
+    const tauRTFvPatchVectorField& ptf,
+    const fvPatch& p,
+    const DimensionedField<vector, volMesh>& iF,
+    const fvPatchFieldMapper& mapper
+)
+:
+    fixedValueFvPatchField<vector>(ptf, p, iF, mapper),
+    tauRT_(ptf.tauRT_),
+    mu_(ptf.mu_)
+{}
+
+
+Foam::tauRTFvPatchVectorField::
+tauRTFvPatchVectorField
+(
+    const tauRTFvPatchVectorField& trtpvf,
+    const DimensionedField<vector, volMesh>& iF
+)
+:
+    fixedValueFvPatchField<vector>(trtpvf, iF),
+    tauRT_(trtpvf.tauRT_),
+    mu_(trtpvf.mu_)
+{}
+
+
+// * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
+
+void Foam::tauRTFvPatchVectorField::updateCoeffs()
+{
+    if (updated())
+    {
+        return;
+    }
+
+        const fvMesh& mesh = this->patch().boundaryMesh().mesh();
+        const labelList& faceCells = this->patch().faceCells();
+        const vectorField& faceCenters = this->patch().Cf();
+
+	const volVectorField& U = db().lookupObject<volVectorField>(this->internalField().name());
+	const vectorField& U_cell = U.internalField();
+	const fvPatchVectorField& U_face_patch = U.boundaryField()[this->patch().index()];
+	const vectorField& U_face = U_face_patch;
+
+        Field<vector>& patchField = *this;
+
+        forAll(patchField, facei)
+        {
+            // Get internal cell data
+            const label celli = faceCells[facei];
+
+	    vector U_face_val = U_face[facei];
+	    vector U_cell_val = U_cell[celli];
+
+	    const vector& faceCenter = faceCenters[facei];
+	    const vector& cellCenter = mesh.C()[celli];
+
+	    vector delta = this->patch().delta()()[facei];
+	    vector n = this->patch().nf()()[facei];
+	    scalar deltaNorm = (delta & n) + SMALL;
+	    vector gradU_normal = -(U_face[facei] - U_cell[facei]) / deltaNorm;
+
+	    tensor gradU_face;
+ 	    for (direction i = 0; i < vector::nComponents; ++i)
+ 	    {
+ 	        for (direction j = 0; j < vector::nComponents; ++j)
+ 	        {
+			gradU_face(i, j) = gradU_normal[i] * n[j];
+ 	        }
+ 	    }
+
+            // Compute cylindrical coordinates
+            const scalar x_f = faceCenter.x();
+            const scalar y_f = faceCenter.y();
+            const scalar r_f = sqrt( x_f*x_f + y_f*y_f );
+
+	    scalar a1 = x_f/r_f;
+	    scalar b1 = y_f/r_f;
+	    scalar c1 = 0.0;
+
+	    scalar dux_dx = gradU_face.component(tensor::XX);
+	    scalar duy_dx = gradU_face.component(tensor::XY);
+	    scalar dux_dy = gradU_face.component(tensor::YX);
+	    scalar duy_dy = gradU_face.component(tensor::YY);
+	    
+	    scalar c2a = x_f * x_f * duy_dx;
+	    scalar c2b = x_f * y_f * ( duy_dy - dux_dx );
+	    scalar c2c = y_f * y_f * dux_dy;
+	    scalar rhs = ( tauRT_ / mu_ ) * (r_f*r_f);
+
+	    scalar a2 =   y_f;
+	    scalar b2 = - x_f;
+	    scalar c2 =   rhs - (c2a + c2b - c2c);
+
+	    scalar det = a1*b2 - a2*b1;
+	    
+	    //Cramer's Rule
+	    scalar u_x = ( c1*b2 - c2*b1) / det;
+	    scalar u_y = (-c1*a2 + c2*a1) / det;
+	    scalar u_z = 0.0;
+
+            vector U_p(u_x, u_y, u_z);
+
+            patchField[facei] = U_p;
+        }
+
+    fixedValueFvPatchVectorField::updateCoeffs();
+}
+
+
+void Foam::tauRTFvPatchVectorField::write(Ostream& os) const
+{
+    fvPatchVectorField::write(os);
+    writeEntry(os, "tauRT", tauRT_);
+    writeEntry(os, "mu", mu_);
+    writeEntry(os, "value", *this);
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+namespace Foam
+{
+    makePatchTypeField
+    (
+        fvPatchVectorField,
+        tauRTFvPatchVectorField
+    );
+}

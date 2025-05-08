@@ -119,26 +119,6 @@ int main(int argc, char *argv[])
 	    srSB = Foam::sqrt(srTensor && fvc::grad(U));
 	    volScalarField srN0SB = max(srSB,nonZeroSmall);
 	    muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
-	    //NEAR WALL MODIFICATIONS
-	    forAll(mesh.boundary(), patchI)
-	    {
-		const fvPatch& patch = mesh.boundary()[patchI];
-		const labelList& faceCells = patch.faceCells(); // Cells attached to patch
-
-		forAll(faceCells, i)
-		{
-		    label cellID = faceCells[i];
-
-		    if (mesh.cellCells()[cellID].size() > 2) // Ensure three layers exist
-		    {
-			muWall[cellID] = muSB[cellID] * 2;
-			muWall[mesh.cellCells()[cellID][0]] = muSB[mesh.cellCells()[cellID][0]] * 20;
-			muWall[mesh.cellCells()[cellID][1]] = muSB[mesh.cellCells()[cellID][1]] * 20;
-		    }
-		}
-	    }
-	   // muSB = muSB + muWall;
-		
 
             #include "UEqn.H"
 
@@ -158,12 +138,6 @@ int main(int argc, char *argv[])
             #include "EEqn.H"
            // #include "TEqn.H"
             #include "computeTauRT.H"
-
-	//   forAll(tauRT, celli)
-	//	{
-	//	    const vector& C = mesh.C()[celli]; // Cell center coordinates
-	//	    tauRT[celli] = 6654212.9 / (C.x() * C.x() + C.y() * C.y());
-	//	}
 
         }
 

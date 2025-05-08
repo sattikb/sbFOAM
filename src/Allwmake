@@ -57,3 +57,4 @@ wmake $targetType fvConstraints
 
 regionModels/Allwmake $targetType $*
 wmake $targetType  genericPatchFields
+functionObjects/Allwmake $targetType $*

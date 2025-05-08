@@ -6,7 +6,7 @@ cd ${0%/*} || exit 1    # Run from this directory
 
 wmake $targetType momentumTransportModels
 wmake $targetType compressible
-#wmake $targetType incompressible
+wmake $targetType incompressible
 #wmake $targetType phaseIncompressible
 #wmake $targetType phaseCompressible
 

@@ -218,6 +218,7 @@ $(derivedFvPatchFields)/pressure/pressureFvPatchScalarField.C
 $(derivedFvPatchFields)/PrghPressure/prghPressureFvPatchScalarFields.C
 $(derivedFvPatchFields)/prghTotalHydrostaticPressure/prghTotalHydrostaticPressureFvPatchScalarField.C
 $(derivedFvPatchFields)/tauRTWallSB/tauRTWallFvPatchVectorField.C
+$(derivedFvPatchFields)/tauRTSB/tauRTFvPatchVectorField.C
 
 fvsPatchFields = fields/fvsPatchFields
 $(fvsPatchFields)/fvsPatchField/fvsPatchFields.C

@@ -78,7 +78,8 @@ volScalarField tauRT
         IOobject::NO_READ,
         IOobject::AUTO_WRITE
     ),
-    thermo.p()
+    mesh,
+    dimensionedScalar("tauRT",dimensionSet(1,-1,-2,0,0,0,0),1e-20)
 );
 
 //volScalarField TSB

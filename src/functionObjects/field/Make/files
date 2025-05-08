@@ -69,7 +69,7 @@ fieldsExpression/fieldsExpression.C
 add/add.C
 subtract/subtract.C
 multiply/multiply.C
-divide/divide.C
+#divide/divide.C
 
 interfaceHeight/interfaceHeight.C
 
