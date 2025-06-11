@@ -1,8 +1,8 @@
 // Description
 //     Set a constant shear stress as tau0 = -nuEff dU/dn.
 
-#ifndef fixedShearStressFvPatchVectorField_H
-#define fixedShearStressFvPatchVectorField_H
+#ifndef wallShearSBFvPatchVectorField_H
+#define wallShearSBFvPatchVectorField_H
 
 #include "fvPatchFields.H"
 #include "fixedValueFvPatchFields.H"
@@ -13,10 +13,10 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-             Class fixedShearStressFvPatchVectorField Declaration
+             Class wallShearSBFvPatchVectorField Declaration
 \*---------------------------------------------------------------------------*/
 
-class fixedShearStressFvPatchVectorField
+class wallShearSBFvPatchVectorField
 :
     public fixedValueFvPatchVectorField
 {
@@ -29,20 +29,20 @@ class fixedShearStressFvPatchVectorField
 public:
 
     //- Runtime type information
-    TypeName("fixedShearStress");
+    TypeName("wallShearSB");
 
 
     // Constructors
 
         //- Construct from patch and internal field
-        fixedShearStressFvPatchVectorField
+        wallShearSBFvPatchVectorField
         (
             const fvPatch&,
             const DimensionedField<vector, volMesh>&
         );
 
         //- Construct from patch, internal field and dictionary
-        fixedShearStressFvPatchVectorField
+        wallShearSBFvPatchVectorField
         (
             const fvPatch&,
             const DimensionedField<vector, volMesh>&,
@@ -50,24 +50,24 @@ public:
         );
 
         //- Construct by mapping given
-        fixedShearStressFvPatchVectorField
+        wallShearSBFvPatchVectorField
         (
-            const fixedShearStressFvPatchVectorField&,
+            const wallShearSBFvPatchVectorField&,
             const fvPatch&,
             const DimensionedField<vector, volMesh>&,
             const fvPatchFieldMapper&
         );
 
         //- Disallow copy without setting internal field reference
-        fixedShearStressFvPatchVectorField
+        wallShearSBFvPatchVectorField
         (
-            const fixedShearStressFvPatchVectorField&
+            const wallShearSBFvPatchVectorField&
         ) = delete;
 
         //- Copy constructor setting internal field reference
-        fixedShearStressFvPatchVectorField
+        wallShearSBFvPatchVectorField
         (
-            const fixedShearStressFvPatchVectorField&,
+            const wallShearSBFvPatchVectorField&,
             const DimensionedField<vector, volMesh>&
         );
 
@@ -79,7 +79,7 @@ public:
         {
             return tmp<fvPatchVectorField>
             (
-                new fixedShearStressFvPatchVectorField(*this, iF)
+                new wallShearSBFvPatchVectorField(*this, iF)
             );
         }
 

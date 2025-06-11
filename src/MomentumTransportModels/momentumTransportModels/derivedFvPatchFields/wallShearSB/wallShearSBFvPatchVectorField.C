@@ -1,4 +1,4 @@
-#include "fixedShearStressFvPatchVectorField.H"
+#include "wallShearSBFvPatchVectorField.H"
 #include "addToRunTimeSelectionTable.H"
 #include "fvPatchFieldMapper.H"
 #include "volFields.H"
@@ -7,7 +7,7 @@
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
+Foam::wallShearSBFvPatchVectorField::wallShearSBFvPatchVectorField
 (
     const fvPatch& p,
     const DimensionedField<vector, volMesh>& iF
@@ -18,7 +18,7 @@ Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
 {}
 
 
-Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
+Foam::wallShearSBFvPatchVectorField::wallShearSBFvPatchVectorField
 (
     const fvPatch& p,
     const DimensionedField<vector, volMesh>& iF,
@@ -32,9 +32,9 @@ Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
 }
 
 
-Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
+Foam::wallShearSBFvPatchVectorField::wallShearSBFvPatchVectorField
 (
-    const fixedShearStressFvPatchVectorField& ptf,
+    const wallShearSBFvPatchVectorField& ptf,
     const fvPatch& p,
     const DimensionedField<vector, volMesh>& iF,
     const fvPatchFieldMapper& mapper
@@ -45,9 +45,9 @@ Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
 {}
 
 
-Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
+Foam::wallShearSBFvPatchVectorField::wallShearSBFvPatchVectorField
 (
-    const fixedShearStressFvPatchVectorField& ptf,
+    const wallShearSBFvPatchVectorField& ptf,
     const DimensionedField<vector, volMesh>& iF
 )
 :
@@ -58,7 +58,7 @@ Foam::fixedShearStressFvPatchVectorField::fixedShearStressFvPatchVectorField
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-void Foam::fixedShearStressFvPatchVectorField::updateCoeffs()
+void Foam::wallShearSBFvPatchVectorField::updateCoeffs()
 {
     if (updated())
     {
@@ -75,23 +75,25 @@ void Foam::fixedShearStressFvPatchVectorField::updateCoeffs()
             )
         );
 
+    const volScalarField& rhoField = db().lookupObject<volScalarField>("rho");
+    const scalarField rho(rhoField.boundaryField()[patch().index()]);
+    
     scalarField nuEff(turbModel.nuEff(patch().index()));
+    scalarField muEff = nuEff * rho;
 
     const vectorField Uc(patchInternalField());
 
     vector tauHat = tau0_/(mag(tau0_) + rootVSmall);
 
-    Info<<"SATTIK NUEFF: "<<nuEff<<endl;
-
     const scalarField& ry = patch().deltaCoeffs();
 
-    operator==(tauHat*(tauHat & (tau0_*(1.0/(ry*nuEff)) + Uc)));
+    operator==(tauHat*(tauHat & (tau0_*(1.0/(ry*muEff)) + Uc)));
 
     fixedValueFvPatchVectorField::updateCoeffs();
 }
 
 
-void Foam::fixedShearStressFvPatchVectorField::write(Ostream& os) const
+void Foam::wallShearSBFvPatchVectorField::write(Ostream& os) const
 {
     fvPatchVectorField::write(os);
     writeEntry(os, "tau", tau0_);
@@ -106,6 +108,6 @@ namespace Foam
     makePatchTypeField
     (
         fvPatchVectorField,
-        fixedShearStressFvPatchVectorField
+        wallShearSBFvPatchVectorField
     );
 }

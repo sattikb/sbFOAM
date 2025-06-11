@@ -28,19 +28,6 @@ volScalarField muSB
     thermo.mu()
 );
 
-volScalarField muWall
-(
-    IOobject
-    (
-        "muWall",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    thermo.mu()
-);
-
 volScalarField SBVD
 (
     IOobject

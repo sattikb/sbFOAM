@@ -23,6 +23,7 @@ $(LESfilters)/anisotropicFilter/anisotropicFilter.C
 # Turbulence BCs
 derivedFvPatchFields/fixedShearStress/fixedShearStressFvPatchVectorField.C
 derivedFvPatchFields/porousBafflePressure/porousBafflePressureFvPatchField.C
+derivedFvPatchFields/wallShearSB/wallShearSBFvPatchVectorField.C
 
 
 # Wall function BCs

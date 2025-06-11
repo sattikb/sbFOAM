@@ -10,9 +10,9 @@ tmp<fvVectorMatrix> tUEqn
 (
     fvm::ddt(rho, U) + fvm::div(phi, U)
   + MRF.DDt(rho, U)
+  - fvm::laplacian(muSB , U)	//same as div(mu*grad(U))
  ==
-    fvm::laplacian(muSB , U)	//same as div(mu*grad(U))
-  + fvc::div(muSB * T(fvc::grad(U)))
+   fvc::div(muSB * T(fvc::grad(U)))
   + fvc::div(tau1) 
 );
 fvVectorMatrix& UEqn = tUEqn.ref();
