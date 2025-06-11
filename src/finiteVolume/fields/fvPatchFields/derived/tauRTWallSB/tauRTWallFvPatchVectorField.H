@@ -1,37 +1,7 @@
-/*---------------------------------------------------------------------------*\
-Description
-    Condition on velocity for a boundary consisting of a rotating solid of
-    revolution, e.g. cylinder. Calculates a tangential component of velocity
-    from the angular velocity and rotational axis and ensures a zero normal
-    component.
-
-Usage
-    \table
-        Property     | Description             | Required    | Default value
-        origin       | origin of rotation in Cartesian co-ordinates | yes|
-        axis         | axis of rotation        | yes         |
-        omega        | angular velocity of the frame [rad/s] | yes    |
-    \endtable
-
-    Example of the boundary condition specification:
-    \verbatim
-    <patchName>
-    {
-        type            rotatingWallVelocity;
-        origin          (0 0 0);
-        axis            (0 0 1);
-        omega           100;
-    }
-    \endverbatim
-
-    The \c omega entry is a Function1 of time, see Foam::Function1s.
-\*---------------------------------------------------------------------------*/
-
 #ifndef tauRTWallFvPatchVectorField_H
 #define tauRTWallFvPatchVectorField_H
 
 #include "fixedValueFvPatchFields.H"
-//#include "Function1.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

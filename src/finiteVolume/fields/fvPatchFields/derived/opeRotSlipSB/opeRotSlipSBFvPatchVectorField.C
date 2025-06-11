@@ -58,18 +58,17 @@ Foam::opeRotSlipSBFvPatchVectorField::opeRotSlipSBFvPatchVectorField
 
 Foam::opeRotSlipSBFvPatchVectorField::opeRotSlipSBFvPatchVectorField
 (
-    const opeRotSlipSBFvPatchVectorField& oswSB,
+    const opeRotSlipSBFvPatchVectorField& orswSB,
     const DimensionedField<vector, volMesh>& iF
 )
 :
-    fixedValueFvPatchVectorField(oswSB, iF),
-    k1_(oswSB.k1_),
-    k2_(oswSB.k2_),
-    C_(oswSB.C_),
-    omegap_(oswSB.omegap_),
-    sigma_(oswSB.sigma_)
+    fixedValueFvPatchVectorField(orswSB, iF),
+    k1_(orswSB.k1_),
+    k2_(orswSB.k2_),
+    C_(orswSB.C_),
+    omegap_(orswSB.omegap_),
+    sigma_(orswSB.sigma_)
 {}
-
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 

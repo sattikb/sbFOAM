@@ -58,7 +58,7 @@ public:
     opeSlipSBFvPatchVectorField
     (
         const opeSlipSBFvPatchVectorField&
-    );
+    ) = delete;
 
     //- Copy constructor setting internal field reference
     opeSlipSBFvPatchVectorField
@@ -66,15 +66,6 @@ public:
         const opeSlipSBFvPatchVectorField&,
         const DimensionedField<vector, volMesh>&
     );
-
-    //- Create a clone
-    virtual tmp<fvPatchVectorField> clone() const
-    {
-        return tmp<fvPatchVectorField>
-        (
-            new opeSlipSBFvPatchVectorField(*this)
-        );
-    }
 
     //- Create a clone with internal field reference
     virtual tmp<fvPatchVectorField> clone
