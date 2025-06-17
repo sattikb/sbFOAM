@@ -85,34 +85,35 @@ void Foam::opeSlipSBFvPatchVectorField::updateCoeffs()
 //    const vectorField& Uc = U.boundaryField()[patch().index()];
 //    const vectorField n = patch().nf(); // Normal vectors pointing out of the domain
 
+    const volScalarField& pField = db().lookupObject<volScalarField>("p");
+    const fvPatchScalarField& pp = pField.boundaryField()[patch().index()];
     // Initialize patch velocity field
     vectorField& Up = *this;
 
-    const vector vc = C_ * sigma_;
+    const scalar sigmaG  = sigma_[0];
+    const scalar sigmaNS = sigma_[1];
+    const scalar vMax    = 10;
 
     forAll(Up, faceI)
     {
- 
+	const scalar sigmaStar = (pp[faceI] - sigmaNS) / (sigmaG - sigmaNS);
+        const scalar vc        = C_ * sigmaStar;
+	const scalar vpStar    = mag(vp_) / vMax;
+	const vector dirVec   = (vpStar > SMALL) ? vp_ / vpStar : vector::zero;
 
-    	vector vw = vector::zero;
-    	scalar nn = pTraits<vector>::nComponents;
-    	for (direction ii = 0; ii< nn; ii++)
-    	{
-    	    const scalar vcComp  = vc.component(ii);
-    	    const scalar vpComp  = vp_.component(ii);
+	const scalar term = -k2_ * vc;
+        scalar xi = 0.0;
+        if (term<15) xi  = 1.0 / (1.0 + exp(term));
 
-    		const scalar xiComp  = 1.0 / (1.0 + exp(-k2_ * vcComp));
+        const scalar num   = 1.0 + exp(k1_ * (vc - vpStar));
+        const scalar den   = 1.0 + exp(k2_ * vc);
+        const scalar frac  = log(num) / (log(den) + SMALL);
 
-    	    const scalar num1   = 1.0 + exp(k1_ * (vcComp - vpComp));
-    	    const scalar den1   = 1.0 + exp(k2_ * vcComp);
-    	    const scalar frac1  = log(num1) / log(den1);
-    	    scalar vwComp = vcComp * xiComp * (1.0 - frac1);
+        scalar vw = vc * xi * (1.0 - frac);
+        if (vw > vc) vw = 0.0;
 
-    	    if (vwComp > vcComp) vwComp = 0.0;
-    	    vw.component(ii) = vwComp;
-    	}
+        Up[faceI] = vw * dirVec;
 
-    	Up[faceI] = vw;
     }
     
     fixedValueFvPatchVectorField::updateCoeffs();
