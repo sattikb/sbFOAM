@@ -133,10 +133,13 @@ int main(int argc, char *argv[])
 		Info<<"SATTIK IN TURBCORRECTOR LOOP."<<endl;
                 turbulence->correct();
                 thermophysicalTransport->correct();
+		Info<<"SATTIK COMPLETED TURBCORRECTOR LOOP."<<endl;
             }
 	    
-            #include "EEqn.H"
-            #include "computeTauRT.H"
+	    Info<<"SATTIK STARTING ENERGY CALCULATIONS"<<endl;
+            //#include "EEqn.H"
+	    Info<<"SATTIK COMPUTED ENERGY CALCULATIONS"<<endl;
+            //#include "computeTauRT.H"
 
         }
 

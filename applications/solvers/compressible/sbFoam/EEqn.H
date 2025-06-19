@@ -1,4 +1,5 @@
 {
+    Info<<"SATTIK IN  ENERGY EQUATION FILE"<<endl;
     volScalarField& he = thermo.he();
     heSol = thermo.he();
 
@@ -15,6 +16,7 @@
 
     SBVD  = SBVD1 + SBVD2;
     ////
+    Info<<"SATTIK IN  ENERGY EQUATION FILE"<<endl;
 
     fvScalarMatrix EEqn
     (
@@ -30,24 +32,20 @@
       + SBVD
     );
 
+    Info<<"SATTIK RELAXING ENERGY EQUATION"<<endl;
     EEqn.relax();
 
     fvConstraints.constrain(EEqn);
 
+    Info<<"SATTIK SOLVING ENERGY EQUATION"<<endl;
     EEqn.solve();
 
     fvConstraints.constrain(he);
 
     // CALCULATES THE THERMO/TRANSPORT PROPERTIES USING THE he SOLUTION
     // CAN BE SEEN IN THE heRhoThermo FILE
+
+    Info<<"SATTIK CORRECTING ENERGY EQUATION"<<endl;
     thermo.correct();
 
-//    fvScalarMatrix TSBEqn
-//    (
-//        Cp*fvm::ddt(rho, TSB) + Cp*fvm::div(phi, TSB)
-//     ==
-//        fvm::laplacian(kappa, TSB) + SBVD
-//    );
-
-//    TSBEqn.solve();
 }

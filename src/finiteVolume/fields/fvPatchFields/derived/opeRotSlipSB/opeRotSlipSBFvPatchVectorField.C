@@ -74,6 +74,7 @@ Foam::opeRotSlipSBFvPatchVectorField::opeRotSlipSBFvPatchVectorField
 
 void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
 {
+    Info<<"SATTIK IN OPE ROTATION SLIP BC."<<endl;
     if (updated())
     {
         return;
@@ -90,7 +91,7 @@ void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
 
     const scalar sigmaG  = sigma_[0];
     const scalar sigmaNS = sigma_[1];
-    const scalar vMax    = 10;
+    const scalar vMax    = 10.0;
 
     forAll(Up, faceI)
     {
@@ -102,7 +103,7 @@ void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
         
 	const scalar term = -k2_ * vc;
 	scalar xi = 0.0;
-	if (term<15) xi  = 1.0 / (1.0 + exp(term));	
+	if (term<15.0) xi  = 1.0 / (1.0 + exp(term));	
 
         const scalar num   = 1.0 + exp(k1_ * (vc - vp));
         const scalar den   = 1.0 + exp(k2_ * vc);
