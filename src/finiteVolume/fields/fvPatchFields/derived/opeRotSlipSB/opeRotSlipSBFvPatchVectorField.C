@@ -3,6 +3,7 @@
 #include "volFields.H"
 #include "surfaceFields.H"
 #include "addToRunTimeSelectionTable.H"
+#include "Random.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -91,15 +92,19 @@ void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
 
     const scalar sigmaG  = sigma_[0];
     const scalar sigmaNS = sigma_[1];
-    const scalar vMax    = 10.0;
 
+//    static Random rand(123456);
+//    const scalar sigmaStar = rand.scalar01();
     forAll(Up, faceI)
     {
-	const scalar sigmaStar = (pp[faceI] - sigmaNS) / (sigmaG - sigmaNS);
+	//const scalar sigmaStar = (pp[faceI] - sigmaNS) / (sigmaG - sigmaNS);
+	const scalar sigmaStar = (pp[faceI] - sigmaG) / (sigmaNS - sigmaG);
+//    	const scalar sigmaStar = rand.scalar01();
     	const scalar vc = C_ * sigmaStar;
         const vector plateVel = omegap_ ^ patch().Cf()[faceI];
+    	const scalar vMax     = mag(plateVel);
 	const scalar vp       = mag(plateVel) / vMax; 
-	const vector dirVec   = (vp > SMALL) ? plateVel / vp : vector::zero;
+	const vector dirVec   = (vp > SMALL) ? plateVel / vMax : vector::zero;
         
 	const scalar term = -k2_ * vc;
 	scalar xi = 0.0;
@@ -111,7 +116,9 @@ void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
         
 	scalar vw = vc * xi * (1.0 - frac);
         if (vw > vc) vw = 0.0;
+	vw = vw * vMax;
 
+	
     	Up[faceI] = vw * dirVec;
     }
     
