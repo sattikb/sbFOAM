@@ -106,14 +106,23 @@ void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
 	const scalar vp       = mag(plateVel) / vMax; 
 	const vector dirVec   = (vp > SMALL) ? plateVel / vMax : vector::zero;
         
-	const scalar term = -k2_ * vc;
+	scalar term = -k2_ * vc;
 	scalar xi = 0.0;
 	if (term<15.0) xi  = 1.0 / (1.0 + exp(term));	
 
-        const scalar num   = 1.0 + exp(k1_ * (vc - vp));
-        const scalar den   = 1.0 + exp(k2_ * vc);
-        const scalar frac  = log(num) / (log(den) + SMALL);
-        
+	scalar term1 = k1_ * (vc - vp);
+	scalar term2 = k2_ * vc;
+        scalar num   = term1;
+        scalar den   = term2;
+	scalar frac  = num / (den + SMALL);
+	if (term<15.0 || term2<15.0) 
+	{
+		num   = 1.0 + exp(term1);
+		den   = 1.0 + exp(term2);
+		frac  = log(num) / (log(den) + SMALL);
+	}
+
+//        Info<<"SATTIK frac: "<<frac<<" num: "<<num<<" den: "<<den<<endl;
 	scalar vw = vc * xi * (1.0 - frac);
         if (vw > vc) vw = 0.0;
 	vw = vw * vMax;

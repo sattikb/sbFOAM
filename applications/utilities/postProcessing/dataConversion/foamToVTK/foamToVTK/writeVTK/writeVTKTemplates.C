@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) YEAR OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2016-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -23,70 +23,38 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "forThermo.H"
-#include "makeReactionThermo.H"
+#include "writeVTK.H"
+#include "objectRegistry.H"
+#include "DynamicList.H"
 
-#include "${specie}.H"
+// * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
 
-#include "thermo.H"
-
-// EoS
-#include "${equationOfState}.H"
-
-// Thermo
-#include "${thermo}Thermo.H"
-#include "${energy}.H"
-
-// Transport
-#include "${transport}Transport.H"
-
-// psi/rho
-#include "${typeBase}.H"
-#include "${type}.H"
-
-// Mixture
-#include "${mixture}.H"
-
-
-// * * * * * * * * * * * * * * * Global Functions  * * * * * * * * * * * * * //
-
-extern "C"
+template<class GeoField>
+Foam::UPtrList<const GeoField>
+Foam::functionObjects::writeVTK::lookupFields() const
 {
-    // dynamicCode:
-    // SHA1 = ${SHA1sum}
-    //
-    // Unique function name that can be checked if the correct library version
-    // has been loaded
-    void ${typeName}_${SHA1sum}(bool load)
+    DynamicList<word> allNames(obr_.toc().size());
+    forAll(objectNames_, i)
     {
-        if (load)
+        wordList names(obr_.names<GeoField>(objectNames_[i]));
+
+        if (names.size())
         {
-            // code that can be explicitly executed after loading
-        }
-        else
-        {
-            // code that can be explicitly executed before unloading
+            allNames.append(names);
         }
     }
-}
 
+    UPtrList<const GeoField> fields(allNames.size());
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+    forAll(allNames, i)
+    {
+        const GeoField& field = obr_.lookupObject<GeoField>(allNames[i]);
+        Info<< "    Writing " << GeoField::typeName
+            << " field " << field.name() << endl;
+        fields.set(i, &field);
+    }
 
-namespace Foam
-{
-    forThermo
-    (
-        ${transport}Transport,
-        ${energy},
-        ${thermo}Thermo,
-        ${equationOfState},
-        ${specie},
-        makeReactionThermo,
-        ${typeBase},
-        ${type},
-        ${mixture}
-    );
+    return fields;
 }
 
 

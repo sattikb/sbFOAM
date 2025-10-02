@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) YEAR OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -23,71 +23,59 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "forThermo.H"
-#include "makeReactionThermo.H"
-
-#include "${specie}.H"
-
-#include "thermo.H"
-
-// EoS
-#include "${equationOfState}.H"
-
-// Thermo
-#include "${thermo}Thermo.H"
-#include "${energy}.H"
-
-// Transport
-#include "${transport}Transport.H"
-
-// psi/rho
-#include "${typeBase}.H"
-#include "${type}.H"
-
-// Mixture
-#include "${mixture}.H"
-
-
-// * * * * * * * * * * * * * * * Global Functions  * * * * * * * * * * * * * //
-
-extern "C"
-{
-    // dynamicCode:
-    // SHA1 = ${SHA1sum}
-    //
-    // Unique function name that can be checked if the correct library version
-    // has been loaded
-    void ${typeName}_${SHA1sum}(bool load)
-    {
-        if (load)
-        {
-            // code that can be explicitly executed after loading
-        }
-        else
-        {
-            // code that can be explicitly executed before unloading
-        }
-    }
-}
-
+#include "readFields.H"
+#include "IOobjectList.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-    forThermo
-    (
-        ${transport}Transport,
-        ${energy},
-        ${thermo}Thermo,
-        ${equationOfState},
-        ${specie},
-        makeReactionThermo,
-        ${typeBase},
-        ${type},
-        ${mixture}
-    );
+
+// * * * * * * * * * * * * * * * Global Functions  * * * * * * * * * * * * * //
+
+template<class GeoField>
+void readFields
+(
+    const vtkMesh& vMesh,
+    const typename GeoField::Mesh& mesh,
+    const IOobjectList& objects,
+    const HashSet<word>& selectedFields,
+    PtrList<const GeoField>& fields
+)
+{
+    // Search list of objects for volScalarFields
+    IOobjectList fieldObjects(objects.lookupClass(GeoField::typeName));
+
+    // Construct the vol scalar fields
+    fields.setSize(fieldObjects.size());
+    label nFields = 0;
+
+    forAllIter(IOobjectList, fieldObjects, iter)
+    {
+        if (selectedFields.empty() || selectedFields.found(iter()->name()))
+        {
+            fields.set
+            (
+                nFields,
+                vMesh.interpolate
+                (
+                    GeoField
+                    (
+                        *iter(),
+                        mesh
+                    )
+                ).ptr()
+            );
+            nFields++;
+        }
+    }
+
+    fields.setSize(nFields);
 }
 
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+} // End namespace Foam
 
 // ************************************************************************* //

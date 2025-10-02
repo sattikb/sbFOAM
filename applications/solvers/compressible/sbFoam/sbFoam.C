@@ -137,9 +137,9 @@ int main(int argc, char *argv[])
             }
 	    
 	    Info<<"SATTIK STARTING ENERGY CALCULATIONS"<<endl;
-            //#include "EEqn.H"
+            #include "EEqn.H"
 	    Info<<"SATTIK COMPUTED ENERGY CALCULATIONS"<<endl;
-            //#include "computeTauRT.H"
+            #include "computeTauRT.H"
 
         }
 

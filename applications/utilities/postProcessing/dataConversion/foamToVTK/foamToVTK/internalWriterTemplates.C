@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) YEAR OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2020 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -23,70 +23,56 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "forThermo.H"
-#include "makeThermo.H"
+#include "internalWriter.H"
+#include "vtkWriteFieldOps.H"
 
-#include "${specie}.H"
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include "thermo.H"
-
-// EoS
-#include "${equationOfState}.H"
-
-// Thermo
-#include "${thermo}Thermo.H"
-#include "${energy}.H"
-
-// Transport
-#include "${transport}Transport.H"
-
-// psi/rho
-#include "${typeBase}.H"
-#include "${type}.H"
-
-// Mixture
-#include "${mixture}.H"
-
-
-// * * * * * * * * * * * * * * * Global Functions  * * * * * * * * * * * * * //
-
-extern "C"
+template<class Type, class GeoMesh>
+void Foam::internalWriter::write
+(
+    const UPtrList<const DimensionedField<Type, GeoMesh>>& flds
+)
 {
-    // dynamicCode:
-    // SHA1 = ${SHA1sum}
-    //
-    // Unique function name that can be checked if the correct library version
-    // has been loaded
-    void ${typeName}_${SHA1sum}(bool load)
+    forAll(flds, i)
     {
-        if (load)
-        {
-            // code that can be explicitly executed after loading
-        }
-        else
-        {
-            // code that can be explicitly executed before unloading
-        }
+        vtkWriteOps::write(os_, binary_, flds[i], vMesh_);
     }
 }
 
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-namespace Foam
+template<class Type, template<class> class PatchField, class GeoMesh>
+void Foam::internalWriter::write
+(
+    const UPtrList<const GeometricField<Type, PatchField, GeoMesh>>& flds
+)
 {
-    forThermo
-    (
-        ${transport}Transport,
-        ${energy},
-        ${thermo}Thermo,
-        ${equationOfState},
-        ${specie},
-        makeThermo,
-        ${typeBase},
-        ${type},
-        ${mixture}
-    );
+    forAll(flds, i)
+    {
+        vtkWriteOps::write(os_, binary_, flds[i], vMesh_);
+    }
 }
+
+
+template<class Type>
+void Foam::internalWriter::write
+(
+    const volPointInterpolation& pInterp,
+    const UPtrList<const GeometricField<Type, fvPatchField, volMesh>>& flds
+)
+{
+    forAll(flds, i)
+    {
+        vtkWriteOps::write
+        (
+            os_,
+            binary_,
+            flds[i],
+            pInterp.interpolate(flds[i])(),
+            vMesh_
+        );
+    }
+}
+
 
 // ************************************************************************* //
