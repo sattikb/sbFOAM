@@ -42,6 +42,7 @@ License
 
 #include "constTransport.H"
 #include "sbMuKappa.H"
+#include "viscSB.H"
 
 #include "thermo.H"
 
@@ -63,7 +64,8 @@ License
 
 #define forLiquidTransports(Macro, Args...)                                    \
     forLiquidEnergiesAndThermos(constTransport, Macro, Args);			\
-    forLiquidEnergiesAndThermos(sbMuKappa, Macro, Args)
+    forLiquidEnergiesAndThermos(sbMuKappa, Macro, Args);				\
+    forLiquidEnergiesAndThermos(viscSB, Macro, Args)
 
 #define forLiquids(Macro, Args...)                                             \
     forLiquidTransports(Macro, Args)
@@ -84,7 +86,8 @@ License
 
 #define forCoeffLiquidTransports(Macro, Args...)                               \
     forCoeffLiquidEnergiesAndThermos(constTransport, Macro, Args);		\
-    forCoeffLiquidEnergiesAndThermos(sbMuKappa, Macro, Args)
+    forCoeffLiquidEnergiesAndThermos(sbMuKappa, Macro, Args);			\
+    forCoeffLiquidEnergiesAndThermos(viscSB, Macro, Args)
 
 #define forCoeffLiquids(Macro, Args...)                                        \
     forCoeffLiquidTransports(Macro, Args)

@@ -1,80 +1,37 @@
-/*---------------------------------------------------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2013-2020 OpenFOAM Foundation
-     \\/     M anipulation  |
--------------------------------------------------------------------------------
-License
-    This file is part of OpenFOAM.
-
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
-
-Class
-    Foam::functionObjects::wallShearStress
-
-Description
-    Calculates and write the shear-stress at wall patches as
-    the volVectorField field 'wallShearStress'.
-
-        \f[
-            Stress = R \dot n
-        \f]
-
-    where
-    \vartable
-        R       | stress tensor
-        n       | patch normal vector (into the domain)
-    \endvartable
-
-    The shear-stress symmetric tensor field is retrieved from the turbulence
-    model.  All wall patches are included by default; to restrict the
-    calculation to certain patches, use the optional 'patches' entry.
-
-    Example of function object specification:
-    \verbatim
-    wallShearStress1
-    {
-        type        wallShearStress;
-        libs        ("libfieldFunctionObjects.so");
-        ...
-        patches     (".*Wall");
-    }
-    \endverbatim
-
-Usage
-    \table
-        Property | Description               | Required    | Default value
-        type     | type name: wallShearStress | yes        |
-        patches  | list of patches to process | no         | all wall patches
-    \endtable
-
-Note
-    Writing field 'wallShearStress' is done by default, but it can be overridden
-    by defining an empty \c objects list. For details see writeLocalObjects.
-
-See also
-    Foam::functionObject
-    Foam::functionObjects::fvMeshFunctionObject
-    Foam::functionObjects::logFiles
-    Foam::functionObjects::writeLocalObjects
-    Foam::functionObjects::timeControl
-
-SourceFiles
-    wallShearStress.C
-
-\*---------------------------------------------------------------------------*/
+//     Calculates and write the shear-stress at wall patches as
+//     the volVectorField field 'wallShearStress'.
+// 
+//         \f[
+//             Stress = R \dot n
+//         \f]
+// 
+//     where
+//     \vartable
+//         R       | stress tensor
+//         n       | patch normal vector (into the domain)
+//     \endvartable
+// 
+//     The shear-stress symmetric tensor field is retrieved from the turbulence
+//     model.  All wall patches are included by default; to restrict the
+//     calculation to certain patches, use the optional 'patches' entry.
+// 
+//     Example of function object specification:
+//     \verbatim
+//     wallShearStress1
+//     {
+//         type        wallShearStress;
+//         libs        ("libfieldFunctionObjects.so");
+//         ...
+//         patches     (".*Wall");
+//     }
+//     \endverbatim
+// 
+// Usage
+//     \table
+//         Property | Description               | Required    | Default value
+//         type     | type name: wallShearStress | yes        |
+//         patches  | list of patches to process | no         | all wall patches
+//     \endtable
 
 #ifndef functionObjects_wallShearStress_H
 #define functionObjects_wallShearStress_H
@@ -174,5 +131,3 @@ public:
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #endif
-
-// ************************************************************************* //

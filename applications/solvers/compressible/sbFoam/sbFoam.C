@@ -1,10 +1,10 @@
-// THIS IS THE MAIN SOLVER. ALL BEGIN AND END HERE
-//
 #include "fvCFDSB.H"
 #include "dynamicFvMesh.H"
+#include "fluidThermoSB.H"
 #include "dynamicMomentumTransportModelSB.H"
 #include "fluidThermophysicalTransportModelSB.H"
 #include "pimpleControl.H"
+#include "pressureReference.H"
 #include "CorrectPhi.H"
 #include "fvModels.H"
 #include "fvConstraints.H"
@@ -114,13 +114,8 @@ int main(int argc, char *argv[])
 
             fvModels.correct();
 
-	    //SATTIK VELOCITY DEPENDENT VISCOSITY
-	    volTensorField srTensor = (fvc::grad(U) + T(fvc::grad(U)));
-	    srSB = Foam::sqrt(srTensor && fvc::grad(U));
-	    volScalarField srN0SB = max(srSB,nonZeroSmall);
-	    muSB = muInf + (mu0-muInf)/( 1.0+pow(kSB*srN0SB,nSB) );
-
             #include "UEqn.H"
+            #include "EEqn.H"
 
             // --- Pressure corrector loop
             while (pimple.correct())
@@ -130,17 +125,9 @@ int main(int argc, char *argv[])
 
             if (pimple.turbCorr())
             {
-		Info<<"SATTIK IN TURBCORRECTOR LOOP."<<endl;
                 turbulence->correct();
                 thermophysicalTransport->correct();
-		Info<<"SATTIK COMPLETED TURBCORRECTOR LOOP."<<endl;
             }
-	    
-	    Info<<"SATTIK STARTING ENERGY CALCULATIONS"<<endl;
-            #include "EEqn.H"
-	    Info<<"SATTIK COMPUTED ENERGY CALCULATIONS"<<endl;
-            #include "computeTauRT.H"
-
         }
 
         if (!mesh.steady())

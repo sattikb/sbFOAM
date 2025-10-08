@@ -1,7 +1,5 @@
 if ((!mesh.steady() && !pimple.simpleRho()) || pimple.consistent())
 {
-    Info<<"SATTIK (UNSTEADY & NOT SIMPLE) OR INCONSITSTENT"<<endl;
-    Info<<"	THUS WILL USE EOS TO CALCULATE RHO NOW"<<endl;
     rho = thermo.rho();
 }
 
@@ -9,36 +7,30 @@ if ((!mesh.steady() && !pimple.simpleRho()) || pimple.consistent())
 // pressure solution
 const volScalarField psip0(psi*p);
 
-// THINK OF AU-H=-grad(p)
-// THIS IS 1/A -> A is the diagonal matrix from MU=-grad(p)
 const volScalarField rAU("rAU", 1.0/UEqn.A());
-// THIS IS rho*inv(A)
 const surfaceScalarField rhorAUf("rhorAUf", fvc::interpolate(rho*rAU));
-// THIS IS 1(1/A-H1)
+
 tmp<volScalarField> rAtU
 (
     pimple.consistent()
   ? volScalarField::New("rAtU", 1.0/(1.0/rAU - UEqn.H1()))
   : tmp<volScalarField>(nullptr)
 );
-// THIS IS rho*inv(A-H1)
 tmp<surfaceScalarField> rhorAtUf
 (
     pimple.consistent()
   ? surfaceScalarField::New("rhoRAtUf", fvc::interpolate(rho*rAtU()))
   : tmp<surfaceScalarField>(nullptr)
 );
-// THIS IS EITHER inv(A-H1) OR inv(A)
+
 const volScalarField& rAAtU = pimple.consistent() ? rAtU() : rAU;
-// THIS IS EITHER rho*inv(A-H1) OR rho*inv(A)
 const surfaceScalarField& rhorAAtUf =
     pimple.consistent() ? rhorAtUf() : rhorAUf;
-// THIS is inv(A)&H
+
 volVectorField HbyA(constrainHbyA(rAU*UEqn.H(), U, p));
 
 if (pimple.nCorrPiso() <= 1)
 {
-    Info<<"SATTIK  HAS nCorrPiso LESS THAN 1"<<endl;
     tUEqn.clear();
 }
 
@@ -59,7 +51,6 @@ constrainPressure(p, rho, U, phiHbyA, rhorAAtUf, MRF);
 
 if (pimple.transonic())
 {
-    Info<<"SATTIK HAS TRANSONIC FLOW"<<endl;
     surfaceScalarField phid
     (
         "phid",
@@ -105,10 +96,8 @@ if (pimple.transonic())
 }
 else
 {
-    Info<<"SATTIK DOES NOT HAVE TRANSONIC FLOW"<<endl;
     if (mesh.steady())
     {
-	Info<<"SATTIK HAS STEADY MESH"<<endl;
         adjustMass = adjustPhi(phiHbyA, U, p);
     }
 

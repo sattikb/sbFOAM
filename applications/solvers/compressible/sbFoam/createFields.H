@@ -38,7 +38,6 @@ volVectorField U
     mesh
 );
 
-Info<<"SATTIK ENTERING compressibleCreatePhiSB.H"<<endl;
 #include "compressibleCreatePhiSB.H"
 
 pressureReference pressureReference
@@ -75,9 +74,7 @@ volScalarField dpdt
     (
         "dpdt",
         runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::AUTO_WRITE
+        mesh
     ),
     mesh,
     dimensionedScalar(p.dimensions()/dimTime, 0)

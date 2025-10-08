@@ -2,8 +2,44 @@
 // heRhoThermo IS CALLED IN THE EEqn FILE
 
 #include "heRhoThermo.H"
-
+#include "typeInfo.H"  // For runtime type() checks
+#include "word.H"  // For word::null (if not already included via thermo headers)
+#include <type_traits>  // For std::enable_if, std::declval
+#include "fvc.H"
+			
 // * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * //
+
+// Trait to check if mu3ArgSB exists on the type
+template<class T>
+struct has_mu3ArgSB {
+private:
+    template<class U>
+    static auto test(int) -> decltype(std::declval<U>().mu3ArgSB(std::declval<Foam::scalar>(), std::declval<Foam::scalar>(), std::declval<Foam::scalar>()), std::true_type{});
+    template<class> static std::false_type test(...);
+public:
+    static constexpr bool value = decltype(test<T>(0))::value;
+};
+
+// SFINAE helper: Use mu3ArgSB if available, else standard mu(p, T)
+namespace Foam
+{
+    // Primary overload: Enabled only if has_mu3ArgSB<T>::value == true
+    template<class TransportType>
+    auto callMu3ArgSB(const TransportType& t, scalar p, scalar T, scalar sr)
+        -> typename std::enable_if<has_mu3ArgSB<TransportType>::value, scalar>::type
+    {
+        return t.mu3ArgSB(p, T, sr);
+    }
+
+    // Fallback overload: Enabled only if has_mu3ArgSB<T>::value == false
+    template<class TransportType>
+    auto callMu3ArgSB(const TransportType& t, scalar p, scalar T, scalar sr)
+        -> typename std::enable_if<!has_mu3ArgSB<TransportType>::value, scalar>::type
+    {
+        return t.mu(p, T);  // Ignores umag
+    }
+}
+
 
 template<class BasicRhoThermo, class MixtureType>
 void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
@@ -18,6 +54,31 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
     scalarField& rhoCells = this->rho_.primitiveFieldRef();
     scalarField& muCells = this->mu_.primitiveFieldRef();
     scalarField& alphaCells = this->alpha_.primitiveFieldRef();
+    
+    //
+    bool useStrainRate = this->db().template foundObject<volVectorField>("U");
+    dimensionedScalar smallSrSB("smallSrSB", dimless/dimTime, 1e-15);
+    volScalarField srN0SB
+    (
+        IOobject
+        (
+            "srN0SB",
+            this->db().time().timeName(),
+            this->db(),
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        this->p().mesh(),
+	smallSrSB
+    );
+
+    if (useStrainRate)
+    {
+        const volVectorField& U = this->db().template lookupObject<volVectorField>("U");
+        volTensorField srTensor = (fvc::grad(U) + T(fvc::grad(U)));
+        volScalarField srSB = Foam::sqrt(srTensor && fvc::grad(U));
+        srN0SB = max(srSB, smallSrSB);
+    }
 
     forAll(TCells, celli)
     {
@@ -27,6 +88,8 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
         const typename MixtureType::transportMixtureType& transportMixture =
             this->cellTransportMixture(celli, thermoMixture);
 
+	
+	
 	// .THE() IS DEFINED IN thermoI.H	
 	// CALCULATES T FOR NEW TIME-STEP
         TCells[celli] = thermoMixture.THE
@@ -41,7 +104,10 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
         psiCells[celli] = thermoMixture.psi(pCells[celli], TCells[celli]);
         rhoCells[celli] = thermoMixture.rho(pCells[celli], TCells[celli]);
 
-        muCells[celli] = transportMixture.mu(pCells[celli], TCells[celli]);
+	/////////////
+	muCells[celli] = Foam::callMu3ArgSB(transportMixture, pCells[celli], TCells[celli], srN0SB[celli]);
+	/////////////
+        // muCells[celli] = transportMixture.mu(pCells[celli], TCells[celli]);
         alphaCells[celli] =
             transportMixture.kappa(pCells[celli], TCells[celli])
            /thermoMixture.Cp(pCells[celli], TCells[celli]);
@@ -104,8 +170,10 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
                 pCv[facei] = thermoMixture.Cv(pp[facei], pT[facei]);
                 ppsi[facei] = thermoMixture.psi(pp[facei], pT[facei]);
                 prho[facei] = thermoMixture.rho(pp[facei], pT[facei]);
-
-                pmu[facei] = transportMixture.mu(pp[facei], pT[facei]);
+		////////////// NEW: Conditional mu call (mirrors internal)
+		pmu[facei] = Foam::callMu3ArgSB(transportMixture, pp[facei], pT[facei], srN0SB.boundaryField()[patchi][facei]);
+                //////////////
+        //        pmu[facei] = transportMixture.mu(pp[facei], pT[facei]);
                 palpha[facei] =
                     transportMixture.kappa(pp[facei], pT[facei])
                    /thermoMixture.Cp(pp[facei], pT[facei]);
@@ -130,7 +198,10 @@ void Foam::heRhoThermo<BasicRhoThermo, MixtureType>::calculate()
                 ppsi[facei] = thermoMixture.psi(pp[facei], pT[facei]);
                 prho[facei] = thermoMixture.rho(pp[facei], pT[facei]);
 
-                pmu[facei] = transportMixture.mu(pp[facei], pT[facei]);
+		////////////// NEW: Conditional mu call (mirrors internal)
+		pmu[facei] = Foam::callMu3ArgSB(transportMixture, pp[facei], pT[facei], srN0SB.boundaryField()[patchi][facei]);
+                //////////////
+        //        pmu[facei] = transportMixture.mu(pp[facei], pT[facei]);
                 palpha[facei] =
                     transportMixture.kappa(pp[facei], pT[facei])
                    /thermoMixture.Cp(pp[facei], pT[facei]);
