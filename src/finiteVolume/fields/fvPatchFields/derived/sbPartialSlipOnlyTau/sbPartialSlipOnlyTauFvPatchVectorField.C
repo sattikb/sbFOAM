@@ -28,7 +28,7 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
 )
 :
     fixedValueFvPatchVectorField(p, iF, dict, false),
-    omega_(dict.lookup<vector>("omegaShaft")),
+    omega_(dict.lookup<vector>("shaftOmega")),
     alpha_(dict.lookup<scalar>("alpha")),
     m_(dict.lookup<scalar>("m"))
 {
@@ -67,18 +67,18 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
 
 void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
 {
-    Info<<"SATTIK IN OPE ROTATION SLIP BC."<<endl;
+    Info<<"SATTIK IN MODIFIED MOONEY PARTIAL SLIP."<<endl;
     if (updated())
     {
         return;
     }
 
     const fvPatch& p = patch();
-    const vectorField& n = p.nf();
+    const vectorField n = p.nf();
 
     // Get the velocity field from the database
     const volVectorField& U = db().lookupObject<volVectorField>("U");
-    const volScalarField& mu = db().lookupObject<volScalarField>("mu");
+    const volScalarField& mu = db().lookupObject<volScalarField>("thermo:mu");
     const volScalarField& pField = db().lookupObject<volScalarField>("p");
 
 //    const fvPatchVectorField& Ubound = U.boundaryField()[p.index()];
@@ -88,13 +88,13 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
     tensorField gradU = fvc::grad(U)().boundaryField()[p.index()];
 
     vectorField& Up = *this;
-
     forAll(Up, faceI)
     {
-        const tensor& gradUf = gradU[faceI];
-        const vector& nf = n[faceI];
         scalar muf = mup[faceI];
         scalar pf = pp[faceI];
+
+        const vector& nf = n[faceI];
+        const tensor& gradUf = gradU[faceI];
 
 	tensor tauf = muf*(gradUf + gradUf.T()) - (2.0/3.0)*muf*(tr(gradUf))*I;
 	tensor sigmaf = tauf - pf*I;
@@ -104,7 +104,7 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
 	vector stressWS = traction  - stressWN*nf;
 	
 	scalar tauW = mag(stressWS);
-	scalar tauStar = tauW / stressWN;
+	scalar tauStar = - tauW / stressWN;
 
 	const vector plateVel = omega_ ^ patch().Cf()[faceI];
 
@@ -113,12 +113,18 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
         {
 	    vector dir = -stressWS/tauW;
             scalar coeff = alpha_*pow(tauStar, m_);
-            Up[faceI] = coeff * dir;
+
+	    label own = p.faceCells()[faceI];
+            vector cellVel = U[own];
+            scalar magCellVel = mag(cellVel);
+
+            Up[faceI] = coeff * dir * magCellVel;
         }
         else
         {
             Up[faceI] = plateVel;
         }
+//	Info<<"------ value of taustar is: "<<tauStar<<endl;
     }
     
     fixedValueFvPatchVectorField::updateCoeffs();
@@ -128,7 +134,7 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
 void Foam::sbPartialSlipOnlyTauFvPatchVectorField::write(Ostream& os) const
 {
     fvPatchVectorField::write(os);
-    writeEntry(os, "omega", omega_);
+    writeEntry(os, "shaftOmega", omega_);
     writeEntry(os, "alpha", alpha_);
     writeEntry(os, "m", m_);
     writeEntry(os, "value", *this);
