@@ -1,5 +1,5 @@
-#ifndef opeSlipSBFvPatchVectorField_H
-#define opeSlipSBFvPatchVectorField_H
+#ifndef sbPartialSlipOnlyTauFvPatchVectorField_H
+#define sbPartialSlipOnlyTauFvPatchVectorField_H
 
 #include "fvPatchFields.H"
 #include "fixedValueFvPatchFields.H"
@@ -10,60 +10,58 @@ namespace Foam
 {
 
 /*---------------------------------------------------------------------------*\
-                 Class opeSlipSBFvPatchVectorField Declaration
+                 Class sbPartialSlipOnlyTauFvPatchVectorField Declaration
 \*---------------------------------------------------------------------------*/
 
-class opeSlipSBFvPatchVectorField
+class sbPartialSlipOnlyTauFvPatchVectorField
 :
     public fixedValueFvPatchVectorField
 {
 private:
     // Private Data
-    scalar k1_;     // First constant (k1 = 50)
-    scalar k2_;     // Second constant (k2 = 50)
-    scalar C_;      // Constant (C = 1)
-    vector vp_;     // Constant (C = 1)
-    vector sigma_;  // User-specified sigma value
+    vector omega_; 
+    scalar alpha_; 
+    scalar m_;    
 
 public:
     //- Runtime type information
-    TypeName("opeSlipSB");
+    TypeName("sbPartialSlipOnlyTau");
 
     // Constructors
     //- Construct from patch and internal field
-    opeSlipSBFvPatchVectorField
+    sbPartialSlipOnlyTauFvPatchVectorField
     (
         const fvPatch&,
         const DimensionedField<vector, volMesh>&
     );
 
     //- Construct from patch, internal field, and dictionary
-    opeSlipSBFvPatchVectorField
+    sbPartialSlipOnlyTauFvPatchVectorField
     (
         const fvPatch&,
         const DimensionedField<vector, volMesh>&,
         const dictionary&
     );
 
-    //- Construct by mapping given opeSlipSBFvPatchVectorField onto a new patch
-    opeSlipSBFvPatchVectorField
+    //- Construct by mapping given sbPartialSlipOnlyTauFvPatchVectorField onto a new patch
+    sbPartialSlipOnlyTauFvPatchVectorField
     (
-        const opeSlipSBFvPatchVectorField&,
+        const sbPartialSlipOnlyTauFvPatchVectorField&,
         const fvPatch&,
         const DimensionedField<vector, volMesh>&,
         const fvPatchFieldMapper&
     );
 
     //- Copy constructor
-    opeSlipSBFvPatchVectorField
+    sbPartialSlipOnlyTauFvPatchVectorField
     (
-        const opeSlipSBFvPatchVectorField&
+        const sbPartialSlipOnlyTauFvPatchVectorField&
     ) = delete;
 
     //- Copy constructor setting internal field reference
-    opeSlipSBFvPatchVectorField
+    sbPartialSlipOnlyTauFvPatchVectorField
     (
-        const opeSlipSBFvPatchVectorField&,
+        const sbPartialSlipOnlyTauFvPatchVectorField&,
         const DimensionedField<vector, volMesh>&
     );
 
@@ -75,7 +73,7 @@ public:
     {
         return tmp<fvPatchVectorField>
         (
-            new opeSlipSBFvPatchVectorField(*this, iF)
+            new sbPartialSlipOnlyTauFvPatchVectorField(*this, iF)
         );
     }
 

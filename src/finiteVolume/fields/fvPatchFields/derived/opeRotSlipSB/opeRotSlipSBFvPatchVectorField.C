@@ -3,7 +3,6 @@
 #include "volFields.H"
 #include "surfaceFields.H"
 #include "addToRunTimeSelectionTable.H"
-#include "Random.H"
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -93,13 +92,10 @@ void Foam::opeRotSlipSBFvPatchVectorField::updateCoeffs()
     const scalar sigmaG  = sigma_[0];
     const scalar sigmaNS = sigma_[1];
 
-//    static Random rand(123456);
-//    const scalar sigmaStar = rand.scalar01();
     forAll(Up, faceI)
     {
 	//const scalar sigmaStar = (pp[faceI] - sigmaNS) / (sigmaG - sigmaNS);
 	const scalar sigmaStar = (pp[faceI] - sigmaG) / (sigmaNS - sigmaG);
-//    	const scalar sigmaStar = rand.scalar01();
     	const scalar vc = C_ * sigmaStar;
         const vector plateVel = omegap_ ^ patch().Cf()[faceI];
     	const scalar vMax     = mag(plateVel);
