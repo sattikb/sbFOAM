@@ -118,7 +118,7 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
             vector cellVel = U[own];
             scalar magCellVel = mag(cellVel);
 
-            Up[faceI] = coeff * dir * magCellVel;
+            Up[faceI] = plateVel + (coeff * dir * magCellVel);
         }
         else
         {
