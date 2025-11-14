@@ -221,6 +221,7 @@ $(derivedFvPatchFields)/tauRTWallSB/tauRTWallFvPatchVectorField.C
 $(derivedFvPatchFields)/tauRTSB/tauRTFvPatchVectorField.C
 $(derivedFvPatchFields)/opeRotSlipSB/opeRotSlipSBFvPatchVectorField.C
 $(derivedFvPatchFields)/sbPartialSlipOnlyTau/sbPartialSlipOnlyTauFvPatchVectorField.C
+$(derivedFvPatchFields)/sbPartialSlipTanh/sbPartialSlipTanhFvPatchVectorField.C
 
 fvsPatchFields = fields/fvsPatchFields
 $(fvsPatchFields)/fvsPatchField/fvsPatchFields.C
