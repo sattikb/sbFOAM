@@ -112,7 +112,7 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
         if (tauStar>0.2)
         {
 	    vector dir = -stressWS/tauW;
-            scalar coeff = alpha_*pow(tauStar, m_);
+            scalar coeff = pow(alpha_*tauStar, m_);
 
 	    label own = p.faceCells()[faceI];
             vector cellVel = U[own];
