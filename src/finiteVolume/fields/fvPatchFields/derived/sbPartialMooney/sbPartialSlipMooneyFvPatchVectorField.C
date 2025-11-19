@@ -113,15 +113,16 @@ void Foam::sbPartialSlipMooneyFvPatchVectorField::updateCoeffs()
 	{
 		vector dir = -stressWS/tauW;
 	
-//		Info<<"------ value of dir is: "<<dir<<endl;
-		scalar phi = (alpha_)/stressWN*pow(tauN, m_);
-//		Info<<"------ value of tanNorm and tanValFrac is: "<<tauN<<" and "<<tanVal<<endl;
+		scalar phi = (alpha_)/(-stressWN)*pow(tauN, m_);
+		if (phi>1) phi = 1;
+		if (phi>5) Info<<"------ value of chi and phi are are: "<<tauN<<" and "<<phi<<endl;
 		
 		label own = p.faceCells()[faceI];
 		vector cellVel = U[own];
 		scalar magCellVel = mag(cellVel);
 		
 		Up[faceI] = (1-phi)*plateVel + (phi * dir * magCellVel);
+//		Info<<"------ value of U at face is: "<<Up[faceI]<<endl;
 	}
     }
     
