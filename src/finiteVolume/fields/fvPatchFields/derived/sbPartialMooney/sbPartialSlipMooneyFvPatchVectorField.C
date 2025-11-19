@@ -1,4 +1,4 @@
-#include "sbPartialSlipTanhFvPatchVectorField.H"
+#include "sbPartialSlipMooneyFvPatchVectorField.H"
 #include "fvPatchFieldMapper.H"
 #include "volFields.H"
 #include "surfaceFields.H"
@@ -7,7 +7,7 @@
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
+Foam::sbPartialSlipMooneyFvPatchVectorField::sbPartialSlipMooneyFvPatchVectorField
 (
     const fvPatch& p,
     const DimensionedField<vector, volMesh>& iF
@@ -15,13 +15,12 @@ Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
 :
     fixedValueFvPatchVectorField(p, iF),
     omega_(),
-    tauStar_(),
-    C_(),
+    alpha_(),
     m_()
 {}
 
 
-Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
+Foam::sbPartialSlipMooneyFvPatchVectorField::sbPartialSlipMooneyFvPatchVectorField
 (
     const fvPatch& p,
     const DimensionedField<vector, volMesh>& iF,
@@ -30,17 +29,16 @@ Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
 :
     fixedValueFvPatchVectorField(p, iF, dict, false),
     omega_(dict.lookup<vector>("shaftOmega")),
-    tauStar_(dict.lookup<scalar>("tauStar")),
-    C_(dict.lookup<scalar>("C")),
+    alpha_(dict.lookup<scalar>("alpha")),
     m_(dict.lookup<scalar>("m"))
 {
     fvPatchVectorField::operator=(vectorField("value", dict, p.size()));
 }
 
 
-Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
+Foam::sbPartialSlipMooneyFvPatchVectorField::sbPartialSlipMooneyFvPatchVectorField
 (
-    const sbPartialSlipTanhFvPatchVectorField& ptf,
+    const sbPartialSlipMooneyFvPatchVectorField& ptf,
     const fvPatch& p,
     const DimensionedField<vector, volMesh>& iF,
     const fvPatchFieldMapper& mapper
@@ -48,30 +46,28 @@ Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
 :
     fixedValueFvPatchVectorField(ptf, p, iF, mapper),
     omega_(ptf.omega_),
-    tauStar_(ptf.tauStar_),
-    C_(ptf.C_),
+    alpha_(ptf.alpha_),
     m_(ptf.m_)
 {}
 
 
-Foam::sbPartialSlipTanhFvPatchVectorField::sbPartialSlipTanhFvPatchVectorField
+Foam::sbPartialSlipMooneyFvPatchVectorField::sbPartialSlipMooneyFvPatchVectorField
 (
-    const sbPartialSlipTanhFvPatchVectorField& pstauSB,
+    const sbPartialSlipMooneyFvPatchVectorField& pstauSB,
     const DimensionedField<vector, volMesh>& iF
 )
 :
     fixedValueFvPatchVectorField(pstauSB, iF),
     omega_(pstauSB.omega_),
-    tauStar_(pstauSB.tauStar_),
-    C_(pstauSB.C_),
+    alpha_(pstauSB.alpha_),
     m_(pstauSB.m_)
 {}
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
 
-void Foam::sbPartialSlipTanhFvPatchVectorField::updateCoeffs()
+void Foam::sbPartialSlipMooneyFvPatchVectorField::updateCoeffs()
 {
-    Info<<"SATTIK IN TANH PARTIAL SLIP."<<endl;
+    Info<<"SATTIK IN MOONEY PARTIAL SLIP."<<endl;
     if (updated())
     {
         return;
@@ -117,14 +113,15 @@ void Foam::sbPartialSlipTanhFvPatchVectorField::updateCoeffs()
 	{
 		vector dir = -stressWS/tauW;
 	
-		scalar coeff = atanh(C_)*pow(tauN/tauStar_, m_);
-		scalar tanVal = tanh(coeff);
+//		Info<<"------ value of dir is: "<<dir<<endl;
+		scalar phi = (alpha_)/stressWN*pow(tauN, m_);
+//		Info<<"------ value of tanNorm and tanValFrac is: "<<tauN<<" and "<<tanVal<<endl;
 		
 		label own = p.faceCells()[faceI];
 		vector cellVel = U[own];
 		scalar magCellVel = mag(cellVel);
 		
-		Up[faceI] = (1-tanVal)*plateVel + (tanVal * dir * magCellVel);
+		Up[faceI] = (1-phi)*plateVel + (phi * dir * magCellVel);
 	}
     }
     
@@ -132,12 +129,11 @@ void Foam::sbPartialSlipTanhFvPatchVectorField::updateCoeffs()
 }
 
 
-void Foam::sbPartialSlipTanhFvPatchVectorField::write(Ostream& os) const
+void Foam::sbPartialSlipMooneyFvPatchVectorField::write(Ostream& os) const
 {
     fvPatchVectorField::write(os);
     writeEntry(os, "shaftOmega", omega_);
-    writeEntry(os, "tauStar", tauStar_);
-    writeEntry(os, "C", C_);
+    writeEntry(os, "alpha", alpha_);
     writeEntry(os, "m", m_);
     writeEntry(os, "value", *this);
 }
@@ -150,6 +146,6 @@ namespace Foam
     makePatchTypeField
     (
         fvPatchVectorField,
-        sbPartialSlipTanhFvPatchVectorField
+        sbPartialSlipMooneyFvPatchVectorField
     );
 }
