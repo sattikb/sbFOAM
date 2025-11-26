@@ -3,7 +3,7 @@
 
 #include "fvPatchFields.H"
 #include "fixedValueFvPatchFields.H"
-
+#include "movingWallVelocityFvPatchVectorField.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
@@ -15,7 +15,7 @@ namespace Foam
 
 class sbPartialSlipOnlyTauFvPatchVectorField
 :
-    public fixedValueFvPatchVectorField
+    public movingWallVelocityFvPatchVectorField // fixedValueFvPatchVectorField
 {
 private:
     // Private Data
@@ -83,6 +83,8 @@ public:
 
     //- Write
     virtual void write(Ostream&) const;
+
+    virtual bool moving() const; 
 };
 
 

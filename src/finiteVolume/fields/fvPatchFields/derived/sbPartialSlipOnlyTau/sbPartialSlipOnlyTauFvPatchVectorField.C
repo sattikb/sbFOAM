@@ -13,7 +13,7 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
     const DimensionedField<vector, volMesh>& iF
 )
 :
-    fixedValueFvPatchVectorField(p, iF),
+    movingWallVelocityFvPatchVectorField(p, iF),// fixedValueFvPatchVectorField(p, iF),
     omega_(),
     alpha_(),
     m_()
@@ -27,7 +27,7 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
     const dictionary& dict
 )
 :
-    fixedValueFvPatchVectorField(p, iF, dict, false),
+    movingWallVelocityFvPatchVectorField(p, iF), //fixedValueFvPatchVectorField(p, iF, dict, false),
     omega_(dict.lookup<vector>("shaftOmega")),
     alpha_(dict.lookup<scalar>("alpha")),
     m_(dict.lookup<scalar>("m"))
@@ -44,7 +44,7 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
     const fvPatchFieldMapper& mapper
 )
 :
-    fixedValueFvPatchVectorField(ptf, p, iF, mapper),
+    movingWallVelocityFvPatchVectorField(ptf, p, iF, mapper), // fixedValueFvPatchVectorField(ptf, p, iF, mapper),
     omega_(ptf.omega_),
     alpha_(ptf.alpha_),
     m_(ptf.m_)
@@ -57,7 +57,7 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
     const DimensionedField<vector, volMesh>& iF
 )
 :
-    fixedValueFvPatchVectorField(pstauSB, iF),
+    movingWallVelocityFvPatchVectorField(pstauSB, iF),// fixedValueFvPatchVectorField(pstauSB, iF),
     omega_(pstauSB.omega_),
     alpha_(pstauSB.alpha_),
     m_(pstauSB.m_)
@@ -67,7 +67,15 @@ Foam::sbPartialSlipOnlyTauFvPatchVectorField::sbPartialSlipOnlyTauFvPatchVectorF
 
 void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
 {
-    Info<<"SATTIK IN MODIFIED MOONEY PARTIAL SLIP."<<endl;
+    Info<<"SATTIK IN NORMALIZED MOONEY PARTIAL SLIP."<<endl;
+
+    Info << "----- patch: " << patch().name()
+	 << "  type: " << patch().type()
+	 << "  local faces: " << patch().size()
+	 << "  global faces: " << returnReduce(patch().size(), sumOp<label>())
+	 << endl;
+    label localProcessedFaces = 0;
+    label localSlipFaces = 0;
     if (updated())
     {
         return;
@@ -90,6 +98,7 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
     vectorField& Up = *this;
     forAll(Up, faceI)
     {
+	localProcessedFaces++;
         scalar muf = mup[faceI];
         scalar pf = pp[faceI];
 
@@ -108,9 +117,11 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
 
 	const vector plateVel = omega_ ^ patch().Cf()[faceI];
 
+	Info<<"------ value of taustar is: "<<tauStar<<endl;
 
         if (tauStar>0.2)
         {
+		localSlipFaces++;
 	    vector dir = -stressWS/tauW;
             scalar coeff = pow(alpha_*tauStar, m_);
 
@@ -118,28 +129,41 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
             vector cellVel = U[own];
             scalar magCellVel = mag(cellVel);
 
+	Info<<"------ value of vs is: "<<coeff<<" and chi is: "<<tauStar<<endl;
             Up[faceI] = plateVel + (coeff * dir * magCellVel);
         }
         else
         {
             Up[faceI] = plateVel;
         }
-//	Info<<"------ value of taustar is: "<<tauStar<<endl;
     }
     
-    fixedValueFvPatchVectorField::updateCoeffs();
+    label globalProcessed = returnReduce(localProcessedFaces, sumOp<label>());
+    label globalSlip      = returnReduce(localSlipFaces,      sumOp<label>());
+
+    Info << "=== MOONEY SLIP BC ACTIVE === "
+         << "processed " << globalProcessed
+         << " faces globally, slip on " << globalSlip
+	 << " faces this update (patch: " << patch().name() << ")"
+	 << endl;
+    //fixedValueFvPatchVectorField::updateCoeffs();
+    movingWallVelocityFvPatchVectorField::updateCoeffs();
 }
 
 
 void Foam::sbPartialSlipOnlyTauFvPatchVectorField::write(Ostream& os) const
 {
-    fvPatchVectorField::write(os);
+    movingWallVelocityFvPatchVectorField::write(os);  // fvPatchVectorField::write(os);
     writeEntry(os, "shaftOmega", omega_);
     writeEntry(os, "alpha", alpha_);
     writeEntry(os, "m", m_);
     writeEntry(os, "value", *this);
 }
 
+bool Foam::sbPartialSlipOnlyTauFvPatchVectorField::moving() const
+{
+	    return true;
+}
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
