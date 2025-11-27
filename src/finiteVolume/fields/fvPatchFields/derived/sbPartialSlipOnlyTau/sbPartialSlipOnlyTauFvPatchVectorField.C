@@ -69,11 +69,6 @@ void Foam::sbPartialSlipOnlyTauFvPatchVectorField::updateCoeffs()
 {
     Info<<"SATTIK IN NORMALIZED MOONEY PARTIAL SLIP."<<endl;
 
-    Info << "----- patch: " << patch().name()
-	 << "  type: " << patch().type()
-	 << "  local faces: " << patch().size()
-	 << "  global faces: " << returnReduce(patch().size(), sumOp<label>())
-	 << endl;
     label localProcessedFaces = 0;
     label localSlipFaces = 0;
     if (updated())
