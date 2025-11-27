@@ -102,9 +102,6 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     vectorField Up = this->refValue();
     vectorField dUdnp = this->refGrad();
     scalarField phi = this->valueFraction();
-//    this->refValue() = vector::zero;
-//    this->refGrad()  = vector::zero;
-//    this->valueFraction() = 1.0;
 
     forAll(n, faceI)
     {
@@ -112,7 +109,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 
         scalar muf = mup[faceI];
         scalar pf = pp[faceI];
-	const vector plateVel = omega_ ^ patch().Cf()[faceI];
+	const vector plateVel = omega_ ^ p.Cf()[faceI];
 
         const vector& nf = n[faceI];
         const tensor& gradUf = gradU[faceI];
