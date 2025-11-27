@@ -95,6 +95,8 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 
 
     vectorField& dudn = gradient();
+    vectorField& Upatch = *this;
+
     forAll(dudn, faceI)
     {
 	localProcessedFaces++;
@@ -116,9 +118,14 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	scalar tauLim = stressWN * f_;
 	
 	dudn[faceI] = gradUf & nf;
-	if (tauW > tauLim) 
+	if (tauW < tauLim) 
 	{
-		//dudn[faceI] = f_ * pp[faceI] * vector::zero;
+		Upatch[faceI] = vector::zero;
+		dudn[faceI]   = vector::zero;
+	}
+	else
+	{
+		dudn[faceI] = f_ * pp[faceI] * vector::zero;
 		localSlipFaces++;
 	}
     }
@@ -131,7 +138,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	 << " faces this update (patch: " << patch().name() << ")"
 	 << endl;
 
-    fixedGradientFvPatchVectorField::updateCoeffs();
+//    fixedGradientFvPatchVectorField::updateCoeffs();
 }
 
 void sbSpecifiedTauWFvPatchVectorField::write(Ostream& os) const
