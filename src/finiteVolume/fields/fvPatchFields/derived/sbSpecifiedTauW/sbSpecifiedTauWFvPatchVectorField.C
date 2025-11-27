@@ -29,6 +29,9 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
     mixedFvPatchVectorField(p, iF),
     f_(dict.lookup<scalar>("f"))
 {
+    this->refValue() = vector::zero;
+    this->refGrad()  = vector::zero;
+    this->valueFraction() = 1.0;
     // Initialize with zero gradient, will be updated in updateCoeffs
     if (dict.found("value"))
     {
@@ -36,6 +39,8 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
         (
             vectorField("value", dict, p.size())
         );
+	this->refValue() = *this;
+        this->valueFraction() = 1.0;
     }
     else
     {
@@ -93,12 +98,12 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     // Compute gradient: du/dn = f * p
 
 
-    vectorField& Up = *this;
+//    vectorField& Up = *this;
     this->refValue() = vector::zero;
     this->refGrad()  = vector::zero;
-    this->valueFraction() = 0.0;
+    this->valueFraction() = 1.0;
 
-    forAll(Up, faceI)
+    forAll(n, faceI)
     {
 	localProcessedFaces++;
 
@@ -137,7 +142,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	 << " faces this update (patch: " << patch().name() << ")"
 	 << endl;
 
-//    mixedFvPatchVectorField::updateCoeffs();
+    mixedFvPatchVectorField::updateCoeffs();
 }
 
 void sbSpecifiedTauWFvPatchVectorField::write(Ostream& os) const
