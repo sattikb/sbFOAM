@@ -15,7 +15,7 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
     const DimensionedField<vector, volMesh>& iF
 )
 :
-    fixedGradientFvPatchVectorField(p, iF),
+    mixedFvPatchVectorField(p, iF),
     f_()
 {}
 
@@ -26,11 +26,10 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
     const dictionary& dict
 )
 :
-    fixedGradientFvPatchVectorField(p, iF),
+    mixedFvPatchVectorField(p, iF),
     f_(dict.lookup<scalar>("f"))
 {
     // Initialize with zero gradient, will be updated in updateCoeffs
-    gradient() = vectorField(p.size(), vector::zero);
     if (dict.found("value"))
     {
         fvPatchField<vector>::operator=
@@ -52,7 +51,7 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
     const fvPatchFieldMapper& mapper
 )
 :
-    fixedGradientFvPatchVectorField(ptf, p, iF, mapper),
+    mixedFvPatchVectorField(ptf, p, iF, mapper),
     f_(ptf.f_)
 {}
 
@@ -62,7 +61,7 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
     const DimensionedField<vector, volMesh>& iF
 )
 :
-    fixedGradientFvPatchVectorField(sbstw, iF),
+    mixedFvPatchVectorField(sbstw, iF),
     f_(sbstw.f_)
 {}
 
@@ -94,10 +93,12 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     // Compute gradient: du/dn = f * p
 
 
-    vectorField& dudn = gradient();
-    vectorField& Upatch = *this;
+    vectorField& Up = *this;
+    this->refValue() = vector::zero;
+    this->refGrad()  = vector::zero;
+    this->valueFraction() = 0.0;
 
-    forAll(dudn, faceI)
+    forAll(Up, faceI)
     {
 	localProcessedFaces++;
 
@@ -117,15 +118,13 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	scalar tauW = mag(stressWS);
 	scalar tauLim = -stressWN * f_;
 	
-	dudn[faceI] = gradUf & nf;
 	if (tauW < tauLim) 
 	{
-		Upatch[faceI] = vector::zero;
-		dudn[faceI]   = vector::zero;
+		this->valueFraction()[faceI] = 1.0;
 	}
 	else
 	{
-		dudn[faceI] = f_ * pp[faceI] * vector::zero;
+		this->valueFraction()[faceI] = 0.0;
 		localSlipFaces++;
 	}
     }
@@ -138,12 +137,12 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	 << " faces this update (patch: " << patch().name() << ")"
 	 << endl;
 
-//    fixedGradientFvPatchVectorField::updateCoeffs();
+//    mixedFvPatchVectorField::updateCoeffs();
 }
 
 void sbSpecifiedTauWFvPatchVectorField::write(Ostream& os) const
 {
-    fixedGradientFvPatchVectorField::write(os);
+    mixedFvPatchVectorField::write(os);
     writeEntry(os, "f", f_);
 }
 

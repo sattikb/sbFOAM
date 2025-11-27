@@ -1,14 +1,14 @@
 #ifndef sbSpecifiedTauWFvPatchVectorField_H
 #define sbSpecifiedTauWFvPatchVectorField_H
 
-#include "fixedGradientFvPatchFields.H"
+#include "mixedFvPatchFields.H"
 
 namespace Foam
 {
 
 class sbSpecifiedTauWFvPatchVectorField
 :
-    public fixedGradientFvPatchVectorField
+    public mixedFvPatchVectorField
 {
 private:
     // Private Data
