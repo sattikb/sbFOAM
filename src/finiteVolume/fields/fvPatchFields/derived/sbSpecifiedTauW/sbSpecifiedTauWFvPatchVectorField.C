@@ -115,7 +115,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	vector stressWS = traction  - stressWN*nf;
 	
 	scalar tauW = mag(stressWS);
-	scalar tauLim = stressWN * f_;
+	scalar tauLim = -stressWN * f_;
 	
 	dudn[faceI] = gradUf & nf;
 	if (tauW < tauLim) 
@@ -127,7 +127,6 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	{
 		dudn[faceI] = f_ * pp[faceI] * vector::zero;
 		localSlipFaces++;
-		Info<<"-----tauW is: "<<tauW<<" and tauLim is: "<<tauLim<<endl;
 	}
     }
 
