@@ -16,6 +16,7 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
 )
 :
     mixedFvPatchVectorField(p, iF),
+    omega_(),
     f_()
 {}
 
@@ -27,12 +28,13 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
 )
 :
     mixedFvPatchVectorField(p, iF),
+    omega_(dict.lookup<vector>("shaftOmega")),
     f_(dict.lookup<scalar>("f"))
 {
     this->refValue() = vector::zero;
     this->refGrad()  = vector::zero;
     this->valueFraction() = 1.0;
-    // Initialize with zero gradient, will be updated in updateCoeffs
+
     if (dict.found("value"))
     {
         fvPatchField<vector>::operator=
@@ -57,6 +59,7 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
 )
 :
     mixedFvPatchVectorField(ptf, p, iF, mapper),
+    omega_(ptf.omega_),
     f_(ptf.f_)
 {}
 
@@ -67,6 +70,7 @@ sbSpecifiedTauWFvPatchVectorField::sbSpecifiedTauWFvPatchVectorField
 )
 :
     mixedFvPatchVectorField(sbstw, iF),
+    omega_(sbstw.omega_),
     f_(sbstw.f_)
 {}
 
@@ -89,19 +93,18 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     const volVectorField& U = db().lookupObject<volVectorField>("U");
     const volScalarField& mu = db().lookupObject<volScalarField>("thermo:mu");
 
-//    const fvPatchVectorField& Ubound = U.boundaryField()[p.index()];
     const fvPatchScalarField& pp = pField.boundaryField()[p.index()];
     const fvPatchScalarField& mup = mu.boundaryField()[p.index()];
 
     tensorField gradU = fvc::grad(U)().boundaryField()[p.index()];
 
-    // Compute gradient: du/dn = f * p
-
-
-//    vectorField& Up = *this;
-    this->refValue() = vector::zero;
-    this->refGrad()  = vector::zero;
-    this->valueFraction() = 1.0;
+//    u_face = (1-phi)(u_cc + dUdnp*ds) + phi*Up
+    vectorField Up = this->refValue();
+    vectorField dUdnp = this->refGrad();
+    scalarField phi = this->valueFraction();
+//    this->refValue() = vector::zero;
+//    this->refGrad()  = vector::zero;
+//    this->valueFraction() = 1.0;
 
     forAll(n, faceI)
     {
@@ -109,6 +112,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 
         scalar muf = mup[faceI];
         scalar pf = pp[faceI];
+	const vector plateVel = omega_ ^ patch().Cf()[faceI];
 
         const vector& nf = n[faceI];
         const tensor& gradUf = gradU[faceI];
@@ -125,11 +129,13 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	
 	if (tauW < tauLim) 
 	{
-		this->valueFraction()[faceI] = 1.0;
+		phi[faceI] = 1.0;
+		Up[faceI] = plateVel;
 	}
 	else
 	{
-		this->valueFraction()[faceI] = 0.0;
+		phi[faceI] = 0.0;
+		dUdnp[faceI] = vector::zero;
 		localSlipFaces++;
 	}
     }
@@ -148,6 +154,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 void sbSpecifiedTauWFvPatchVectorField::write(Ostream& os) const
 {
     mixedFvPatchVectorField::write(os);
+    writeEntry(os, "shaftOmega", omega_);
     writeEntry(os, "f", f_);
 }
 

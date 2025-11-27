@@ -12,7 +12,8 @@ class sbSpecifiedTauWFvPatchVectorField
 {
 private:
     // Private Data
-    scalar f_;  // Coefficient vector for du/dn = f * p
+    vector omega_;
+    scalar f_;
 
 public:
     //- Runtime type information
