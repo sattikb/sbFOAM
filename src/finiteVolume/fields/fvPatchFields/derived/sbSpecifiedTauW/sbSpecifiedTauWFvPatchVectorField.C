@@ -103,8 +103,8 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     vectorField& dUdnp = this->refGrad();
     scalarField& phi = this->valueFraction();
 
-    Up = omega_ ^ p.CF();
-    dudnP = vector::zero;
+    Up = omega_ ^ p.Cf();
+    dUdnp = vector::zero;
     phi = 1.0;
 
     forAll(n, faceI)
