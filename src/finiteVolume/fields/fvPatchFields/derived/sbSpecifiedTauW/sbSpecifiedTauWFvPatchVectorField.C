@@ -99,9 +99,13 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     tensorField gradU = fvc::grad(U)().boundaryField()[p.index()];
 
 //    u_face = (1-phi)(u_cc + dUdnp*ds) + phi*Up
-    vectorField Up = this->refValue();
-    vectorField dUdnp = this->refGrad();
-    scalarField phi = this->valueFraction();
+    vectorField& Up = this->refValue();
+    vectorField& dUdnp = this->refGrad();
+    scalarField& phi = this->valueFraction();
+
+    Up = omega_ ^ p.CF();
+    dudnP = vector::zero;
+    phi = 1.0;
 
     forAll(n, faceI)
     {
