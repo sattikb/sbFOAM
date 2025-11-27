@@ -127,7 +127,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	{
 		dudn[faceI] = f_ * pp[faceI] * vector::zero;
 		localSlipFaces++;
-		Info<<"-----tauW is: "<<tauW<<<" and tauLim is: "<<tauLim<<endl;
+		Info<<"-----tauW is: "<<tauW<<" and tauLim is: "<<tauLim<<endl;
 	}
     }
 
