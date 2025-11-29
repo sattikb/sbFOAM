@@ -136,8 +136,10 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	}
 	else
 	{
-		phi[faceI] = 0.0;
-		dUdnp[faceI] = vector::zero;
+		phi[faceI] = 1.0;
+		Up[faceI] = plateVel * 0.25;
+	//	phi[faceI] = 0.0;
+	//	dUdnp[faceI] = vector::zero;
 		localSlipFaces++;
 	}
     }
