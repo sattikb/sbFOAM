@@ -128,6 +128,7 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	scalar tauW = mag(stressWS);
 	scalar tauLim = -stressWN * f_;
 	
+	Info<<"The wall shear stress is: "<<tauW<<" and the tauLim is : "<<tauLim<<endl;
 	if (tauW < tauLim) 
 	{
 		phi[faceI] = 1.0;
