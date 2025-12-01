@@ -104,13 +104,14 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
     scalarField& phi = this->valueFraction();
 
     Up = omega_ ^ p.Cf();
-    dUdnp = vector::zero;
-    phi = 1.0;
+//    dUdnp = vector::zero;
+//    phi = 1.0;
 
     forAll(n, faceI)
     {
 	localProcessedFaces++;
 
+	const scalar TOL = 1e-6;
         scalar muf = mup[faceI];
         scalar pf = pp[faceI];
 	const vector plateVel = omega_ ^ p.Cf()[faceI];
@@ -126,19 +127,25 @@ void sbSpecifiedTauWFvPatchVectorField::updateCoeffs()
 	vector stressWS = traction  - stressWN*nf;
 	
 	scalar tauW = mag(stressWS);
-	scalar tauLim = -stressWN * f_;
+	scalar tauLim = max(-stressWN * f_,0);
 	
-	Info<<"The wall shear stress is: "<<tauW<<" and the tauLim is : "<<tauLim<<endl;
+	if (tauLim==0) Info<<"-----TAULIM is ZERO."<<endl;
 	if (tauW < tauLim) 
 	{
 		phi[faceI] = 1.0;
 		Up[faceI] = plateVel;
 	}
-	else
+	else if (tauW > tauLim)
 	{
-		vector tauDir = stressWS / tauW;
+		vector tauDir = -stressWS / tauW;
+		if(tauDir[1]<0.9)
+		{
+			Info<<"--the direction is: "<<tauDir<<endl;
+			Info<<"---tauW and tauLim are "<<tauW<<", "<<tauLim<<endl;
+			Info<<"----the shear stress is: "<<stressWS<<endl;
+		}
 		phi[faceI] = 0.0;
-		dUdnp[faceI] = tauLim*tauDir;
+		dUdnp[faceI] = tauLim*tauDir/muf;
 		localSlipFaces++;
 	}
     }
