@@ -224,6 +224,7 @@ $(derivedFvPatchFields)/sbPartialSlipOnlyTau/sbPartialSlipOnlyTauFvPatchVectorFi
 $(derivedFvPatchFields)/sbPartialSlipTanh/sbPartialSlipTanhFvPatchVectorField.C
 $(derivedFvPatchFields)/sbPartialMooney/sbPartialSlipMooneyFvPatchVectorField.C
 $(derivedFvPatchFields)/sbSpecifiedTauW/sbSpecifiedTauWFvPatchVectorField.C
+$(derivedFvPatchFields)/sbCoulomb/sbCoulombFvPatchVectorField.C
 
 fvsPatchFields = fields/fvsPatchFields
 $(fvsPatchFields)/fvsPatchField/fvsPatchFields.C
