@@ -86,7 +86,8 @@ void Foam::sbTornadoEyeFvPatchVectorField::updateCoeffs()
 	if (mag(rad)<=rLim_)
 	{
 		const vector plateVel = omega_ ^ rad;
-		Up[faceI] = plateVel;
+		const vector velUpwards = 1.5* mag(plateVel)*(-n[faceI]);
+		Up[faceI] = plateVel + velUpwards;
 	}
     }
     
