@@ -161,6 +161,13 @@ bool Foam::functionObjects::sbTauWS::execute()
 	vectorField traction = cauchyTensor & np;
 	vectorField tauWSVal = traction - (traction & np)*np;
 
+//	const vectorField& Uf = U.boundaryField()[patchi];       
+//        const vectorField  Uc = U.boundaryField()[patchi].patchInternalField();
+//	const scalarField delta = mesh_.nonOrthDeltaCoeffs().boundaryField()[patchi];
+//	vectorField tauHat = tauWSVal/mag(tauWSVal);
+//	vectorField UcTan = (Uc & tauHat)*tauHat;
+//        vectorField tauWSVal2 = mup * (Uf - UcTan) * delta;   
+
         tauBf[patchi] = tauWSVal;
     }
 

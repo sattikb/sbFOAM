@@ -92,9 +92,9 @@ void Foam::sbCoulombFvPatchVectorField::updateCoeffs()
         scalar muf = mup[faceI];
         scalar pf = pp[faceI];
 
-	scalar locX = p.Cf()[faceI].x();
-	scalar locY = p.Cf()[faceI].y();
-	scalar locZ = p.Cf()[faceI].z();
+ 	label own = p.faceCells()[faceI];
+ 	vector Uc = U[own];
+ 	vector Uf = U[faceI];
 
         const vector& nf = n[faceI];
         const tensor& gradUf = gradU[faceI];
@@ -102,39 +102,43 @@ void Foam::sbCoulombFvPatchVectorField::updateCoeffs()
 	tensor tauf = muf*(gradUf + gradUf.T()) - (2.0/3.0)*muf*(tr(gradUf))*I;
 	tensor sigmaf = tauf - pf*I;
 
+// 1ST METHOD TO COMPUTE WALL SHEAR STRESS
 	vector traction = sigmaf & nf;
 	scalar stressWN = traction & nf;
 	vector stressWS = traction  - stressWN*nf;
 	scalar tauW = mag(stressWS);
 	vector tauHat =  stressWS / max(tauW,SMALL);	
 
-	vector stressWS2 = (Sfp[faceI]/mag(Sfp[faceI])) & tauf;
+// 2ND METHOD TO COMPUTE WALL SHEAR STRESS
+	vector stressWS2 = nf & tauf;
 	scalar tauW2 = mag(stressWS2);
+
+// 3RD METHOD TO COMPUTE WALL SHEAR STRESS
+	vector UcTan = Uc - (Uc&nf)*nf;
+ 	scalar dsInv = p.deltaCoeffs()[faceI];
+	vector stressWS3 = muf*(-UcTan)*dsInv;
+	scalar tauW3 = mag(stressWS3);
+	//vector tauHat =  stressWS3 / max(tauW3,SMALL);	
+
 	scalar tauLim = pf*alpha_;
 	
 	    
-	if (tauW2>tauLim)
+	if (tauW>tauLim)
 	{
        	    localSlipFaces++;
 
- 	    label own = p.faceCells()[faceI];
- 	    vector Uc = U[own];
  	    scalar ry = p.deltaCoeffs()[faceI];
  	    scalar term1 = tauLim/(muf*ry);
  	    scalar term2 = Uc & tauHat;
-//	    if (locX>0.005 && locX<0.006 && locY<0.153 && locY>0 && locZ>0.7 && locZ<1)
-//	    {
-//	       Pout<< "Velocity is: "<<-(term1+term2)<<"at loc: " << locZ 
-//	           << " term2: " <<-term2<<" term1: "<<term1<<endl;
-//	    }
- 	    
  	    Up[faceI] = (term1 + term2) * tauHat;
+ 	   // Up[faceI] = (term1) * tauHat + UcTan;
 	}
 	else
 	{
 	    const vector plateVel = omega_ ^ patch().Cf()[faceI];
 	    Up[faceI] = plateVel;
 	}
+
     }
     
     label globalProcessed = returnReduce(localProcessedFaces, sumOp<label>());
