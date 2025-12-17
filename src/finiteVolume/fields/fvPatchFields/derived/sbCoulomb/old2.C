@@ -99,24 +99,45 @@ void Foam::sbCoulombFvPatchVectorField::updateCoeffs()
         const vector& nf = n[faceI];
         const tensor& gradUf = gradU[faceI];
 
-	tensor devTensor = muf*(gradUf + gradUf.T());
+	tensor tauf = muf*(gradUf + gradUf.T()) - (2.0/3.0)*muf*(tr(gradUf))*I;
+	tensor sigmaf = tauf - pf*I;
 
-	vector stressWS = devTensor & nf;
+// 1ST METHOD TO COMPUTE WALL SHEAR STRESS
+	vector traction = sigmaf & nf;
+	scalar stressWN = traction & nf;
+	vector stressWS = traction  - stressWN*nf;
 	scalar tauW = mag(stressWS);
+	vector tauHat =  stressWS / max(tauW,SMALL);
+
+// 2ND METHOD TO COMPUTE WALL SHEAR STRESS
+	vector stressWS2 = nf & tauf;
+	scalar tauW2 = mag(stressWS2);
+
+// 3RD METHOD TO COMPUTE WALL SHEAR STRESS
+	vector UcTan = Uc - (Uc&nf)*nf;
+ 	scalar dsInv = p.deltaCoeffs()[faceI];
+	vector stressWS3 = muf*(-UcTan)*dsInv;
+	scalar tauW3 = mag(stressWS3);
+	//vector tauHat =  stressWS3 / max(tauW3,SMALL);	
 
 	scalar tauLim = pf*alpha_;
 	
 	    
-	if (tauW>tauLim)
+	if (tauW2>tauLim)
 	{
        	    localSlipFaces++;
 
  	    scalar ry = p.deltaCoeffs()[faceI];
- 	    scalar term1S = tauLim/(muf*ry);
- 	    vector Utan = Uc - (Uc&nf)*nf;
-	    vector tHat = Utan/max(mag(Utan),SMALL);
+ 	    scalar term1 = tauLim/(muf*ry);
+ 	    scalar term2 = Uc & tauHat;
 
- 	    Up[faceI] = Utan - (term1S * tHat);
+	    if (mag(tauHat[0])>0.02*mag(tauHat[1]) || mag(tauHat[2])>0.02*mag(tauHat[1])) 
+	    {
+	        Pout<<"tauHat: "<<tauHat<<" and ds: "<<p.deltaCoeffs()[faceI]<<endl;
+		Pout<<"term1: "<<term1*tauHat<<" and term2: "<<term2*tauHat<<endl;
+	    }
+ 	    Up[faceI] = (term1 + term2) * tauHat;
+ 	   // Up[faceI] = (term1) * tauHat + UcTan;
 	}
 	else
 	{

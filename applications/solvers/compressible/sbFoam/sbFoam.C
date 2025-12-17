@@ -69,6 +69,8 @@ int main(int argc, char *argv[])
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
+	Switch energyOn(runTime.controlDict().lookupOrDefault<Switch>("energyOn",true));
+
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
@@ -115,7 +117,16 @@ int main(int argc, char *argv[])
             fvModels.correct();
 
             #include "UEqn.H"
-            #include "EEqn.H"
+            if (energyOn) 
+	    {
+		#include "EEqn.H"
+	    }
+	    else
+	    {
+	    	thermo.correct();
+		thermo.T() = dimensionedScalar("Tconst", dimTemperature, 300);
+		thermo.T().correctBoundaryConditions();
+	    }
 
             // --- Pressure corrector loop
             while (pimple.correct())

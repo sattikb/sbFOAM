@@ -116,15 +116,12 @@ void Foam::sbCoulombFvPatchVectorField::updateCoeffs()
  	    label own = p.faceCells()[faceI];
  	    vector Uc = U[own];
  	    const scalarField& ry = p.deltaCoeffs();
-// 	    vector fromESI = tauHat*(tauHat & (stressWS/(muf*ry[faceI]) + Uc));
  	    vector newStress = tauHat * tauLim;
  	    vector fromESI = newStress/(muf*ry[faceI]) + (Uc & tauHat)*tauHat;
-	    //Info<<"First term: "<<newStress/(muf*ry[faceI])<<" Second term: "<<(Uc & tauHat)*tauHat<<endl;
  
  	    
  	    Up[faceI] = fromESI;
 	}
-//	Up[faceI] = plateVel;
     }
     
     label globalProcessed = returnReduce(localProcessedFaces, sumOp<label>());
