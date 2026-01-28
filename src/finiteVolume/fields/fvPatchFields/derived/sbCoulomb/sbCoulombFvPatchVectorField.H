@@ -21,6 +21,7 @@ private:
     // Private Data
     vector omega_; 
     scalar alpha_;
+    scalar motType_;
 
 public:
     //- Runtime type information

@@ -15,7 +15,8 @@ Foam::sbCoulombFvPatchVectorField::sbCoulombFvPatchVectorField
 :
     fixedValueFvPatchVectorField(p, iF),
     omega_(),
-    alpha_()
+    alpha_(),
+    motType_()
 {}
 
 
@@ -28,7 +29,8 @@ Foam::sbCoulombFvPatchVectorField::sbCoulombFvPatchVectorField
 :
     fixedValueFvPatchVectorField(p, iF, dict, false),
     omega_(dict.lookup<vector>("shaftOmega")),
-    alpha_(dict.lookup<scalar>("alpha"))
+    alpha_(dict.lookup<scalar>("alpha")),
+    motType_(dict.lookup<scalar>("motionType"))
 {
     fvPatchVectorField::operator=(vectorField("value", dict, p.size()));
 }
@@ -44,7 +46,8 @@ Foam::sbCoulombFvPatchVectorField::sbCoulombFvPatchVectorField
 :
     fixedValueFvPatchVectorField(ptf, p, iF, mapper),
     omega_(ptf.omega_),
-    alpha_(ptf.alpha_)
+    alpha_(ptf.alpha_),
+    motType_(ptf.motType_)
 {}
 
 
@@ -56,7 +59,8 @@ Foam::sbCoulombFvPatchVectorField::sbCoulombFvPatchVectorField
 :
     fixedValueFvPatchVectorField(sbCoul, iF),
     omega_(sbCoul.omega_),
-    alpha_(sbCoul.alpha_)
+    alpha_(sbCoul.alpha_),
+    motType_(sbCoul.motType_)
 {}
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
@@ -120,8 +124,15 @@ void Foam::sbCoulombFvPatchVectorField::updateCoeffs()
 	}
 	else
 	{
-	    const vector plateVel = omega_ ^ patch().Cf()[faceI];
-	    Up[faceI] = plateVel;
+	    if(motType_==0)	//rotational
+	    {
+	    	const vector plateVel = omega_ ^ patch().Cf()[faceI];
+	    	Up[faceI] = plateVel;
+	    }
+	    else		//translational
+	    {
+		Up[faceI] = omega_;
+	    }
 	}
 
     }
@@ -143,6 +154,7 @@ void Foam::sbCoulombFvPatchVectorField::write(Ostream& os) const
     fvPatchVectorField::write(os);
     writeEntry(os, "shaftOmega", omega_);
     writeEntry(os, "alpha", alpha_);
+    writeEntry(os, "motionType", motType_);
     writeEntry(os, "value", *this);
 }
 
