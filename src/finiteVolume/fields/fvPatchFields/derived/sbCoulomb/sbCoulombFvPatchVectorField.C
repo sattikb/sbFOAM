@@ -120,6 +120,7 @@ void Foam::sbCoulombFvPatchVectorField::updateCoeffs()
  	    vector Utan = Uc - (Uc&nf)*nf;
 	    vector tHat = Utan/max(mag(Utan),SMALL);
 
+	    if(mag(Utan)<SMALL) Info<<"WHAT IS THIS"<<endl;
  	    Up[faceI] = Utan - (term1S * tHat);
 	}
 	else
